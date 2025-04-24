@@ -14,6 +14,22 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-MdFKNzCgP2CgcnI2Hg+grrGZ2E1uJtEmG9OAzgBClT49yNdozD1X0xAP0drfQ6d3VWaTb0Dj+0LyEKaRuUEC3w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 	<style>
+	
+	.glow {
+	  color: blue;
+	  font-weight: bold;
+	  animation: glow 1s infinite alternate;
+	}
+
+	@keyframes glow {
+	  from {
+		text-shadow: 0 0 5px blue;
+	  }
+	  to {
+		text-shadow: 0 0 15px cyan;
+	  }
+	}
+
         /* Fallback if Tailwind is not configured with this font */
         body {
             font-family: 'Bai Jamjuree', sans-serif;
@@ -276,39 +292,27 @@
             <h2 class="text-3xl font-bold text-center mb-6">Research &amp; Projects</h2>
             <!-- Pill-Style Tabs for switching -->
             <div class="flex justify-center mb-6">
-                <button id="tabTopics"
-                    class="px-6 py-2 rounded-full font-medium bg-blue-600 text-white focus:outline-none transition-all duration-300">
-                    Research Topics
-                </button>
-                <button id="tabProjects"
-                    class="px-6 py-2 rounded-full font-medium bg-gray-200 text-gray-700 focus:outline-none transition-all duration-300 ml-4">
+                                <button id="tabProjects"
+                         class="px-6 py-2 rounded-full font-medium bg-blue-600 text-white focus:outline-none transition-all duration-300">
                     Research Projects
                 </button>
+				<button id="tabTopics"
+               class="px-6 py-2 rounded-full font-medium bg-gray-200 text-gray-700 focus:outline-none transition-all duration-300 ml-4">
+                    Research Topics
+                </button>
+
             </div>
-            <!-- Research Topics Content -->
-            <div id="contentTopics">
-                <ul class="list-disc list-inside space-y-2">
-                    <li><strong>Low-resource language processing:</strong> Developing AI models for underrepresented
-                        languages.</li>
-                    <li><strong>Text summarisation:</strong> Creating models for extractive and abstractive
-                        summarisation.</li>
-                    <li><strong>Machine translation:</strong> Improving multilingual and domain-specific translations.
-                    </li>
-                    <li><strong>Sentiment analysis &amp; opinion mining:</strong> Extracting emotions and opinions from
-                        texts.</li>
-                    <li><strong>Question answering &amp; information retrieval:</strong> Advancing AI-driven search and
-                        knowledge retrieval.</li>
-                    <li><strong>Conversational AI &amp; chatbots:</strong> Developing domain-specific virtual
-                        assistants.</li>
-                </ul>
-            </div>
-            <!-- Research Projects Content -->
-            <div id="contentProjects" class="hidden mt-6">
+                <!-- Research Projects Content -->
+            <div id="contentProjects">
                 <h3 class="text-2xl font-semibold mb-4">Research Projects</h3>
                 <ul class="list-disc list-inside space-y-2 mb-6">
 				    <li><strong>Projects by Dr Mo El-Haj</strong></li>
-                    <li><a href="freetxt.html" class="hover:text-blue-600">English-Vietnamese Free-Text Survey Analysis (FreeTxt-Vi)[Văn Bản Tự Do]</a></i>
-                    <li><a href="visas.html" class="hover:text-blue-600">Vietnamese Semantic Tagging System (ViSaS)</a></i>
+					<li><span class="ml-2 glow">New</span>: <a href="freetxt.html" class="hover:text-blue-600">
+						English-Vietnamese Free-Text Survey Analysis (FreeTxt-Vi) [Văn Bản Tự Do]
+					 
+					  </a>
+					</li>
+                    <li><span class="ml-2 glow">New</span>: <a href="visas.html" class="hover:text-blue-600">Vietnamese Semantic Tagging System (ViSaS)</a></i>
 					<li>Welsh Language Model (a pilot)</li>
 					<li>DigiGrid for Welsh Language Resources</li>
 					<li>Using NLP to Monitor Water Pipes Burst</li>
@@ -349,6 +353,24 @@
                     <li>Project 2 Description.....</li>
                     <li>Project 3 Description.....</li>
                 </ul> -->
+            </div>
+			        <!-- Research Topics Content -->
+			<div id="contentTopics" class="hidden mt-6">
+
+                <ul class="list-disc list-inside space-y-2">
+                    <li><strong>Low-resource language processing:</strong> Developing AI models for underrepresented
+                        languages.</li>
+                    <li><strong>Text summarisation:</strong> Creating models for extractive and abstractive
+                        summarisation.</li>
+                    <li><strong>Machine translation:</strong> Improving multilingual and domain-specific translations.
+                    </li>
+                    <li><strong>Sentiment analysis &amp; opinion mining:</strong> Extracting emotions and opinions from
+                        texts.</li>
+                    <li><strong>Question answering &amp; information retrieval:</strong> Advancing AI-driven search and
+                        knowledge retrieval.</li>
+                    <li><strong>Conversational AI &amp; chatbots:</strong> Developing domain-specific virtual
+                        assistants.</li>
+                </ul>
             </div>
         </div>
     </section>
