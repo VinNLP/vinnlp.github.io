@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="icon" href="img/favicon.ico" type="image/x-icon">
+    <title>VinNLP</title>
+    <!-- Link to your compiled Tailwind CSS -->
+    <link rel="stylesheet" href="./output.css" />
+    <!-- Optionally include Font Awesome for social icons -->
+    <!-- <script src="https://kit.fontawesome.com/yourkitid.js" crossorigin="anonymous"></script> -->
+    <link href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-MdFKNzCgP2CgcnI2Hg+grrGZ2E1uJtEmG9OAzgBClT49yNdozD1X0xAP0drfQ6d3VWaTb0Dj+0LyEKaRuUEC3w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+	<style>
+        /* Fallback if Tailwind is not configured with this font */
+        body {
+            font-family: 'Bai Jamjuree', sans-serif;
+        }
+
+        /* Ensure the hero heading is inline-level and doesn’t break to a new line */
+        #hero-h1 {
+            display: inline-block;
+            /* Inline container for the text */
+            white-space: nowrap;
+            /* Prevent wrapping onto a new line */
+        }
+
+        /* Style the Typed.js cursor */
+        .typed-cursor {
+            display: inline;
+            /* Keep cursor in the inline flow */
+            vertical-align: middle;
+            /* Align cursor vertically with text (use middle or baseline as needed) */
+            font-size: inherit;
+            font-weight: normal;
+            margin-left: 0.1em;
+            /* small gap between text and cursor */
+            animation: blink 0.7s infinite;
+        }
+
+        /* Add a blinking cursor after the heading text using a pseudo-element */
+        #hero-h1::after {
+            content: "|";
+            display: inline;
+            vertical-align: middle;
+            font-size: inherit;
+            margin-left: 0.1em;
+            animation: blink 0.7s infinite;
+        }
+
+        @keyframes blink {
+            0% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body class="font-sans antialiased">
+    <!-- Header & Navigation -->
+    <header class="fixed top-0 w-full bg-white shadow z-50">
+        <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <!-- Logo -->
+            <a href="index.html#home" class="text-2xl md:text-3xl font-bold text-gray-800">
+                <img src="./assets/vinnlp.png" alt="" class="h-10">
+            </a>
+            <!-- Mobile menu button -->
+            <button id="menuBtn" class="md:hidden px-3 py-2 border rounded text-gray-600 border-gray-400"
+                aria-label="Toggle Navigation">
+                <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
+                    <path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="2" />
+                </svg>
+            </button>
+             <!-- Desktop Navigation -->
+            <ul class="hidden md:flex space-x-6 text-gray-700">
+                <li><a href="index.html#home" class="hover:text-blue-600">Home</a></li>
+                <li><a href="index.html#about" class="hover:text-blue-600">About</a></li>
+                <li><a href="index.html#people" class="hover:text-blue-600">People</a></li>
+                <li><a href="index.html#research" class="hover:text-blue-600">Research</a></li>
+                <li><a href="index.html#research" class="hover:text-blue-600">Projects</a></li>
+                <li><a href="index.html#partners" class="hover:text-blue-600">Collaborations</a></li>
+				<li><a href="jobs.html" class="hover:text-blue-600">Jobs</a></li>
+				<li><a href="nlp_bridges.html" class="hover:text-blue-600">NLP Bridges</a></li>
+                <li><a href="index.html#contact" class="hover:text-blue-600">Contact</a></li>
+            </ul>
+        </nav>
+        <!-- Mobile Navigation Menu -->
+        <div id="mobileMenu" class="md:hidden hidden bg-white shadow">
+            <ul class="flex flex-col space-y-2 px-6 py-4 text-gray-700">
+                <li><a href="index.html#home" class="block hover:text-blue-600">Home</a></li>
+                <li><a href="index.html#about" class="block hover:text-blue-600">About</a></li>
+                <li><a href="index.html#people" class="block hover:text-blue-600">People</a></li>
+                <li><a href="index.html#research" class="block hover:text-blue-600">Research</a></li>
+                <li><a href="index.html#research" class="block hover:text-blue-600">Projects</a></li>
+                <li><a href="index.html#partners" class="block hover:text-blue-600">Collaborations</a></li>				
+				<li><a href="nlp_bridges.html" class="hover:text-blue-600">NLP Bridges</a></li>
+				<li><a href="jobs.html" class="hover:text-blue-600">Jobs</a></li>
+                <li><a href="index.html#contact" class="block hover:text-blue-600">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative hero bg-cover bg-center text-white pt-20"
+        style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('./assets/bg1.jpeg');">
+<div class="container mx-auto px-6 flex flex-col items-center justify-center text-center" style="min-height: 70vh;">
+            <h1 id="hero-h1" class="inline-block text-4xl md:text-6xl font-bold mb-8"></h1>
+            <a href="#about"
+                class="bg-blue-600 hover:bg-blue-700 px-6 py-3 rounded text-white font-medium shadow-lg transition duration-300">
+                Learn More
+            </a>
+        </div>
+    </section>
+    <!-- About Section -->
+    
+	
+	    <!-- About Section -->
+    <section id="about" class="py-12 bg-gray-100">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-8">LLMs, Big Data, and Multilinguality for All (LLMs4All)</h2>
+            <div class="md:flex md:items-start md:space-x-8">
+                <!-- Left: Extended Text Content -->
+                <div class="md:w-2/3">
+                    <h3 class="text-xl font-semibold mb-2">Introduction</h3>
+
+                    <p class="mb-4">
+					The rapid evolution of Large Language Models (LLMs) has reshaped the landscape of natural language processing (NLP), enabling remarkable progress in tasks such as machine translation, text summarisation, question answering, and speech recognition. Yet, these advances remain unevenly distributed, with low-resource languages continuing to face significant barriers. Limited data availability, linguistic complexity, and the dominance of high-resource languages in public datasets have led to persistent disparities in LLM performance and accessibility—undermining efforts toward global linguistic inclusivity and digital equity.
+					</p><p class="mb-4">The rise of Big Data offers new avenues to mitigate these challenges. By harnessing large-scale datasets from digital platforms, social media, online archives, and multilingual corpora, researchers are better positioned to build robust models that reflect the linguistic richness of underrepresented languages. Techniques such as web scraping, data augmentation, and scalable data pipelines have become instrumental in collecting and curating the diverse data necessary for training and fine-tuning LLMs. Moreover, advanced approaches like cross-lingual transfer learning and multilingual embeddings allow for the transfer of knowledge from high-resource to low-resource languages, improving model effectiveness despite limited local resources.
+					</p><p class="mb-4">This workshop seeks to examine how Big Data methodologies and LLM architectures can be leveraged together to advance NLP research across low-resource settings. Topics will span innovative data collection strategies, efficient training techniques, and practical applications of LLMs in multilingual and low-resource contexts. Particular attention will be paid to solutions that address data scarcity, promote generalisability, and preserve linguistic diversity.
+					</p><p class="mb-4">Given the location of this year’s conference in Macau, a core emphasis will be placed on low-resource Asian languages, which pose unique challenges due to the scarcity of high-quality annotated resources. The workshop will spotlight research tackling these challenges, including annotation methodologies and regionally grounded collaborations. More broadly, we welcome submissions on all low-resource and underrepresented languages, as well as efforts that enhance the accessibility of LLMs across diverse languages, countries, domains, and social contexts—whether through inclusive data practices, novel modelling strategies, or real-world deployment under resource constraints. We also encourage contributions on multilingual LLMs, scalable architectures, and responsible AI, with the aim of fostering cross-disciplinary dialogue and catalysing future collaborations toward equitable and inclusive language technologies.
+</p>
+		
+<h2 class="text-3xl font-bold text-center mb-8">Research Topics:</h2>
+		
+    <ul class="list-disc list-inside mb-6 space-y-1">
+      <li>Scalable Data Collection and Curation: Efficient strategies for collecting, annotating, and managing large-scale multilingual datasets from diverse sources such as text, speech, video, and social media, particularly for underrepresented or emerging languages.</li>
+<li>Cross-Lingual and Multilingual Learning: Techniques such as transfer learning, multilingual embeddings, and knowledge distillation to improve LLM performance for low-resource settings by leveraging high-resource language data.</li>
+<li>Efficient and Inclusive Model Training: Approaches that reduce the resource burden of training and fine-tuning LLMs, including parameter-efficient fine-tuning (e.g., LoRA, PEFT), quantisation, and model distillation—enabling deployment in constrained environments.</li>
+<li>Retrieval-Augmented Generation (RAG) and External Knowledge Integration: Enhancing LLMs with dynamic access to structured or unstructured external data to improve context relevance and factual grounding in multilingual use cases.</li>
+<li>Multimodal Language Models: Developing and applying LLMs that integrate multiple modalities (e.g., text, image, audio) to support richer interaction in linguistically diverse environments.</li>
+<li>Real-World Applications: Deployments of LLMs for machine translation, summarisation, conversational AI, question answering, and speech processing in low-resource languages or multilingual contexts.</li>
+<li>Big Data Infrastructure and Pipelines: Architectures and tools for managing data at scale, including distributed processing, data lakes, and cloud-based platforms tailored for NLP research.</li>
+<li>Ethical, Fair, and Culturally Aware AI: Research addressing linguistic bias, representation, digital colonialism, and fairness in LLMs, with a focus on inclusive design and evaluation practices.</li>
+<li>Benchmarking and Evaluation: Creation of shared benchmarks, evaluation frameworks, and metrics that reflect the realities of low-resource and multilingual settings, including measures for faithfulness, robustness, and generalisability.</li>
+<li>Regional Case Studies and Collaborative Initiatives: Projects and insights from Southeast Asia and beyond that demonstrate the challenges and successes of building and deploying LLMs in real-world low-resource scenarios, including healthcare, education, legal, and governmental domains.
+</li>
+    </ul>
+
+    <p class="mb-6"><strong>Important dates:</strong></p>
+    <ul class="list-disc list-inside mb-6 space-y-1">
+
+<li>Oct 1, 2025: Full workshop paper submission deadline</li>
+<li>Nov 4, 2025: Notification of paper acceptance</li>
+<li>Nov 23, 2025: Camera-ready paper submission</li>
+<li>Dec 5-8, 2025: Workshop date</li>
+    </ul>
+
+	</div>
+	</div>      
+	</div>
+</section>
+
+  <!-- Team Section -->
+<section id="team" class="py-12 bg-white">
+  <div class="container mx-auto px-6 text-center">
+    <h2 class="text-3xl font-bold mb-8">LLMs4All</h2>
+    <p class="mb-10 text-lg">Meet the core team behind the LLMs, Big Data, and Multilinguality for All (LLMs4All) workshop</p>
+	</br>
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-10 items-center">
+
+      <div class="flex flex-col items-center">
+        <a href="https://elhaj.uk" target="_blank" class="block text-center">
+		<img src="./img/mohaj.jpg" alt="Mo El-Haj" class="w-32 h-32 rounded-full object-cover shadow-md" />
+		 <p class="text-base font-medium mt-4">Mo El-Haj</p>
+		 <p class="text-sm text-gray-600">General Chair</p>
+        <p class="text-sm text-gray-600">VinUniversity</p>
+		</br>
+		 </a>
+      </div>
+
+      <div class="flex flex-col items-center">
+		<a href="https://vinuni.edu.vn/people/wray-buntine-phd/" target="_blank" class="block text-center">
+		<img src="./assets/WrayStudioHead24.png" alt="Paul Rayson" class="w-32 h-32 rounded-full object-cover shadow-md" />
+        <p class="text-base font-medium mt-4">Wray Buntine</p>
+		 <p class="text-sm text-gray-600">Programme Chair</p>
+        <p class="text-sm text-gray-600">VinUniversity</p>
+		</br>
+		</a>
+      </div>
+
+      <div class="flex flex-col items-center">
+        <a href="https://vinuni.edu.vn/people/le-duy-dung/" target="_blank" class="block text-center">
+		<img src="./assets/dung.jpg" alt="Dawn Knight" class="w-32 h-32 rounded-full object-cover shadow-md" />
+        <p class="text-base font-medium mt-4">Le Duy Dung</p>
+		 <p class="text-sm text-gray-600">Programme Chair</p>
+        <p class="text-sm text-gray-600">VinUniversity</p>
+		</br>
+		</a>
+      </div>
+
+      <div class="flex flex-col items-center">
+        <a href="https://vinuni.edu.vn/people/vo-diep-nhu/" target="_blank" class="block text-center">
+        <img src="./assets/Vo-Diep-Nhu.png" alt="Fernando Manchego" class="w-32 h-32 rounded-full object-cover shadow-md" />
+        <p class="text-base font-medium mt-4">Vo Diep Nhu</p>
+		<p class="text-sm text-gray-600">Publication Chair</p>
+        <p class="text-sm text-gray-600">VinUniversity</p>
+		</br>
+		</a>
+      </div>
+
+
+    </div>
+  </div>
+</section>
+
+
+
+
+    <!-- Partners Section 
+    <section id="partners" class="py-12 bg-white">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-3xl font-bold mb-8">ViSAS Collaborations &amp; Partners</h2>
+            <p class="mb-6">ViSAS is a collaborative project that aims towards enriching low-resource languages.</p>
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8 items-center">
+
+<div>
+  <a href="https://vinuni.edu.vn" target="_blank" class="block text-center">
+    <img src="./img/vinuni.png" alt="VinUni" class="mx-auto h-12" />
+    <p class="text-sm mt-2">VinUniversity</p>
+  </a>
+</div>
+
+<div>
+  <a href="https://vinnlp.com" target="_blank" class="block text-center">
+    <img src="./img/vinnlp.png" alt="VinNLP" class="mx-auto h-12" />
+    <p class="text-sm mt-2">VinNLP Research Group</p>
+  </a>
+</div>
+
+
+<div>
+  <a href="https://ucrel.lancs.ac.uk/" target="_blank" class="block text-center">
+    <img src="./assets/ucrel.png" alt="UCREL" class="mx-auto h-12" />
+    <p class="text-sm mt-2">UCREL NLP Group</p>
+  </a>
+</div>
+<div>
+  <a href="https://lancaster.ac.uk" target="_blank" class="block text-center">
+    <img src="./assets/lancaster.png" alt="Lancaster University" class="mx-auto h-12" />
+    <p class="text-sm mt-2">Lancaster University, UK</p>
+  </a>
+</div>
+
+<div>
+  <a href="https://www.cardiff.ac.uk/" target="_blank" class="block text-center">
+    <img src="./assets/cardiff.png" alt="Cardiff University" class="mx-auto h-12" />
+    <p class="text-sm mt-2">Cardiff University</p>
+  </a>
+</div>
+
+
+            </div>
+        </div>
+    </section>
+-->
+    <!-- Contact Section -->
+   <section id="contact" class="py-12 bg-gray-100">
+  <div class="container mx-auto px-6 md:flex md:space-x-12">
+    <!-- Contact Info -->
+    <div class="md:w-1/2 mb-8 md:mb-0">
+      <h2 class="text-3xl font-bold mb-6">Get in Touch</h2>
+      <p class="mb-2"><strong>Address:</strong> CECS, VinUniversity, Hanoi, Vietnam</p>
+      <p class="mb-2">
+        <strong>Email:</strong>
+        <a href="mailto:elhaj.m@vinuni.edu.vn" class="text-blue-600 hover:underline">elhaj.m@vinuni.edu.vn</a>
+      </p>
+      <p class="mb-6">
+        <strong>Website:</strong>
+        <a href="https://vinnlp.com" class="text-blue-600 hover:underline">vinnlp.com</a>
+      </p>
+<div class="flex space-x-4 mb-6">
+  <!-- LinkedIn -->
+  <a href="https://www.linkedin.com/company/vinnlp" target="_blank" aria-label="LinkedIn" class="text-gray-500 hover:text-gray-700 text-2xl">
+    <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
+      <path d="M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.76 
+               0 5-2.24 5-5v-14c0-2.76-2.24-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.3c-.97 
+               0-1.75-.78-1.75-1.75s.78-1.75 
+               1.75-1.75 1.75.78 1.75 
+               1.75-.78 1.75-1.75 1.75zm13.5 
+               11.3h-3v-5.6c0-1.34-.03-3.06-1.87-3.06-1.87 
+               0-2.16 1.46-2.16 
+               2.96v5.7h-3v-10h2.89v1.37h.04c.4-.76 
+               1.38-1.56 2.84-1.56 3.04 0 3.6 2 3.6 
+               4.59v5.6z"/>
+    </svg>
+  </a>
+
+  <!-- X (Twitter) -->
+  <a href="https://x.com/vinnlp" target="_blank" aria-label="X" class="text-gray-500 hover:text-gray-700 text-2xl">
+    <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
+      <path d="M20.66 3H3.34C2.6 3 2 3.6 2 
+               4.34v15.32C2 20.4 2.6 21 3.34 
+               21h17.32c.74 0 1.34-.6 1.34-1.34V4.34C22 
+               3.6 21.4 3 20.66 3zM17.75 17h-2.2l-3.12-4.1-3.13 
+               4.1H7.1l4.2-5.49L7.5 7h2.2l2.84 
+               3.73L15.38 7h2.17l-4.1 5.32 4.3 
+               5.68z"/>
+    </svg>
+  </a>
+</div>
+
+      <div>
+        <a 
+          href="https://cecs.vinuni.edu.vn/phd-in-computer-science/" 
+          target="_blank" 
+          class="block mt-2 text-blue-600 transition hover:underline cursor-pointer"
+        >
+          Apply for a PhD in Computer Science/NLP
+        </a>
+        <a 
+          href="https://vinuni.edu.vn/jobs/" 
+          target="_blank" 
+          class="block mt-2 text-blue-600 transition hover:underline cursor-pointer"
+        >
+          Work with us – Explore professional opportunities
+        </a>
+      </div>
+    </div>
+            <!-- Contact Form -->
+            <div class="md:w-1/2">
+    <form action="https://usebasin.com/f/24f2d90b8cdf" method="POST" accept-charset="UTF-8">
+        <!-- Name -->
+        <div class="mb-4">
+            <input type="text" name="name" placeholder="Your Name"
+                class="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                required>
+        </div>
+
+        <!-- Email -->
+        <div class="mb-4">
+            <input type="email" name="email" placeholder="Your Email"
+                class="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                required>
+        </div>
+
+        <!-- Message -->
+        <div class="mb-4">
+            <textarea name="message" rows="4" placeholder="Your Message"
+                class="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                required></textarea>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit"
+            class="bg-blue-600 cursor-pointer text-white font-semibold px-6 py-3 rounded hover:bg-blue-700 transition duration-300">
+            Send Message
+        </button>
+    </form>
+</div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-gray-300 text-sm py-4">
+        <div class="container mx-auto px-6 md:flex md:items-center md:justify-between">
+            <!-- Secondary Nav Links -->
+            <div class="mb-4 md:mb-0">
+                <a href="#home" class="mr-4 hover:underline">Home</a>
+                <a href="#about" class="mr-4 hover:underline">About</a>
+                <a href="#people" class="mr-4 hover:underline">People</a>
+                <a href="#research" class="mr-4 hover:underline">Research</a>
+				<a href="#research" class="mr-4 hover:underline">Projects</a>
+				<a href="jobs.html" class="mr-4 hover:underline">Jobs</a>
+				<a href="nlp_bridges.html" class="mr-4 hover:underline">NLP Bridges</a>
+                <a href="#contact" class="mr-4 hover:underline">Contact</a>
+            </div>
+            <!-- Social Icons -->
+            <div class="mb-4 md:mb-0">
+                <a href="#" aria-label="LinkedIn" class="mr-3 hover:text-white"><i class="fab fa-linkedin"></i></a>
+                <a href="#" aria-label="Twitter" class="mr-3 hover:text-white"><i class="fab fa-twitter"></i></a>
+            </div>
+            <!-- Copyright -->
+      <div>&copy; 2025-2026 VinNLP. All rights reserved.</div>
+
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <!-- JavaScript -->
+    <script src="./main.js"></script>
+
+</body>
+
+</html>
