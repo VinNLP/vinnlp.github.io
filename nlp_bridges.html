@@ -282,11 +282,6 @@ a.headerstyle:hover {
     <a href="https://www.nizarhabash.com/" target="_blank">Professor Nizar Habash, New York University Abu Dhabi, UAE</a>
   </li>
   </br>
-  <li style="display: inline-flex; align-items: center; margin-bottom: 8px;">
-    <img src="https://scholar.googleusercontent.com/citations?view_op=view_photo&user=9yfeXdQAAAAJ&citpid=1" alt="Imed Zitouni" style="width:75px;height:75px;border-radius:50%;margin-right:10px;">
-    <a href="https://scholar.google.com/citations?user=9yfeXdQAAAAJ&hl=en" target="_blank">Professor Imed Zitouni, Google, USA</a>
-  </li>
-  </br>
     <li style="display: inline-flex; align-items: center; margin-bottom: 8px;">
     <img src="https://wp.lancs.ac.uk/mitkov/files/2023/08/IMG_5093-150x150.jpg" alt="Imed Zitouni" style="width:75px;height:75px;border-radius:50%;margin-right:10px;">
     <a href="https://wp.lancs.ac.uk/mitkov/" target="_blank">Professor Ruslan Mitkov, Lancaster University, UK</a>
@@ -302,13 +297,8 @@ a.headerstyle:hover {
     <a href="https://mageed.arts.ubc.ca/" target="_blank">Dr Muhammad Abdul-Mageed, The University of British Columbia, Canada</a>
   </li>
   </br>
-  <li style="display: inline-flex; align-items: center; margin-bottom: 8px;">
-    <img src="https://static.wixstatic.com/media/de08e8_a749a899402e4d1cad38349613697450~mv2.jpg/v1/crop/x_117,y_128,w_446,h_633/fill/w_351,h_491,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/For%2520website_edited_edited.jpg" alt="Seetha Menon" style="width:75px;height:75px;border-radius:50%;margin-right:10px;">
-    <a href="https://www.seetha-menon.com/" target="_blank">Dr Seetha Menon, University of Southern Denmark, Denmark</a>
-  </li>
-    </br>
     <li style="display: inline-flex; align-items: center; margin-bottom: 8px;">
-    <img src="https://nlpfin.github.io/images/head.jpg" alt="Seetha Menon" style="width:75px;height:75px;border-radius:50%;margin-right:10px;">
+    <img src="https://nlpfin.github.io/images/head.jpg" alt="ChenChungChi" style="width:75px;height:75px;border-radius:50%;margin-right:10px;">
     <a href="https://nlpfin.github.io/" target="_blank">Dr Chen Chung-Chi, National Institute of Advanced Industrial Science and Technology (AIST), Japan</a>
   </li>
 </ul>
@@ -343,47 +333,66 @@ a.headerstyle:hover {
         </div>
     </footer>
 	
-  <script>
-    async function loadTalks() {
-      const response = await fetch('./talks/talks.csv');
-      const csvText = await response.text();
-      const lines = csvText.split('\n').slice(1);
-      const now = new Date();
+<script>
+  async function loadTalks() {
+    const response = await fetch('./talks/talks.csv');
+    const csvText = await response.text();
+    const lines = csvText.split('\n').slice(1);
 
-      lines.forEach(line => {
-        if (!line.trim()) return;
-        const [date, name, uni, country, website, pic, title, abstract, slides, register] = line.split(',');
-        const talkDate = new Date(date);
-        const isPast = talkDate < now;
+    // Today, with time zeroed out (local time)
+    const now = new Date();
+    const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
 
-        const card = document.createElement('div');
-        card.className = 'talk-card';
-        card.innerHTML = `
-          <div class="talk-date">${talkDate.toDateString()}</div>
-          <img src="${pic}" alt="${name}">
-          <div class="talk-details">
-            <div class="talk-meta">
-              <a href="${website}" target="_blank">${name}</a> – ${uni}, ${country}
-            </div>
-            <div class="talk-title">${title}</div>
-            <div class="talk-abstract">${abstract}</div>
-            <div class="talk-actions">
-              ${slides ? `<a href="${slides}" class="no-style ${isPast ? 'disabled' : ''}" target="_blank">View Slides</a>` : ''}
-			  <a href="${register}" class="no-style ${isPast ? 'disabled' : ''}" target="_blank">Register</a>
-            </div>
+    lines.forEach(line => {
+      if (!line.trim()) return;
+
+      const parts = line.split(',');
+      if (parts.length < 10) return;
+
+      const [date, name, uni, country, website, pic, title, abstract, slides, register] = parts;
+
+      if (!date) return;
+
+      // Expecting YYYY-MM-DD in the CSV; take first 10 chars just in case
+      const datePart = date.trim().slice(0, 10);
+      const [year, month, day] = datePart.split('-').map(Number);
+
+      // Talk date as a pure calendar day (no time component)
+      const talkDate = new Date(year, month - 1, day); // this is already at 00:00 local
+      const talkDayOnly = new Date(talkDate.getFullYear(), talkDate.getMonth(), talkDate.getDate());
+
+      // A talk is past ONLY if today's date is AFTER the talk date
+      const isPast = today.getTime() > talkDayOnly.getTime();
+
+      const card = document.createElement('div');
+      card.className = 'talk-card';
+      card.innerHTML = `
+        <div class="talk-date">${talkDayOnly.toDateString()}</div>
+        <img src="${pic}" alt="${name}">
+        <div class="talk-details">
+          <div class="talk-meta">
+            <a href="${website}" target="_blank">${name}</a> – ${uni}, ${country}
           </div>
-        `;
+          <div class="talk-title">${title}</div>
+          <div class="talk-abstract">${abstract}</div>
+          <div class="talk-actions">
+            ${slides ? `<a href="${slides}" class="no-style ${isPast ? 'disabled' : ''}" target="_blank">View Slides</a>` : ''}
+            <a href="${register}" class="no-style ${isPast ? 'disabled' : ''}" target="_blank">Register</a>
+          </div>
+        </div>
+      `;
 
-        if (isPast) {
-          document.getElementById('archived-talks').appendChild(card);
-        } else {
-          document.getElementById('upcoming-talks').appendChild(card);
-        }
-      });
-    }
+      if (isPast) {
+        document.getElementById('archived-talks').appendChild(card);
+      } else {
+        document.getElementById('upcoming-talks').appendChild(card);
+      }
+    });
+  }
 
-    loadTalks();
-  </script>
+  loadTalks();
+</script>
+
       <!-- JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
     <!-- JavaScript -->
