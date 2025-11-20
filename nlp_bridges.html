@@ -334,65 +334,73 @@ a.headerstyle:hover {
     </footer>
 	
 <script>
-  async function loadTalks() {
-    const response = await fetch('./talks/talks.csv');
-    const csvText = await response.text();
-    const lines = csvText.split('\n').slice(1);
+async function loadTalks() {
+  const response = await fetch('./talks/talks.csv');
+  const csvText = await response.text();
+  const lines = csvText.split('\n').slice(1); // skip header
 
-    // Today, with time zeroed out (local time)
+  // All talks are at 4:00 PM Hanoi time (GMT+7)
+  const TALK_HOUR_UTC = 9;  // 16:00 GMT+7 → 09:00 UTC
+
+  lines.forEach(line => {
+    if (!line.trim()) return;
+
+    const [dateStr, name, uni, country, website, pic, title, abstract, slides, register] = line.split(',');
+
+    // Parse the date (assumes format MM/DD/YYYY)
+    const [month, day, year] = dateStr.split('/');
+    const talkDateLocal = new Date(year, month - 1, day); // browser local time
+
+    // Create a Date object for 4:00 PM Hanoi time on that day
+    // We build it in UTC to avoid any DST issues
+    const talkDate = new Date(Date.UTC(year, month - 1, day, TALK_HOUR_UTC, 0, 0));
+
+    // Now compare with current time
     const now = new Date();
-    const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
 
-    lines.forEach(line => {
-      if (!line.trim()) return;
+    const isPast = now >= talkDate;  // only past if we're past 4:00 PM Hanoi
 
-      const parts = line.split(',');
-      if (parts.length < 10) return;
+    const card = document.createElement('div');
+    card.className = 'talk-card';
 
-      const [date, name, uni, country, website, pic, title, abstract, slides, register] = parts;
+    // Format the display date nicely
+    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    const displayDate = talkDateLocal.toLocaleDateString(undefined, options);
 
-      if (!date) return;
-
-      // Expecting YYYY-MM-DD in the CSV; take first 10 chars just in case
-      const datePart = date.trim().slice(0, 10);
-      const [year, month, day] = datePart.split('-').map(Number);
-
-      // Talk date as a pure calendar day (no time component)
-      const talkDate = new Date(year, month - 1, day); // this is already at 00:00 local
-      const talkDayOnly = new Date(talkDate.getFullYear(), talkDate.getMonth(), talkDate.getDate());
-
-      // A talk is past ONLY if today's date is AFTER the talk date
-      const isPast = today.getTime() > talkDayOnly.getTime();
-
-      const card = document.createElement('div');
-      card.className = 'talk-card';
-      card.innerHTML = `
-        <div class="talk-date">${talkDayOnly.toDateString()}</div>
-        <img src="${pic}" alt="${name}">
-        <div class="talk-details">
-          <div class="talk-meta">
-            <a href="${website}" target="_blank">${name}</a> – ${uni}, ${country}
-          </div>
-          <div class="talk-title">${title}</div>
-          <div class="talk-abstract">${abstract}</div>
-          <div class="talk-actions">
-            ${slides ? `<a href="${slides}" class="no-style ${isPast ? 'disabled' : ''}" target="_blank">View Slides</a>` : ''}
-            <a href="${register}" class="no-style ${isPast ? 'disabled' : ''}" target="_blank">Register</a>
-          </div>
+    card.innerHTML = `
+      <div class="talk-date">${displayDate} <span style="font-weight:normal;font-size:0.9em;color:#666;">(4:00 PM Hanoi time)</span></div>
+      <img src="${pic}" alt="${name}">
+      <div class="talk-details">
+        <div class="talk-meta">
+          <a href="${website}" target="_blank">${name}</a> – ${uni}, ${country}
         </div>
-      `;
+        <div class="talk-title">${title}</div>
+        <div class="talk-abstract">${abstract || 'Details coming soon'}</div>
+        <div class="talk-actions">
+          ${slides ? `<a href="${slides}" class="no-style" target="_blank">View Slides</a>` : ''}
+          <a href="${register}" class="no-style ${isPast ? 'disabled' : ''}" target="_blank">
+            ${isPast ? 'Registration Closed' : 'Register'}
+          </a>
+        </div>
+      </div>
+    `;
 
-      if (isPast) {
-        document.getElementById('archived-talks').appendChild(card);
+    if (isPast) {
+      document.getElementById('archived-talks').appendChild(card);
+    } else {
+      // First try upcoming-talks (2025), if empty or not suitable → future-talks (2026+)
+      const upcomingContainer = document.getElementById('upcoming-talks');
+      if (upcomingContainer.children.length === 0 && talkDate.getFullYear() > 2025) {
+        document.getElementById('future-talks').appendChild(card);
       } else {
-        document.getElementById('upcoming-talks').appendChild(card);
+        upcomingContainer.appendChild(card);
       }
-    });
-  }
+    }
+  });
+}
 
-  loadTalks();
+loadTalks();
 </script>
-
       <!-- JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
     <!-- JavaScript -->
