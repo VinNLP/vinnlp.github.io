@@ -116,95 +116,174 @@
 
             <a href="#about"
                 class="bg-blue-600 hover:bg-blue-700 px-6 py-3 rounded text-white font-medium shadow-lg transition duration-300">
-                FreeTxt-Vi Project
+               PolicyVerse Project
             </a>
         </div>
     </section>
     <!-- About Section -->
     
 	
-	    <!-- About Section -->
-    <section id="about" class="py-12 bg-gray-100">
-        <div class="container mx-auto px-6">
-            <h2 class="text-3xl font-bold text-center mb-8">Vietnamese-English Free-Text Survey Analysis (FreeTxt-Vi)[Văn Bản Tự Do]</h2>
-            <div class="md:flex md:items-start md:space-x-8">
-                <!-- Left: Extended Text Content -->
-                <div class="md:w-2/3">
-                    <h3 class="text-xl font-semibold mb-2">FreeTxt-Vi Research Project</h3>
-			<p class="text-lg mb-6">
+	<!-- About Section -->
+<section id="about" class="py-12 bg-gray-100">
+    <div class="container mx-auto px-6">
+        <h2 class="text-3xl font-bold text-center mb-8">PolicyVerse: Multilingual Multi-Agent LLMs for Policy Reasoning</h2>
+        <div class="md:flex md:items-start md:space-x-8">
+            
+            <!-- Left: Extended Text Content -->
+            <div class="md:w-2/3">
+                <h3 class="text-xl font-semibold mb-2">PolicyVerse Research Project</h3>
+<p class="text-lg mb-6">
     <strong>Partners:</strong> 
-    <a href="https://cecs.vinuni.edu.vn/" target="_blank" class="text-blue-600 underline">College of Engineering and Computer Science (CECS)</a>,
+    <a href="https://cecs.vinuni.edu.vn/" target="_blank" class="text-blue-600 underline">College of Engineering and Computer Science (CECS)</a>, 
+    <a href="https://cbm.vinuni.edu.vn/" target="_blank" class="text-blue-600 underline">College of Business and Management (CBM)</a>, 
     <a href="https://vinuni.edu.vn" target="_blank" class="text-blue-600 underline">VinUniversity</a>, Vietnam, 
     <a href="https://ucrel.lancs.ac.uk/" target="_blank" class="text-blue-600 underline">UCREL</a>, 
     <a href="https://lancaster.ac.uk" target="_blank" class="text-blue-600 underline">Lancaster University</a>, UK, and 
     <a href="https://www.cardiff.ac.uk/" target="_blank" class="text-blue-600 underline">Cardiff University</a>, UK
 </p>
 
-                    <p class="mb-4">
-					FreeTxt-Vi extends the <a href="https://freetxt.app/" target="_blank" class="text-blue-600 underline">Welsh-English FreeTxt</a> toolkit to support bilingual Vietnamese-English survey and questionnaire analysis. It enables the automatic processing, summarisation, and sentiment analysis of civic and service-oriented feedback.</p>
+                <p class="mb-4">
+                    Government policies are often difficult to interpret because they span multiple ministries, evolve over time, and are published across languages and formats. This project proposes a two-phase programme to develop a multi-agent LLM framework for Collaborative Multilingual Reasoning (CMR), an automated system that detects overlaps, highlights potential inconsistencies, and maps dependencies across policy documents. The system supports analysts and institutions without heavy reliance on legal experts, limiting human involvement to light validation.
+                </p>
+
+                <p class="mb-2"><strong>Funding:</strong> $100,000</p>
+                <p class="mb-2"><strong>Duration:</strong> 24 months</p>
 				
-    <ul class="list-disc list-inside mb-6 space-y-1">
-      <li>Extend FreeTxt’s architecture for Vietnamese support</li>
-      <li>Analyse LLM performance on bilingual text responses</li>
-      <li>Integrate Vietnamese NLP tools (e.g. PhoBERT, VnCoreNLP)</li>
-      <li>Curate bilingual datasets and evaluate model outputs</li>
-      <li>Create user-facing guides and visualisation tools</li>
-    </ul>
+                <h4 class="text-lg font-semibold mt-6 mb-2">Two-Phase Research Structure</h4>
 
-    <p class="mb-6"><strong>Duration:</strong> 12 months (Starting May 2025)</p>
+                <p class="mb-4">
+                    The project follows a structured progression from high-resource grounding to low-resource transfer.
+                </p>
 
-	</div>
-	</div>      
-	</div>
+                <h5 class="font-semibold mb-1">Phase 1, High-Resource Development (English and Portuguese)</h5>
+                <ul class="list-disc list-inside mb-4 space-y-1">
+                    <li>Build the multi-agent reasoning engine</li>
+                    <li>Develop multilingual retrieval and grounding</li>
+                    <li>Construct Policy World Models (PWMs)</li>
+                    <li>Evaluate contradiction detection and dependency mapping</li>
+                </ul>
+
+                <h5 class="font-semibold mb-1">Phase 2, Low-Resource Adaptation (Vietnamese and Welsh)</h5>
+                <ul class="list-disc list-inside mb-6 space-y-1">
+                    <li>Integrate authentic Vietnamese and Welsh policy documents</li>
+                    <li>Extract policy logic, rules, and dependencies using PWMs</li>
+                    <li>Demonstrate robustness across typologically diverse languages</li>
+                    <li>Validate cross-lingual generalisation beyond high-resource settings</li>
+                </ul>
+
+                <h4 class="text-lg font-semibold mt-6 mb-2">Innovation: Collaborative Multilingual Reasoning (CMR)</h4>
+                <p class="mb-4">
+                    Policy analysis is framed as a structured interaction between domain-specialised LLM agents. Rather than producing a single interpretation, the system surfaces contradictions and hidden dependencies through agent dialogue, generating structured reports for expert review.
+                </p>
+
+                <ul class="list-disc list-inside mb-6 space-y-1">
+                    <li>Specialised agent dialogue across policy domains</li>
+                    <li>Multilingual RAG grounded in real policy documents</li>
+                    <li>Transparent contradiction detection and audit trails</li>
+                </ul>
+
+                <h4 class="text-lg font-semibold mt-6 mb-2">Policy World Models (PWMs)</h4>
+                <p class="mb-4">
+                    PWMs provide structured, language-agnostic representations of policy rules, dependencies, and exceptions. Built through multilingual semantic parsing and rule induction, they enable interpretable policy logic graphs.
+                </p>
+
+                <ul class="list-disc list-inside mb-6 space-y-1">
+                    <li>Simulate policy outcomes using encoded rules</li>
+                    <li>Support context-aware inference beyond retrieval</li>
+                    <li>Generalise policy logic across languages</li>
+                </ul>
+
+                <h4 class="text-lg font-semibold mt-6 mb-2">Collaborative Expertise</h4>
+                <ul class="list-disc list-inside mb-6 space-y-1">
+                    <li><strong>Mo El-Haj (PI, VinUniversity):</strong> Multilingual NLP and low-resource modelling</li>
+                    <li><strong>Leandro Marcolino (Co-PI, VinUniversity):</strong> Portuguese policy data and evaluation</li>
+                    <li><strong>Paul Rayson (Lancaster):</strong> Corpus design and evaluation frameworks</li>
+                    <li><strong>Dawn Knight (Cardiff):</strong> Welsh language modelling and validation</li>
+                    <li><strong>Nguyen Thi Mai Lan (VinUniversity):</strong> Vietnamese policy and regulatory expertise</li>
+                </ul>
+
+                <h4 class="text-lg font-semibold mt-6 mb-2">Expected Deliverables</h4>
+                <ul class="list-disc list-inside mb-6 space-y-1">
+                    <li>Multilingual policy dataset (English, Portuguese, Vietnamese, Welsh)</li>
+                    <li>Multi-agent LLM framework for policy reasoning</li>
+                    <li>Structured policy knowledge extraction using PWMs</li>
+                    <li>GlobalPolicyQA benchmark for multilingual evaluation</li>
+                </ul>
+
+
+
+            </div>
+        </div>
+    </div>
 </section>
 
   <!-- Team Section -->
 <section id="team" class="py-12 bg-white">
   <div class="container mx-auto px-6 text-center">
-    <h2 class="text-3xl font-bold mb-8">FreeTxt-Vi Team</h2>
-    <p class="mb-10 text-lg">Meet the core team behind the Vietnamese-English Free-Text Survey Analysis (FreeTxt-Vi)[Văn Bản Tự Do]</p>
-	</br>
+    <h2 class="text-3xl font-bold mb-8">PolicyVerse Team</h2>
+    <p class="mb-10 text-lg">Meet the core team behind the PolicyVerse project</p>
+    </br>
+
     <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-10 items-center">
 
+      <!-- Mo -->
       <div class="flex flex-col items-center">
         <a href="https://elhaj.uk" target="_blank" class="block text-center">
-		<img src="./img/mohaj.jpg" alt="Mo El-Haj" class="w-32 h-32 rounded-full object-cover shadow-md" />
-		 <p class="text-base font-medium mt-4">Mo El-Haj</p>
-		 <p class="text-sm text-gray-600">Project PI</p>
-        <p class="text-sm text-gray-600">VinUniversity</p>
-		</br>
-		 </a>
+          <img src="./img/mohaj.jpg" alt="Mo El-Haj" class="w-32 h-32 rounded-full object-cover shadow-md" />
+          <p class="text-base font-medium mt-4">Mo El-Haj</p>
+          <p class="text-sm text-gray-600">Project PI</p>
+          <p class="text-sm text-gray-600">VinUniversity</p>
+          </br>
+        </a>
       </div>
 
+      <!-- Leandro -->
       <div class="flex flex-col items-center">
-		<a href="https://www.lancaster.ac.uk/lira/people/paul-rayson" target="_blank" class="block text-center">
-		<img src="./img/prayson.jpg" alt="Paul Rayson" class="w-32 h-32 rounded-full object-cover shadow-md" />
-        <p class="text-base font-medium mt-4">Paul Rayson</p>
-		<p class="text-sm text-gray-600">Project Co-I</p>
-        <p class="text-sm text-gray-600">Lancaster University</p>
-		</br>
-		</a>
+        <a href="https://vinuni.edu.vn/people/leandro-soriano-marcolino/" target="_blank" class="block text-center">
+          <img src="./img/leandro.jpg" alt="Leandro S. Marcolino" class="w-32 h-32 rounded-full object-cover shadow-md" />
+          <p class="text-base font-medium mt-4">Leandro S. Marcolino</p>
+          <p class="text-sm text-gray-600">Project Co-PI</p>
+          <p class="text-sm text-gray-600">VinUniversity</p>
+          </br>
+        </a>
       </div>
 
+      <!-- Paul -->
+      <div class="flex flex-col items-center">
+        <a href="https://www.lancaster.ac.uk/lira/people/paul-rayson" target="_blank" class="block text-center">
+          <img src="./img/prayson.jpg" alt="Paul Rayson" class="w-32 h-32 rounded-full object-cover shadow-md" />
+          <p class="text-base font-medium mt-4">Paul Rayson</p>
+          <p class="text-sm text-gray-600">Project Co-I</p>
+          <p class="text-sm text-gray-600">Lancaster University</p>
+          </br>
+        </a>
+      </div>
+
+      <!-- Dawn -->
       <div class="flex flex-col items-center">
         <a href="https://profiles.cardiff.ac.uk/staff/knightd5" target="_blank" class="block text-center">
-		<img src="./img/knight.jpg" alt="Dawn Knight" class="w-32 h-32 rounded-full object-cover shadow-md" />
-        <p class="text-base font-medium mt-4">Dawn Knight</p>
-		<p class="text-sm text-gray-600">Project Co-I</p>
-        <p class="text-sm text-gray-600">Cardiff University</p>
-		</br>
-		</a>
+          <img src="./img/knight.jpg" alt="Dawn Knight" class="w-32 h-32 rounded-full object-cover shadow-md" />
+          <p class="text-base font-medium mt-4">Dawn Knight</p>
+          <p class="text-sm text-gray-600">Project Co-I</p>
+          <p class="text-sm text-gray-600">Cardiff University</p>
+          </br>
+        </a>
       </div>
 
+      <!-- Alex -->
       <div class="flex flex-col items-center">
-       <a href="https://www.linkedin.com/in/huyt02/" target="_blank" class="block text-center">
-	   <img src="./img/hung.jpg" alt="Nguyen Huy Hung" class="w-32 h-32 rounded-full object-cover shadow-md" />
-        <p class="text-base font-medium mt-4">Nguyen Huy Hung</p>
-		<p class="text-sm text-gray-600">Research Assistant</p>
-        <p class="text-sm text-gray-600">VinUniversity</p>
-		</br>
-		</a>
+        <a href="https://vinuni.edu.vn/people/nguyen-thi-mai-lan-phd-2/" target="_blank" class="block text-center">
+          <img src="./img/alex.jpg" alt="Nguyen Thi Mai Lan (Alex)" class="w-32 h-32 rounded-full object-cover shadow-md" />
+          <p class="text-base font-medium mt-4">Nguyen Thi Mai Lan (Alex)</p>
+          <p class="text-sm text-gray-600">Project Collaborator</p>
+          <p class="text-sm text-gray-600">VinUniversity</p>
+          </br>
+        </a>
       </div>
+
+    </div>
+  </div>
+</section>
 
 
 
