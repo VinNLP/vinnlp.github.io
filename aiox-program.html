@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="AI of X: Intelligence Across Disciplines and Domains, interactive workshop programme, VinUniversity, Hanoi, 16 September 2026.">
 <title>AI of X | Workshop Programme</title>
+<link href="img/favicon.ico" rel="icon" type="image/x-icon">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" rel="stylesheet">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -18,6 +20,25 @@
 html{scroll-behavior:smooth}
 body{margin:0;font-family:'Bai Jamjuree','Segoe UI',Arial,sans-serif;background:var(--canvas);color:var(--ink);line-height:1.5}
 a{color:inherit}
+
+/* Shared site header/navigation — matched to aiox26.html */
+.site-header{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.95);backdrop-filter:blur(16px);border-bottom:1px solid rgba(223,229,236,.9);box-shadow:0 3px 18px rgba(20,36,61,.05)}
+.site-nav{max-width:1240px;margin:auto;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.site-brand{display:flex;align-items:center;gap:13px;text-decoration:none;min-width:max-content}
+.site-brand img{height:54px;width:auto;display:block}
+.brand-copy{display:flex;flex-direction:column;line-height:1.05}
+.brand-copy strong{font-size:1rem;color:var(--navy);letter-spacing:-.015em}
+.brand-copy span{font-size:.68rem;font-weight:700;letter-spacing:.11em;text-transform:uppercase;color:#9a6e00;margin-top:5px}
+.nav-links{display:flex;align-items:center;gap:4px;list-style:none;margin:0;padding:0}
+.nav-links a{text-decoration:none;color:#48586c;font-weight:700;font-size:.84rem;padding:9px 11px;border-radius:9px;transition:.16s ease}
+.nav-links a:hover{background:#f2f5f9;color:var(--navy)}
+.nav-links .programme-link{background:var(--navy);color:#fff;padding-inline:15px}
+.nav-links .programme-link:hover{background:#203a5f;color:#fff}
+.menu-toggle{display:none;border:1px solid var(--line);background:#fff;color:var(--navy);border-radius:10px;width:42px;height:42px;align-items:center;justify-content:center;cursor:pointer}
+.mobile-nav{display:none;background:#fff;border-top:1px solid var(--line);padding:10px 24px 16px}
+.mobile-nav.open{display:block}
+.mobile-nav a{display:block;text-decoration:none;padding:10px 4px;font-weight:700;color:#42546b;border-bottom:1px solid #eef1f5}
+
 .hero{background:linear-gradient(135deg,var(--navy) 0%,#183050 65%,#214268 100%);color:#fff;border-bottom:4px solid var(--gold);position:relative;overflow:hidden}
 .hero::after{content:'';position:absolute;width:360px;height:360px;border:1px solid rgba(255,255,255,.08);border-radius:50%;right:-120px;top:-180px;box-shadow:0 0 0 55px rgba(255,255,255,.025),0 0 0 110px rgba(255,255,255,.018)}
 .hero-inner{max-width:1240px;margin:auto;padding:34px 24px 30px;position:relative;z-index:1;display:grid;grid-template-columns:1fr auto;gap:24px;align-items:end}
@@ -69,9 +90,15 @@ h1{font-size:clamp(2.25rem,6vw,4.4rem);line-height:.95;margin:0;font-weight:700;
 .special-label{display:flex;align-items:center;gap:8px;font-size:.89rem} .special-icon{width:26px;height:26px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;background:#fff;border:1px solid #dfe5ec;font-size:.82rem}
 .special .talk-title{font-size:.88rem} .special .topic-chip{margin-top:0}
 .footnote{color:#6d7785;font-size:.78rem;text-align:center;margin:18px 0 26px}
-footer{background:var(--navy);color:#cbd5e1;margin-top:26px}
-.footer-inner{max-width:1240px;margin:auto;padding:18px 24px;display:flex;justify-content:space-between;gap:16px;font-size:.78rem;flex-wrap:wrap}
-.footer-inner strong{color:#fff}
+footer{background:var(--navy)!important;color:#bfcadd!important;border-top:1px solid rgba(255,255,255,.08);padding:22px 0!important;font-size:.78rem!important;margin-top:26px}
+footer>.container{max-width:1240px!important;margin:auto!important;padding:0 24px!important;display:flex!important;align-items:center!important;justify-content:space-between!important;gap:20px!important;flex-wrap:wrap}
+footer a{color:#dbe4ef!important;text-decoration:none!important;margin-right:16px}
+footer a:hover{color:#fff!important;text-decoration:underline!important}
+.footer-socials{display:flex;align-items:center;gap:12px}
+.footer-socials a{margin-right:0;font-size:1rem}
+@media(max-width:1020px){
+ .nav-links{display:none}.menu-toggle{display:flex}
+}
 @media(max-width:900px){
  .hero-inner{grid-template-columns:1fr} .hero-meta{text-align:left}
  .column-headings{display:none}
@@ -81,6 +108,8 @@ footer{background:var(--navy);color:#cbd5e1;margin-top:26px}
  .special .event-grid{grid-template-columns:92px 1fr} .special .talk-title{grid-column:2} .special .topic-chip{grid-column:2}
 }
 @media(max-width:620px){
+ .site-nav{padding:10px 16px}.site-brand img{height:46px}.brand-copy strong{font-size:.9rem}.brand-copy span{font-size:.61rem}
+ .mobile-nav{padding-left:16px;padding-right:16px}
  .container{padding:0 12px} .hero-inner{padding:26px 16px 24px} .info-strip{border-radius:12px}
  .session-heading{align-items:flex-start;flex-direction:column;gap:3px;font-size:.82rem}
  .event-grid{grid-template-columns:1fr auto;gap:8px;padding:11px 10px}
@@ -94,7 +123,7 @@ footer{background:var(--navy);color:#cbd5e1;margin-top:26px}
  .controls{width:100%} .control-btn{flex:1}
 }
 @media print{
- body{background:#fff} .hero{border-bottom:2px solid var(--gold)} .info-strip,.quicknav,.controls,.abstract-action{display:none!important}
+ body{background:#fff} .site-header{display:none!important} .hero{border-bottom:2px solid var(--gold)} .info-strip,.quicknav,.controls,.abstract-action{display:none!important}
  .container{max-width:none;padding:0 8px} .programme-session{box-shadow:none;break-inside:avoid}
  .event-grid{min-height:0;padding:7px 10px} .portrait{width:38px;height:38px;flex-basis:38px}
  .abstract-panel{display:none!important} footer{display:none}
@@ -102,6 +131,32 @@ footer{background:var(--navy);color:#cbd5e1;margin-top:26px}
 </style>
 </head>
 <body>
+<!-- Shared Header & Navigation -->
+<header class="site-header">
+  <nav aria-label="Main navigation" class="site-nav">
+    <a class="site-brand" href="aiox26.html#home">
+      <img alt="NLP at VinUniversity" src="./assets/vinnlp.png">
+      <span class="brand-copy"><strong>AI of X</strong><span>VinUniversity · 2026</span></span>
+    </a>
+    <button aria-expanded="false" aria-label="Toggle navigation" class="menu-toggle" id="workshopMenuBtn" type="button"><i class="fas fa-bars"></i></button>
+    <ul class="nav-links">
+      <li><a href="aiox26.html#about">About</a></li>
+      <li><a href="aiox26.html#speakers">Speakers</a></li>
+      <li><a href="aiox26.html#format">Format</a></li>
+      <li><a href="aiox26.html#venue">Venue</a></li>
+      <li><a href="aiox26.html#contact">Contact</a></li>
+      <li><a class="programme-link" href="aiox-program.html" aria-current="page">Programme</a></li>
+    </ul>
+  </nav>
+  <div class="mobile-nav" id="workshopMobileNav">
+    <a href="aiox26.html#about">About</a>
+    <a href="aiox26.html#speakers">Speakers</a>
+    <a href="aiox26.html#format">Format</a>
+    <a href="aiox26.html#venue">Venue</a>
+    <a href="aiox26.html#contact">Contact</a>
+    <a href="aiox-program.html" aria-current="page">Programme</a>
+  </div>
+</header>
 <header class="hero">
   <div class="hero-inner">
     <div>
@@ -900,7 +955,24 @@ footer{background:var(--navy);color:#cbd5e1;margin-top:26px}
 </section>
   <p class="footnote">Each invited talk includes 20 minutes for presentation and 5 minutes for questions. Programme subject to minor changes.</p>
 </main>
-<footer><div class="footer-inner"><span><strong>AI of X</strong> · Intelligence Across Disciplines and Domains</span><span>VinUniversity, Hanoi · 16 September 2026</span></div></footer>
+<!-- Shared Footer -->
+<footer>
+  <div class="container">
+    <div>
+      <a href="aiox26.html#home">Home</a>
+      <a href="aiox26.html#about">About</a>
+      <a href="aiox26.html#speakers">Speakers</a>
+      <a href="aiox26.html#format">Format</a>
+      <a href="aiox26.html#venue">Venue</a>
+      <a href="aiox26.html#contact">Contact</a>
+    </div>
+    <div class="footer-socials">
+      <a aria-label="LinkedIn" href="https://www.linkedin.com/company/vinnlp" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i></a>
+      <a aria-label="X" href="https://x.com/vinnlp" target="_blank" rel="noopener noreferrer"><i class="fab fa-x-twitter"></i></a>
+    </div>
+    <div>© 2025-2026 NLP @ VinUniversity. All rights reserved.</div>
+  </div>
+</footer>
 <script>
 (function() {
   const toggles = [...document.querySelectorAll('.abstract-toggle')];
@@ -915,6 +987,23 @@ footer{background:var(--navy);color:#cbd5e1;margin-top:26px}
   toggles.forEach(btn => btn.addEventListener('click', () => setToggle(btn, btn.getAttribute('aria-expanded') !== 'true')));
   document.getElementById('expandAll').addEventListener('click', () => toggles.forEach(btn => setToggle(btn, true)));
   document.getElementById('collapseAll').addEventListener('click', () => toggles.forEach(btn => setToggle(btn, false)));
+
+  const menuBtn = document.getElementById('workshopMenuBtn');
+  const mobileNav = document.getElementById('workshopMobileNav');
+  if (menuBtn && mobileNav) {
+    menuBtn.addEventListener('click', () => {
+      const open = mobileNav.classList.toggle('open');
+      menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      const icon = menuBtn.querySelector('i');
+      if (icon) icon.className = open ? 'fas fa-xmark' : 'fas fa-bars';
+    });
+    mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      mobileNav.classList.remove('open');
+      menuBtn.setAttribute('aria-expanded', 'false');
+      const icon = menuBtn.querySelector('i');
+      if (icon) icon.className = 'fas fa-bars';
+    }));
+  }
 })();
 </script>
 </body>
