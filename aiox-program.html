@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="AI of X: Intelligence Across Disciplines and Domains, interactive workshop programme, VinUniversity, Hanoi, 16 September 2026.">
+<title>AI of X | Workshop Programme</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy:#14243d; --navy2:#203a5f; --ink:#172033; --muted:#667085; --line:#dfe5ec;
+  --paper:#ffffff; --canvas:#f4f7fb; --gold:#dfa30b; --gold-soft:#fff6d8;
+  --s1:#287e88; --s2:#ba276b; --s3:#c68111; --s4:#2d6398;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:'Bai Jamjuree','Segoe UI',Arial,sans-serif;background:var(--canvas);color:var(--ink);line-height:1.5}
+a{color:inherit}
+.hero{background:linear-gradient(135deg,var(--navy) 0%,#183050 65%,#214268 100%);color:#fff;border-bottom:4px solid var(--gold);position:relative;overflow:hidden}
+.hero::after{content:'';position:absolute;width:360px;height:360px;border:1px solid rgba(255,255,255,.08);border-radius:50%;right:-120px;top:-180px;box-shadow:0 0 0 55px rgba(255,255,255,.025),0 0 0 110px rgba(255,255,255,.018)}
+.hero-inner{max-width:1240px;margin:auto;padding:34px 24px 30px;position:relative;z-index:1;display:grid;grid-template-columns:1fr auto;gap:24px;align-items:end}
+.brand-kicker{font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#f2c44f;margin-bottom:5px}
+h1{font-size:clamp(2.25rem,6vw,4.4rem);line-height:.95;margin:0;font-weight:700;letter-spacing:-.045em}
+.subtitle{margin:8px 0 0;font-size:clamp(.9rem,2vw,1.18rem);font-weight:600;color:#dce5f1;letter-spacing:.035em}
+.hero-meta{text-align:right;font-size:.95rem;color:#e5ebf3;min-width:250px}
+.hero-meta strong{display:block;color:#fff;font-size:1.1rem}
+.container{max-width:1240px;margin:auto;padding:0 24px}
+.info-strip{margin-top:20px;background:#fff;border:1px solid #e4e9ef;border-radius:16px;box-shadow:0 8px 26px rgba(26,43,67,.08);display:flex;gap:18px;align-items:center;justify-content:space-between;padding:14px 16px;flex-wrap:wrap}
+.info-items{display:flex;gap:10px;flex-wrap:wrap}
+.pill{display:inline-flex;align-items:center;gap:7px;background:#f6f8fb;border:1px solid #e4e8ef;border-radius:999px;padding:7px 11px;font-size:.86rem;font-weight:600;color:#344054}
+.controls{display:flex;gap:8px}
+.control-btn{border:1px solid #ccd4df;background:#fff;color:#233b5d;border-radius:9px;padding:7px 11px;font:inherit;font-size:.82rem;font-weight:700;cursor:pointer}
+.control-btn:hover{background:#f4f7fb;border-color:#a9b6c7}
+.quicknav{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0 22px}
+.quicknav a{text-decoration:none;background:#fff;border:1px solid #dfe5ec;border-radius:10px;padding:8px 11px;font-size:.82rem;font-weight:700;color:#41546c;transition:.15s ease}
+.quicknav a:hover{transform:translateY(-1px);box-shadow:0 4px 12px rgba(20,36,61,.08)}
+.checkin{margin:0 0 12px;background:linear-gradient(90deg,#d89a06,#e8b128);color:#fff;font-weight:700;border-radius:12px;padding:12px 18px;display:flex;justify-content:center;gap:14px;letter-spacing:.02em;box-shadow:0 5px 14px rgba(188,130,0,.16)}
+.programme-session{margin:0 0 15px;border-radius:14px;overflow:hidden;background:#fff;box-shadow:0 5px 20px rgba(26,43,67,.07);border:1px solid #e3e8ee}
+.session-heading{display:flex;justify-content:space-between;gap:18px;align-items:center;padding:10px 14px;color:#fff;font-size:.94rem;font-weight:700;letter-spacing:.018em}
+.session-heading time{white-space:nowrap;font-variant-numeric:tabular-nums}
+.session-number{font-weight:700} .dot{margin:0 7px;opacity:.8}
+.s1 .session-heading{background:var(--s1)} .s2 .session-heading{background:var(--s2)} .s3 .session-heading{background:var(--s3)} .s4 .session-heading{background:var(--s4)}
+.column-headings{display:grid;grid-template-columns:118px 250px minmax(300px,1fr) 142px;gap:16px;background:var(--navy2);color:#fff;padding:7px 14px;font-size:.69rem;font-weight:700;letter-spacing:.07em}
+.event{border-top:1px solid var(--line)} .event:first-child{border-top:0}
+.event-grid{display:grid;grid-template-columns:118px 250px minmax(300px,1fr) 142px;gap:16px;align-items:center;padding:10px 14px;min-height:74px}
+.event:nth-child(even) .event-grid{background:#fafbfd}
+.time{font-weight:700;color:#2c6280;font-variant-numeric:tabular-nums;white-space:nowrap;font-size:.9rem}
+.s2 .time{color:#a92761} .s3 .time{color:#a66b09} .s4 .time{color:#2d6398}
+.speaker-cell{display:flex;align-items:center;gap:11px;min-width:0}
+.portrait{width:52px;height:52px;border-radius:50%;object-fit:cover;flex:0 0 52px;border:2px solid #fff;box-shadow:0 0 0 1px #ccd5e0,0 3px 8px rgba(20,36,61,.11)}
+.speaker-name{font-weight:600;font-size:.9rem;line-height:1.25}
+.speaker-name a{text-decoration:none} .speaker-name a:hover{text-decoration:underline;color:#245f9d}
+.talk-cell{min-width:0} .talk-title{font-size:.9rem;line-height:1.38;color:#2d3645}
+.topic-chip{display:inline-flex;margin-top:5px;font-size:.72rem;font-weight:600;color:#667085;background:#f0f3f7;border-radius:999px;padding:3px 8px}
+.abstract-action{text-align:right}
+.abstract-toggle{width:100%;border:1px solid #cdd7e3;background:#fff;color:#24537f;border-radius:9px;padding:8px 9px;font:inherit;font-size:.78rem;font-weight:700;cursor:pointer;display:flex;justify-content:center;align-items:center;gap:7px;transition:.15s ease}
+.abstract-toggle:hover{background:#f3f7fb;border-color:#aebfd1} .abstract-toggle[aria-expanded='true']{background:#203a5f;color:#fff;border-color:#203a5f}
+.chevron{font-size:1rem;line-height:1;transition:transform .18s ease} .abstract-toggle[aria-expanded='true'] .chevron{transform:rotate(180deg)}
+.no-abstract{display:inline-block;font-size:.74rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:#8a94a3;background:#f1f3f6;padding:6px 8px;border-radius:8px}
+.abstract-panel{padding:0 14px 16px 398px;background:linear-gradient(180deg,#fbfcfe,#f6f9fc);border-top:1px dashed #d6dee8}
+.abstract-panel[hidden]{display:none}
+.abstract-label{font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;font-weight:700;color:#49627f;padding-top:13px;margin-bottom:6px}
+.abstract-copy{font-size:.88rem;color:#455366;max-width:820px}
+.abstract-copy p{margin:.5em 0} .abstract-copy a{color:#1e67a5} .abstract-copy hr{border:0;border-top:1px solid #d5dde7;margin:14px 0} .abstract-copy h6{font-size:.9rem;margin:8px 0 4px;color:#1f2937}
+.special .event-grid{min-height:54px;background:#fff8fb}
+.break-row .event-grid{background:#fff5fb} .panel-row .event-grid{background:#eef5fb} .closing-row .event-grid{background:#f2f5f8}
+.special-label{display:flex;align-items:center;gap:8px;font-size:.89rem} .special-icon{width:26px;height:26px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;background:#fff;border:1px solid #dfe5ec;font-size:.82rem}
+.special .talk-title{font-size:.88rem} .special .topic-chip{margin-top:0}
+.footnote{color:#6d7785;font-size:.78rem;text-align:center;margin:18px 0 26px}
+footer{background:var(--navy);color:#cbd5e1;margin-top:26px}
+.footer-inner{max-width:1240px;margin:auto;padding:18px 24px;display:flex;justify-content:space-between;gap:16px;font-size:.78rem;flex-wrap:wrap}
+.footer-inner strong{color:#fff}
+@media(max-width:900px){
+ .hero-inner{grid-template-columns:1fr} .hero-meta{text-align:left}
+ .column-headings{display:none}
+ .event-grid{grid-template-columns:92px 1fr 116px;gap:12px;align-items:start}
+ .speaker-cell{grid-column:2} .talk-cell{grid-column:2/4} .abstract-action{grid-column:3;grid-row:1/3;align-self:center}
+ .abstract-panel{padding-left:118px}
+ .special .event-grid{grid-template-columns:92px 1fr} .special .talk-title{grid-column:2} .special .topic-chip{grid-column:2}
+}
+@media(max-width:620px){
+ .container{padding:0 12px} .hero-inner{padding:26px 16px 24px} .info-strip{border-radius:12px}
+ .session-heading{align-items:flex-start;flex-direction:column;gap:3px;font-size:.82rem}
+ .event-grid{grid-template-columns:1fr auto;gap:8px;padding:11px 10px}
+ .time{grid-column:1/3;font-size:.78rem}
+ .speaker-cell{grid-column:1} .portrait{width:46px;height:46px;flex-basis:46px}
+ .abstract-action{grid-column:2;grid-row:2;min-width:104px}
+ .talk-cell{grid-column:1/3;padding-left:57px;margin-top:-3px}
+ .abstract-panel{padding:0 12px 14px 69px}
+ .special .event-grid{grid-template-columns:1fr} .special .time,.special .special-label,.special .talk-title,.special .topic-chip{grid-column:1}
+ .special .topic-chip{justify-self:start}
+ .controls{width:100%} .control-btn{flex:1}
+}
+@media print{
+ body{background:#fff} .hero{border-bottom:2px solid var(--gold)} .info-strip,.quicknav,.controls,.abstract-action{display:none!important}
+ .container{max-width:none;padding:0 8px} .programme-session{box-shadow:none;break-inside:avoid}
+ .event-grid{min-height:0;padding:7px 10px} .portrait{width:38px;height:38px;flex-basis:38px}
+ .abstract-panel{display:none!important} footer{display:none}
+}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="brand-kicker">Workshop Programme</div>
+      <h1>AI of X</h1>
+      <div class="subtitle">INTELLIGENCE ACROSS DISCIPLINES AND DOMAINS</div>
+    </div>
+    <div class="hero-meta"><strong>16 SEPTEMBER 2026</strong>09:00–17:30 &nbsp;•&nbsp; Peace Room I201<br>VinUniversity, Hanoi</div>
+  </div>
+</header>
+<main class="container">
+  <div class="info-strip">
+    <div class="info-items">
+      <span class="pill">📅 16 September 2026</span>
+      <span class="pill">🕘 09:00–17:30</span>
+      <span class="pill">📍 Peace Room I201, VinUniversity</span>
+    </div>
+    <div class="controls" aria-label="Abstract controls">
+      <button class="control-btn" id="expandAll" type="button">Expand all abstracts</button>
+      <button class="control-btn" id="collapseAll" type="button">Collapse all</button>
+    </div>
+  </div>
+  <nav class="quicknav" aria-label="Programme sessions">
+    <a href="#session-1">Session 1 · Language &amp; NLP</a>
+    <a href="#session-2">Session 2 · Healthcare</a>
+    <a href="#session-3">Session 3 · Trustworthy AI</a>
+    <a href="#session-4">Session 4 · Engineering</a>
+  </nav>
+  <div class="checkin"><span>09:00–09:15</span><span>CHECK-IN</span></div>
+  <section class="programme-session s1" id="session-1">
+  <div class="session-heading">
+    <div><span class="session-number">SESSION 1</span><span class="dot">•</span>LANGUAGE, NLP AND AI ACROSS DISCIPLINES</div>
+    <time>09:30–10:50</time>
+  </div>
+  <div class="column-headings" aria-hidden="true"><span>TIME</span><span>SPEAKER</span><span>TALK</span><span>ABSTRACT</span></div>
+  <div class="session-events"><article class="event talk-row">
+  <div class="event-grid">
+    <div class="time">9:15–09:30</div>
+    <div class="speaker-cell">
+      <img class="portrait" src="speakers/mo.png" alt="Dr. Mo El-Haj" loading="lazy">
+      <div class="speaker-name"><a href="https://elhaj.uk/" target="_blank" rel="noopener noreferrer">Dr. Mo El-Haj</a></div>
+    </div>
+    <div class="talk-cell">
+      <div class="talk-title">Welcome and Opening Remarks</div>
+      <div class="topic-chip">AI of X</div>
+    </div>
+    <div class="abstract-action"><span class="no-abstract">Opening</span></div>
+  </div>
+  
+</article>
+<article class="event talk-row">
+  <div class="event-grid">
+    <div class="time">09:30–09:55</div>
+    <div class="speaker-cell">
+      <img class="portrait" src="speakers/knight.jpg" alt="Prof. Dawn Knight" loading="lazy">
+      <div class="speaker-name"><a href="https://profiles.cardiff.ac.uk/staff/knightd5" target="_blank" rel="noopener noreferrer">Prof. Dawn Knight</a></div>
+    </div>
+    <div class="talk-cell">
+      <div class="talk-title">Corpus-Informed NLP and Emerging AI for a Minoritised Language</div>
+      <div class="topic-chip">Minoritised-language NLP</div>
+    </div>
+    <div class="abstract-action"><button class="abstract-toggle" type="button" aria-expanded="false" aria-controls="abstract-s1-2">
+          <span>View abstract</span><span class="chevron" aria-hidden="true">⌄</span>
+        </button></div>
+  </div>
+  <div class="abstract-panel" id="abstract-s1-2" hidden>
+      <div class="abstract-label">Abstract</div>
+      <div class="abstract-copy"><p>
+                    The creation of language technology resources for minoritised
+                    languages presents distinct challenges, but also offers
+                    opportunities that are not always available in high-resource
+                    language contexts. This presentation demonstrates how careful
+                    attention to linguistic, social, and technological context,
+                    combined with sustained collaboration with user communities,
+                    can shape the design and construction of NLP- and AI-enabled
+                    language resources for a minoritised language.
+                </p>
+<p>
+                    The talk showcases a range of recent interdisciplinary and
+                    cross-institutional projects involving applied and corpus
+                    linguists working closely with colleagues in NLP. It will
+                    include an overview of
+                    <a href="https://www.corcencc.org/" rel="noopener noreferrer" target="_blank">
+                        CorCenCC
+                    </a>,
+                    the National Corpus of Contemporary Welsh, a large, richly
+                    annotated corpus that provides essential infrastructure for
+                    Welsh-language NLP, alongside a number of related projects.
+                </p>
+<p>
+                    These include Thesawrws,
+                    <a href="https://freetxt.app" rel="noopener noreferrer" target="_blank">
+                        FreeTxt
+                    </a>,
+                    a bilingual toolkit supporting the analysis and visualisation
+                    of free-text data, and other resources available through the
+                    <a href="https://www.digigrid.cymru/" rel="noopener noreferrer" target="_blank">
+                        GDC-WDG website
+                    </a>.
+                    These resources support the exploration, analysis, learning,
+                    and referencing of Welsh.
+                </p>
+<p>
+                    The presentation will also profile ongoing work on
+                    machine-learning-based sentiment analysis, readability
+                    assessment, and CEFR-level prediction, as well as the
+                    development of a small, corpus-informed Welsh language model
+                    intended to provide a foundation for future AI research.
+                </p>
+<p>
+                    Together, these resources are underpinned by a corpus-led,
+                    context-aware approach to NLP and AI development. The
+                    presentation argues that this approach offers a transferable
+                    and sustainable template for research and resource-building
+                    in other minoritised and minority-language contexts, and
+                    explores its broader implications.
+                </p></div>
+    </div>
+</article>
+<article class="event talk-row">
+  <div class="event-grid">
+    <div class="time">09:55–10:20</div>
+    <div class="speaker-cell">
+      <img class="portrait" src="speakers/prayson.jpg" alt="Prof. Paul Rayson" loading="lazy">
+      <div class="speaker-name"><a href="https://research.lancaster-university.uk/en/persons/paul-rayson/" target="_blank" rel="noopener noreferrer">Prof. Paul Rayson</a></div>
+    </div>
+    <div class="talk-cell">
+      <div class="talk-title">What Can AI Do for You? How Can Transformers and LLMs Be Applied Across Disciplines and Domains?</div>
+      <div class="topic-chip">Cross-disciplinary LLMs</div>
+    </div>
+    <div class="abstract-action"><button class="abstract-toggle" type="button" aria-expanded="false" aria-controls="abstract-s1-3">
+          <span>View abstract</span><span class="chevron" aria-hidden="true">⌄</span>
+        </button></div>
+  </div>
+  <div class="abstract-panel" id="abstract-s1-3" hidden>
+      <div class="abstract-label">Abstract</div>
+      <div class="abstract-copy"><p>
+                    Transformers and Large Language Models (LLMs) have shown
+                    substantial improvements and extended capabilities over
+                    classic Natural Language Processing and Machine Learning
+                    techniques. This talk presents recent work from the UCREL
+                    centre at Lancaster University, demonstrating both the
+                    capabilities and limitations of modern AI across a range of
+                    disciplines.
+                </p>
+<p>
+                    Three case studies will be presented. The first explores how
+                    neural models improve the applicability of coarse-grained
+                    word sense disambiguation methods, originally developed for
+                    English, to low-resource languages in the PyMUSAS semantic
+                    tagger.
+                </p>
+<p>
+                    The second examines how LLMs can replicate and extend corpus
+                    analysis for research in the spatial humanities. The third
+                    investigates how well LLMs perform on subjective language
+                    analysis tasks, including metaphor, emotion, and sentiment
+                    analysis, using healthcare communications such as cancer
+                    narratives.
+                </p>
+<p>
+                    Together, these case studies illustrate both the strengths
+                    and current limitations of applying state-of-the-art AI
+                    methods across diverse research domains, highlighting where
+                    human expertise remains essential alongside increasingly
+                    capable language models.
+                </p></div>
+    </div>
+</article>
+<article class="event special break-row">
+  <div class="event-grid">
+    <div class="time">10:20–10:50</div>
+    <div class="special-label"><span class="special-icon" aria-hidden="true">☕</span><strong>COFFEE BREAK</strong></div>
+    <div class="talk-title"><strong>Refreshments and networking</strong></div>
+    <div class="topic-chip">Networking</div>
+  </div>
+</article></div>
+</section><section class="programme-session s2" id="session-2">
+  <div class="session-heading">
+    <div><span class="session-number">SESSION 2</span><span class="dot">•</span>AI IN HEALTHCARE, WELL-BEING AND CLINICAL PRACTICE</div>
+    <time>10:50–14:25</time>
+  </div>
+  <div class="column-headings" aria-hidden="true"><span>TIME</span><span>SPEAKER</span><span>TALK</span><span>ABSTRACT</span></div>
+  <div class="session-events"><article class="event talk-row">
+  <div class="event-grid">
+    <div class="time">10:50–11:15</div>
+    <div class="speaker-cell">
+      <img class="portrait" src="speakers/huyen.png" alt="Dr. Nguyen Thi Hoa Huyen" loading="lazy">
+      <div class="speaker-name"><a href="https://vinuni.edu.vn/vi/people/nguyen-thi-hoa-huyen-rn-phd/" target="_blank" rel="noopener noreferrer">Dr. Nguyen Thi Hoa Huyen</a></div>
+    </div>
+    <div class="talk-cell">
+      <div class="talk-title">From Digital Health to Empathetic AI: Advancing Human-Centered Healthcare Through Interdisciplinary Research</div>
+      <div class="topic-chip">Healthcare innovation</div>
+    </div>
+    <div class="abstract-action"><button class="abstract-toggle" type="button" aria-expanded="false" aria-controls="abstract-s2-1">
+          <span>View abstract</span><span class="chevron" aria-hidden="true">⌄</span>
+        </button></div>
+  </div>
+  <div class="abstract-panel" id="abstract-s2-1" hidden>
+      <div class="abstract-label">Abstract</div>
+      <div class="abstract-copy"><p>
+                    Artificial intelligence is reshaping healthcare, but its
+                    value depends less on algorithmic performance than on a
+                    deep understanding of clinical practice, patient needs,
+                    and human behavior. This talk presents an interdisciplinary
+                    perspective on building human-centered AI systems for
+                    patient care.
+                </p>
+<p>
+                    Drawing on research in women's health, digital health, and
+                    mental health, it shows how AI can support symptom
+                    prediction, personalized care, and patient engagement —
+                    illustrated through an AI model predicting symptoms in
+                    women with breast cancer, and a large-scale analysis of
+                    insomnia, anxiety, and depression across a merged dataset
+                    of over 3,000 patients. The talk then turns to a parallel
+                    effort developing empathetic large language models for
+                    mental health support, grounded in behavioral psychology
+                    frameworks (CBT, ACT, RFT).
+                </p>
+<p>
+                    Finally, it addresses key challenges — data quality,
+                    research ethics, clinical validation, trustworthiness —
+                    and explores opportunities for collaboration between
+                    healthcare researchers and AI scientists.
+                </p></div>
+    </div>
+</article>
+<article class="event talk-row">
+  <div class="event-grid">
+    <div class="time">11:15–11:40</div>
+    <div class="speaker-cell">
+      <img class="portrait" src="speakers/dung.jpg" alt="Dr. Le Duy Dung" loading="lazy">
+      <div class="speaker-name"><a href="https://andrew-dungle.github.io/" target="_blank" rel="noopener noreferrer">Dr. Le Duy Dung</a></div>
+    </div>
+    <div class="talk-cell">
+      <div class="talk-title">Robust Vietnamese-English Clinical and Educational Medical Translation</div>
+      <div class="topic-chip">Medical translation</div>
+    </div>
+    <div class="abstract-action"><button class="abstract-toggle" type="button" aria-expanded="false" aria-controls="abstract-s2-2">
+          <span>View abstract</span><span class="chevron" aria-hidden="true">⌄</span>
+        </button></div>
+  </div>
+  <div class="abstract-panel" id="abstract-s2-2" hidden>
+      <div class="abstract-label">Abstract</div>
+      <div class="abstract-copy"><p>
+                    Medical translation is a high-impact yet under-explored
+                    challenge for low-resource languages such as Vietnamese. In
+                    clinical and medical education settings, inaccurate
+                    translation can create barriers to patient communication,
+                    medical training, and access to health information. This
+                    talk introduces the VinUniversity Vietnamese-English
+                    Medical Translation Project, a cross-disciplinary effort
+                    between AI and health sciences researchers to build robust
+                    language technologies for Vietnamese medical contexts.
+                </p>
+<p>
+                    The talk will present two current core contributions of the
+                    project. First, it introduces MedEV, a high-quality
+                    Vietnamese-English parallel dataset for medical machine
+                    translation containing approximately 360,000 sentence
+                    pairs, together with benchmarking results across commercial
+                    systems, large language models, and neural machine
+                    translation models.
+                </p>
+<p>
+                    Second, it discusses ViMedCSS, a 34-hour Vietnamese medical
+                    code-switching speech dataset designed to address a common
+                    real-world phenomenon: Vietnamese medical speech frequently
+                    includes English medical terms, drug names, and procedures.
+                    This creates substantial challenges for automatic speech
+                    recognition and downstream speech translation systems.
+                </p>
+<p>
+                    Beyond datasets and benchmarks, the project aims to develop
+                    practical medical AI systems, including a real-time
+                    Vietnamese-English medical speech translation prototype.
+                    The talk will cover the research motivation, dataset
+                    construction process, model adaptation strategies,
+                    evaluation findings, and wider implications for
+                    low-resource medical NLP, multilingual healthcare
+                    communication, and AI-enabled clinical education.
+                </p></div>
+    </div>
+</article>
+<article class="event talk-row">
+  <div class="event-grid">
+    <div class="time">11:40–12:05</div>
+    <div class="speaker-cell">
+      <img class="portrait" src="speakers/Pham-Huy-Hieu.png" alt="Dr. Pham Huy Hieu" loading="lazy">
+      <div class="speaker-name"><a href="https://vinuni.edu.vn/people/pham-huy-hieu-phd/" target="_blank" rel="noopener noreferrer">Dr. Pham Huy Hieu</a></div>
+    </div>
+    <div class="talk-cell">
+      <div class="talk-title">Building Medical AI for Low-Resource Settings: From Research to Real-World Clinical Deployment</div>
+      <div class="topic-chip">Clinical deployment</div>
+    </div>
+    <div class="abstract-action"><button class="abstract-toggle" type="button" aria-expanded="false" aria-controls="abstract-s2-3">
+          <span>View abstract</span><span class="chevron" aria-hidden="true">⌄</span>
+        </button></div>
+  </div>
+  <div class="abstract-panel" id="abstract-s2-3" hidden>
+      <div class="abstract-label">Abstract</div>
+      <div class="abstract-copy"><p>
+                    Medical Artificial Intelligence (Medical AI) has achieved
+                    remarkable advances in high-resource settings. However, its
+                    real-world clinical impact in low-resource environments,
+                    particularly in developing countries, remains limited. This
+                    talk examines the unique challenges, opportunities, and
+                    practical solutions for developing efficient and deployable
+                    Medical AI systems under constraints of data availability,
+                    computational resources, and real-world clinical deployment.
+                </p>
+<p>
+                    Drawing on experience from large-scale medical imaging and
+                    digital health projects in Vietnam through the
+                    VinUni–Illinois Smart Health Center (VISHC), the talk
+                    analyses how data scarcity, label noise, domain shift, and
+                    infrastructure limitations fundamentally reshape model
+                    design, training strategies, and evaluation protocols. It
+                    discusses efficiency-driven approaches including
+                    data-centric learning, lightweight modelling, foundation
+                    model adaptation, weakly supervised learning,
+                    self-supervised learning, and deployment-aware optimisation.
+                </p>
+<p>
+                    Beyond algorithmic performance, the talk emphasises the
+                    importance of end-to-end system design, spanning data
+                    acquisition, integration into clinical workflows, and
+                    real-world robustness. It concludes by sharing lessons
+                    learned from deploying AI systems in hospitals with limited
+                    compute, connectivity, and technical support, while
+                    highlighting common pitfalls when transferring
+                    state-of-the-art methods from high-resource benchmarks to
+                    low-resource clinical practice.
+                </p>
+<hr/>
+<h6>Speaker Bio</h6>
+<p>
+                    Dr Pham Huy Hieu is Deputy Director of VinUniversity's
+                    Research Management Office, Assistant Professor in the
+                    College of Engineering and Computer Science, Director of the
+                    Computer Vision and Medical AI Lab (CVMAIL), and Principal
+                    Investigator at the VinUni–Illinois Smart Health Center. He
+                    received his PhD in Computer Science from the Toulouse
+                    Computer Science Research Institute (IRIT), University of
+                    Toulouse, France, in 2019.
+                </p>
+<p>
+                    His research focuses on artificial intelligence, computer
+                    vision, machine learning, medical image analysis, and smart
+                    healthcare. He has authored more than 100 peer-reviewed
+                    publications in leading journals and conferences, including
+                    <em>Nature Scientific Data</em>, <em>Computer Vision and
+                    Image Understanding</em>, <em>Neurocomputing</em>,
+                    <em>IEEE Journal of Biomedical and Health Informatics</em>,
+                    <em>IEEE Transactions on Emerging Topics in Computing</em>,
+                    <em>PLOS ONE</em>, MICCAI, MIDL, CVPR, ICCV, ICLR, and
+                    ICASSP, with nearly 3,000 citations on <span></span>.
+                </p>
+<p>
+                    Since 2024, he has served on the Editorial Board of
+                    <em>Scientific Data</em> (Nature), as an Area Chair for
+                    MICCAI, and as a reviewer for leading journals including
+                    <em>Nature Biomedical Engineering</em>,
+                    <em>IEEE Transactions on Medical Imaging</em>,
+                    <em>IEEE Journal of Biomedical and Health Informatics</em>,
+                    and <em>Communications Medicine</em> (Nature).
+                </p>
+<p>
+                    Dr Hieu received the DAAD Fellowship in 2021 and the Global
+                    Leaders in Innovation Fellowship 2025 from the Royal
+                    Academy of Engineering. His team received the AI Award in
+                    2022 for the VAIPE smart healthcare project. He was named
+                    Faculty of the Year in 2023, received the Rising Star in
+                    Research Award in 2024, and most recently received the
+                    National Outstanding Young Scientist Award in Science and
+                    Technology. He was also nominated for both the 10
+                    Outstanding Young Faces of the Hanoi Capital 2024 and the
+                    Outstanding Young Faces of Vietnam 2024 in Science and
+                    Technology.
+                </p></div>
+    </div>
+</article>
+<article class="event special break-row">
+  <div class="event-grid">
+    <div class="time">12:05–13:35</div>
+    <div class="special-label"><span class="special-icon" aria-hidden="true">🍽️</span><strong>LUNCH BREAK</strong></div>
+    <div class="talk-title"><strong>Lunch and informal discussion</strong></div>
+    <div class="topic-chip">Networking</div>
+  </div>
+</article>
+<article class="event talk-row">
+  <div class="event-grid">
+    <div class="time">13:35–14:00</div>
+    <div class="speaker-cell">
+      <img class="portrait" src="speakers/Anant-Mishra.png" alt="Prof. Anant Mishra" loading="lazy">
+      <div class="speaker-name"><a href="https://vinuni.edu.vn/people/anant-mishra/" target="_blank" rel="noopener noreferrer">Prof. Anant Mishra</a></div>
+    </div>
+    <div class="talk-cell">
+      <div class="talk-title">AI-Enabled Healthcare with a Heart: Operational Capabilities for Embedding Compassion in Care Delivery Processes</div>
+      <div class="topic-chip">Compassionate AI</div>
+    </div>
+    <div class="abstract-action"><button class="abstract-toggle" type="button" aria-expanded="false" aria-controls="abstract-s2-5">
+          <span>View abstract</span><span class="chevron" aria-hidden="true">⌄</span>
+        </button></div>
+  </div>
+  <div class="abstract-panel" id="abstract-s2-5" hidden>
+      <div class="abstract-label">Abstract</div>
+      <div class="abstract-copy"><p>
+                    Artificial intelligence (AI) is increasingly being deployed
+                    in healthcare, yet organisations consistently struggle to
+                    ensure that AI-enabled care delivery reflects compassion,
+                    defined as sensitivity to patient suffering and a commitment
+                    to relieve it, which remains central to effective care.
+                    While previous research has focused on algorithmic
+                    performance and clinical outcomes, far less attention has
+                    been paid to how compassion can be systematically embedded
+                    and sustained within AI-enabled healthcare processes.
+                </p>
+<p>
+                    Drawing on 70 interviews with patients using AI-enabled
+                    self-tracking systems, National Health Service (NHS)
+                    clinicians involved in technology-mediated care pathways,
+                    and senior Roche stakeholders responsible for the design and
+                    governance of AI-enabled digital health systems, this study
+                    develops the <strong>Procedural Compassion in AI (PCA)</strong>
+                    framework.
+                </p>
+<p>
+                    The analysis identifies three interdependent operational
+                    capabilities, translational alignment, responsive
+                    mediation, and sustained governance, which together explain
+                    how compassion is either embedded or eroded throughout the
+                    AI-enabled care delivery lifecycle. The findings further
+                    demonstrate that compassion failures arise not simply from
+                    algorithmic limitations or individual intent, but from
+                    misalignments across these operational capabilities that
+                    prevent compassionate intent from being translated into
+                    effective escalation pathways and accountability
+                    structures.
+                </p>
+<p>
+                    The talk concludes by discussing the implications for
+                    managers and healthcare organisations seeking to embed
+                    compassion into AI-enabled care delivery while maintaining
+                    efficiency, scalability, and operational effectiveness.
+                </p></div>
+    </div>
+</article>
+<article class="event talk-row">
+  <div class="event-grid">
+    <div class="time">14:00–14:25</div>
+    <div class="speaker-cell">
+      <img class="portrait" src="speakers/menon.jpg" alt="Dr Seetha Menon" loading="lazy">
+      <div class="speaker-name"><a href="https://www.seetha-menon.com/" target="_blank" rel="noopener noreferrer">Dr Seetha Menon</a></div>
+    </div>
+    <div class="talk-cell">
+      <div class="talk-title">Well-Being Salience in Corporate Disclosures and Worker Health</div>
+      <div class="topic-chip">Medical translation</div>
+    </div>
+    <div class="abstract-action"><button class="abstract-toggle" type="button" aria-expanded="false" aria-controls="abstract-s2-6">
+          <span>View abstract</span><span class="chevron" aria-hidden="true">⌄</span>
+        </button></div>
+  </div>
+  <div class="abstract-panel" id="abstract-s2-6" hidden>
+      <div class="abstract-label">Abstract</div>
+      <div class="abstract-copy"><p>
+                    This talk explores how firms' orientation towards employee
+                    well-being influences the health-related behaviour of their
+                    workforce. Because a firm's commitment to well-being is not
+                    directly observable, the study measures it through the language
+                    used in Danish companies' public disclosures, applying language
+                    models to construct a firm-level well-being salience score.
+                </p>
+<p>
+                    The well-being score is linked to nationwide administrative
+                    registers covering health outcomes and sickness absence between
+                    2013 and 2022. By exploiting workers' mobility between firms,
+                    the study estimates how employee health behaviour changes when
+                    individuals move to employers with different levels of
+                    well-being salience.
+                </p>
+<p>
+                    The findings reveal a notable asymmetry. Workers moving to
+                    firms with higher well-being salience take significantly more
+                    sickness absence, while their use of mental health services
+                    remains unchanged. Since a genuine deterioration in health
+                    would be expected to increase both measures, the evidence
+                    suggests that the observed increase in absence reflects changes
+                    in behaviour rather than worsening health.
+                </p>
+<p>
+                    The results demonstrate that organisations influence not only
+                    worker health but also how employees respond to it. More
+                    broadly, the study highlights how the language of routine
+                    corporate disclosures can be analysed using NLP to uncover
+                    economically meaningful characteristics of workplaces that are
+                    not captured in traditional administrative data.
+                </p></div>
+    </div>
+</article></div>
+</section><section class="programme-session s3" id="session-3">
+  <div class="session-heading">
+    <div><span class="session-number">SESSION 3</span><span class="dot">•</span>TRUSTWORTHY AI, SECURITY AND DIGITAL TRANSFORMATION</div>
+    <time>14:25–16:10</time>
+  </div>
+  <div class="column-headings" aria-hidden="true"><span>TIME</span><span>SPEAKER</span><span>TALK</span><span>ABSTRACT</span></div>
+  <div class="session-events"><article class="event talk-row">
+  <div class="event-grid">
+    <div class="time">14:25–14:50</div>
+    <div class="speaker-cell">
+      <img class="portrait" src="speakers/abhishek.png" alt="Dr Nayak Abhishek Shashikant" loading="lazy">
+      <div class="speaker-name"><a href="https://vinuni.edu.vn/people/nayak-abhishek-shashikant/" target="_blank" rel="noopener noreferrer">Dr Nayak Abhishek Shashikant</a></div>
+    </div>
+    <div class="talk-cell">
+      <div class="talk-title">The AI Maturity Trap: What Emerging Markets Reveal About AI Transformation</div>
+      <div class="topic-chip">AI transformation</div>
+    </div>
+    <div class="abstract-action"><button class="abstract-toggle" type="button" aria-expanded="false" aria-controls="abstract-s3-1">
+          <span>View abstract</span><span class="chevron" aria-hidden="true">⌄</span>
+        </button></div>
+  </div>
+  <div class="abstract-panel" id="abstract-s3-1" hidden>
+      <div class="abstract-label">Abstract</div>
+      <div class="abstract-copy"><p>
+                    Artificial intelligence has become a global strategic
+                    priority, yet many organisations continue to struggle to
+                    translate AI investments into enterprise-wide
+                    transformation. Drawing on findings from the
+                    <em>State of AI in Vietnam 2026</em> study and executive
+                    insights from one of Vietnam's leading AI-driven
+                    organisations, this talk introduces the concept of the
+                    <strong>AI Maturity Trap</strong>, a framework explaining
+                    why organisations often stall between AI experimentation
+                    and meaningful business transformation.
+                </p>
+<p>
+                    Using Vietnam as an emerging-market case study, the talk
+                    examines three evolving bottlenecks that influence AI
+                    success: technical capabilities, operational integration,
+                    and Strategic Orchestration. Together, these dimensions
+                    provide a practical perspective on why successful pilot
+                    projects do not always translate into organisation-wide
+                    impact.
+                </p>
+<p>
+                    The session will offer practical insights into identifying
+                    these organisational constraints and discuss the leadership,
+                    governance, and operational capabilities required to move
+                    beyond isolated AI initiatives. It will also highlight how
+                    emerging markets can provide valuable lessons for
+                    organisations worldwide seeking to realise sustainable
+                    business value from AI.
+                </p></div>
+    </div>
+</article>
+<article class="event talk-row">
+  <div class="event-grid">
+    <div class="time">14:50–15:15</div>
+    <div class="speaker-cell">
+      <img class="portrait" src="speakers/varun.jpeg" alt="Mr. Varun Kalra" loading="lazy">
+      <div class="speaker-name"><a href="https://www.linkedin.com/in/vrnkalra/" target="_blank" rel="noopener noreferrer">Mr. Varun Kalra</a></div>
+    </div>
+    <div class="talk-cell">
+      <div class="talk-title">The Double-Edged Sword: AI in the Age of Deepfakes and Digital Fraud</div>
+      <div class="topic-chip">Deepfakes and fraud</div>
+    </div>
+    <div class="abstract-action"><button class="abstract-toggle" type="button" aria-expanded="false" aria-controls="abstract-s3-2">
+          <span>View abstract</span><span class="chevron" aria-hidden="true">⌄</span>
+        </button></div>
+  </div>
+  <div class="abstract-panel" id="abstract-s3-2" hidden>
+      <div class="abstract-label">Abstract</div>
+      <div class="abstract-copy"><p>
+                    AI has turned digital fraud into something fast, cheap, and
+                    frighteningly convincing. What once took hours in Photoshop
+                    can now be generated in seconds by image and video models,
+                    allowing fraudsters to run thousands of iterations against
+                    identity verification systems until one gets through.
+                </p>
+<p>
+                    This talk traces how digital fraud has evolved over the last
+                    few years and examines why AI now sits on both sides of the
+                    fight.
+                </p>
+<p>
+                    Drawing on experience building KYC and fraud detection
+                    solutions across Southeast Asia, the Middle East, and Africa,
+                    Varun will explain why no single defence can withstand a
+                    threat that continues to become more sophisticated, and why
+                    only a multi-pronged approach stands a chance.
+                </p></div>
+    </div>
+</article>
+<article class="event talk-row">
+  <div class="event-grid">
+    <div class="time">15:15–15:40</div>
+    <div class="speaker-cell">
+      <img class="portrait" src="speakers/thanh.png" alt="Dr. Nguyen Ha Thanh" loading="lazy">
+      <div class="speaker-name"><a href="https://vinuni.edu.vn/people/nguyen-ha-thanh/" target="_blank" rel="noopener noreferrer">Dr. Nguyen Ha Thanh</a></div>
+    </div>
+    <div class="talk-cell">
+      <div class="talk-title">From Language Models to Trustworthy Decision Systems</div>
+      <div class="topic-chip">Trustworthy Legal AI</div>
+    </div>
+    <div class="abstract-action"><button class="abstract-toggle" type="button" aria-expanded="false" aria-controls="abstract-s3-3">
+          <span>View abstract</span><span class="chevron" aria-hidden="true">⌄</span>
+        </button></div>
+  </div>
+  <div class="abstract-panel" id="abstract-s3-3" hidden>
+      <div class="abstract-label">Abstract</div>
+      <div class="abstract-copy"><p>
+                    Large language models are changing how legal information is
+                    searched, analysed, and communicated. However, Legal AI
+                    requires more than generating fluent and convincing answers.
+                    Legal applications must operate with reliable sources,
+                    structured reasoning, explainability, privacy safeguards,
+                    human oversight, and clearly defined accountability.
+                </p>
+<p>
+                    This talk provides a broad overview of Legal AI, from legal
+                    information retrieval and question answering to
+                    retrieval-augmented generation, legal reasoning, and
+                    neuro-symbolic AI. It discusses what current language models
+                    can do, where they remain unreliable, and why legal
+                    hallucination, outdated knowledge, jurisdictional
+                    differences, and evaluation remain important challenges.
+                </p>
+<p>
+                    It concludes with a practical vision for trustworthy legal
+                    decision-support systems, where language models work
+                    together with verified legal sources, explicit reasoning
+                    mechanisms, validation processes, and appropriate human
+                    judgement.
+                </p></div>
+    </div>
+</article>
+<article class="event special break-row">
+  <div class="event-grid">
+    <div class="time">15:40–16:10</div>
+    <div class="special-label"><span class="special-icon" aria-hidden="true">☕</span><strong>COFFEE BREAK</strong></div>
+    <div class="talk-title"><strong>Refreshments and networking</strong></div>
+    <div class="topic-chip">Networking</div>
+  </div>
+</article></div>
+</section><section class="programme-session s4" id="session-4">
+  <div class="session-heading">
+    <div><span class="session-number">SESSION 4</span><span class="dot">•</span>AI FOR ENGINEERING AND FRONTIER SYSTEMS</div>
+    <time>16:10–17:30</time>
+  </div>
+  <div class="column-headings" aria-hidden="true"><span>TIME</span><span>SPEAKER</span><span>TALK</span><span>ABSTRACT</span></div>
+  <div class="session-events"><article class="event talk-row">
+  <div class="event-grid">
+    <div class="time">16:10–16:35</div>
+    <div class="speaker-cell">
+      <img class="portrait" src="speakers/Tung.png" alt="Dr. Nguyen Dang Tung" loading="lazy">
+      <div class="speaker-name"><a href="https://vinuni.edu.vn/people/nguyen-dang-tung-phd/" target="_blank" rel="noopener noreferrer">Dr. Nguyen Dang Tung</a></div>
+    </div>
+    <div class="talk-cell">
+      <div class="talk-title">AI for Materials Science and Engineering: From Generative Synthesis to Structural Design</div>
+      <div class="topic-chip">Materials discovery</div>
+    </div>
+    <div class="abstract-action"><button class="abstract-toggle" type="button" aria-expanded="false" aria-controls="abstract-s4-1">
+          <span>View abstract</span><span class="chevron" aria-hidden="true">⌄</span>
+        </button></div>
+  </div>
+  <div class="abstract-panel" id="abstract-s4-1" hidden>
+      <div class="abstract-label">Abstract</div>
+      <div class="abstract-copy"><p>
+                    Artificial Intelligence (AI) and advanced automation are
+                    fundamentally reshaping the materials discovery pipeline,
+                    enabling a seamless transition from data-driven property
+                    prediction to sophisticated structural and process
+                    optimisation. This talk presents three complementary
+                    examples developed at VinUniversity that accelerate every
+                    stage of discovery, from automated literature mining to
+                    inverse design.
+                </p>
+<p>
+                    The presentation begins with AI-powered text mining for
+                    synthesising scientific literature, creating high-quality
+                    datasets that support environmentally sustainable
+                    "green" synthesis through interdisciplinary collaboration
+                    with Prof. Le Duy Dung. It then introduces advanced
+                    computer vision approaches, including EfficientNet and
+                    CLIP, for automated classification of experimental images,
+                    delivering strong performance even in few-shot settings.
+                </p>
+<p>
+                    These capabilities are integrated into the Algorithmic
+                    Interactive Reticular Synthesis (AIRES) platform,
+                    co-developed with Prof. Omar Yaghi at UC Berkeley.
+                    AIRES combines probabilistic models, including Random
+                    Forests and Gaussian Processes, to predict crystallisation
+                    outcomes for complex framework materials, achieving
+                    approximately a twofold acceleration compared with
+                    conventional unguided exploration.
+                </p>
+<p>
+                    The talk concludes by exploring the next generation of
+                    inverse materials design through generative AI. By embedding
+                    material structures into continuous latent spaces and
+                    applying multi-objective Bayesian optimisation, the
+                    framework balances manufacturability with key performance
+                    metrics such as stiffness and density. Combined with
+                    advances in multimaterial fibre engineering and on-fibre
+                    neuromorphic computing, this research illustrates how
+                    generative AI is enabling the development of intelligent,
+                    multifunctional materials for wearable technologies and
+                    infrastructure-integrated sensing systems.
+                </p>
+<p>
+                    The presentation will conclude with a discussion of future
+                    opportunities for interdisciplinary collaboration and
+                    industrial partnerships aimed at translating these advances
+                    into practical technologies with broad societal impact.
+                </p></div>
+    </div>
+</article>
+<article class="event talk-row">
+  <div class="event-grid">
+    <div class="time">16:35–17:00</div>
+    <div class="speaker-cell">
+      <img class="portrait" src="speakers/yuvraj.png" alt="Dr. Yuvraj Sahni" loading="lazy">
+      <div class="speaker-name"><a href="https://vinuni.edu.vn/people/yuvraj-sahni" target="_blank" rel="noopener noreferrer">Dr. Yuvraj Sahni</a></div>
+    </div>
+    <div class="talk-cell">
+      <div class="talk-title">Collaborative Orbital Edge Intelligence: A Decentralized Paradigm for Energy-Efficient Computing in Space</div>
+      <div class="topic-chip">Space-edge intelligence</div>
+    </div>
+    <div class="abstract-action"><button class="abstract-toggle" type="button" aria-expanded="false" aria-controls="abstract-s4-2">
+          <span>View abstract</span><span class="chevron" aria-hidden="true">⌄</span>
+        </button></div>
+  </div>
+  <div class="abstract-panel" id="abstract-s4-2" hidden>
+      <div class="abstract-label">Abstract</div>
+      <div class="abstract-copy"><p>
+                    The rapid growth of Low Earth Orbit (LEO) satellite
+                    constellations is creating new opportunities to process
+                    data and run artificial intelligence applications directly
+                    in space. However, satellite computing remains constrained
+                    by limited energy, intermittent connectivity, heterogeneous
+                    resources, and the difficulty of coordinating satellites
+                    across different orbital planes and service providers.
+                    This talk presents recent work on
+                    <strong>Collaborative Orbital Edge Intelligence (COEI)</strong>,
+                    a decentralized paradigm in which satellites collaboratively
+                    perform sensing, communication, and computation tasks without
+                    relying on a central controller.
+                </p>
+<p>
+                    COEI enables the formation of a multi-party, multi-orbit
+                    computing infrastructure in which satellites make decisions
+                    using local information and share resources across
+                    heterogeneous constellations. The presentation will discuss
+                    the COEI architecture and its interconnected challenges in
+                    networking, computing, and power management, including
+                    dynamic routing, computation offloading, service migration,
+                    energy harvesting, battery-aware scheduling, security,
+                    privacy, and incentive design.
+                </p>
+<p>
+                    The talk will also present research on decentralised
+                    energy-aware satellite task offloading, where satellites
+                    iteratively offload tasks across multiple hops while
+                    accounting for stochastic workloads, sunlight availability,
+                    battery dynamics, and resource constraints. Beyond task
+                    offloading, the session will highlight broader research
+                    opportunities in joint communication-computation scheduling,
+                    reliable service migration, trustworthy multi-operator
+                    collaboration, and integration with future 5G/6G networks.
+                </p>
+<p>
+                    These directions are important for enabling resilient,
+                    energy-efficient, and trustworthy intelligence at the space
+                    edge.
+                </p></div>
+    </div>
+</article>
+<article class="event special panel-row">
+  <div class="event-grid">
+    <div class="time">17:00–17:20</div>
+    <div class="special-label"><span class="special-icon" aria-hidden="true">◎</span><strong>PANEL DISCUSSION</strong></div>
+    <div class="talk-title"><strong>AI of X: Opportunities for Cross-Disciplinary Collaboration</strong></div>
+    <div class="topic-chip">Shared challenges and opportunities</div>
+  </div>
+</article>
+<article class="event special closing-row">
+  <div class="event-grid">
+    <div class="time">17:20–17:30</div>
+    <div class="special-label"><span class="special-icon" aria-hidden="true">✓</span><strong>CLOSING REMARKS</strong></div>
+    <div class="talk-title"><strong>Workshop close and next steps</strong></div>
+    <div class="topic-chip">Closing</div>
+  </div>
+</article></div>
+</section>
+  <p class="footnote">Each invited talk includes 20 minutes for presentation and 5 minutes for questions. Programme subject to minor changes.</p>
+</main>
+<footer><div class="footer-inner"><span><strong>AI of X</strong> · Intelligence Across Disciplines and Domains</span><span>VinUniversity, Hanoi · 16 September 2026</span></div></footer>
+<script>
+(function() {
+  const toggles = [...document.querySelectorAll('.abstract-toggle')];
+  function setToggle(btn, open) {
+    const panel = document.getElementById(btn.getAttribute('aria-controls'));
+    if (!panel) return;
+    btn.setAttribute('aria-expanded', String(open));
+    panel.hidden = !open;
+    const label = btn.querySelector('span:first-child');
+    if (label) label.textContent = open ? 'Hide abstract' : 'View abstract';
+  }
+  toggles.forEach(btn => btn.addEventListener('click', () => setToggle(btn, btn.getAttribute('aria-expanded') !== 'true')));
+  document.getElementById('expandAll').addEventListener('click', () => toggles.forEach(btn => setToggle(btn, true)));
+  document.getElementById('collapseAll').addEventListener('click', () => toggles.forEach(btn => setToggle(btn, false)));
+})();
+</script>
+</body>
+</html>
