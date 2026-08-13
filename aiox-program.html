@@ -6,7 +6,7 @@
 <meta name="description" content="AI of X: Intelligence Across Disciplines and Domains, interactive workshop programme, VinUniversity, Hanoi, 16 September 2026.">
 <title>AI of X | Workshop Programme</title>
 <link href="img/favicon.ico" rel="icon" type="image/x-icon">
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -16,10 +16,21 @@
   --paper:#ffffff; --canvas:#f4f7fb; --gold:#dfa30b; --gold-soft:#fff6d8;
   --s1:#287e88; --s2:#ba276b; --s3:#c68111; --s4:#2d6398;
 }
+.hero-vinuni-logo{
+  width:150px;
+  height:auto;
+  display:block;
+  margin:0 0 24px 0;
+}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;font-family:'Bai Jamjuree','Segoe UI',Arial,sans-serif;background:var(--canvas);color:var(--ink);line-height:1.5}
-a{color:inherit}
+body{
+  margin:0;
+  font-family:'Montserrat',Arial,sans-serif;
+  background:var(--canvas);
+  color:var(--ink);
+  line-height:1.5;
+}a{color:inherit}
 
 /* Shared site header/navigation — matched to aiox26.html */
 .site-header{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.95);backdrop-filter:blur(16px);border-bottom:1px solid rgba(223,229,236,.9);box-shadow:0 3px 18px rgba(20,36,61,.05)}
@@ -39,8 +50,13 @@ a{color:inherit}
 .mobile-nav.open{display:block}
 .mobile-nav a{display:block;text-decoration:none;padding:10px 4px;font-weight:700;color:#42546b;border-bottom:1px solid #eef1f5}
 
-.hero{background:linear-gradient(135deg,var(--navy) 0%,#183050 65%,#214268 100%);color:#fff;border-bottom:4px solid var(--gold);position:relative;overflow:hidden}
-.hero::after{content:'';position:absolute;width:360px;height:360px;border:1px solid rgba(255,255,255,.08);border-radius:50%;right:-120px;top:-180px;box-shadow:0 0 0 55px rgba(255,255,255,.025),0 0 0 110px rgba(255,255,255,.018)}
+.hero{
+  background:linear-gradient(135deg,#35426E 0%,#2E548A 100%);
+  color:#fff;
+  border-bottom:4px solid #D2AE6D;
+  position:relative;
+  overflow:hidden;
+}.hero::after{content:'';position:absolute;width:360px;height:360px;border:1px solid rgba(255,255,255,.08);border-radius:50%;right:-120px;top:-180px;box-shadow:0 0 0 55px rgba(255,255,255,.025),0 0 0 110px rgba(255,255,255,.018)}
 .hero-inner{max-width:1240px;margin:auto;padding:34px 24px 30px;position:relative;z-index:1;display:grid;grid-template-columns:1fr auto;gap:24px;align-items:end}
 .brand-kicker{font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#f2c44f;margin-bottom:5px}
 h1{font-size:clamp(2.25rem,6vw,4.4rem);line-height:.95;margin:0;font-weight:700;letter-spacing:-.045em}
@@ -90,8 +106,14 @@ h1{font-size:clamp(2.25rem,6vw,4.4rem);line-height:.95;margin:0;font-weight:700;
 .special-label{display:flex;align-items:center;gap:8px;font-size:.89rem} .special-icon{width:26px;height:26px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;background:#fff;border:1px solid #dfe5ec;font-size:.82rem}
 .special .talk-title{font-size:.88rem} .special .topic-chip{margin-top:0}
 .footnote{color:#6d7785;font-size:.78rem;text-align:center;margin:18px 0 26px}
-footer{background:var(--navy)!important;color:#bfcadd!important;border-top:1px solid rgba(255,255,255,.08);padding:22px 0!important;font-size:.78rem!important;margin-top:26px}
-footer>.container{max-width:1240px!important;margin:auto!important;padding:0 24px!important;display:flex!important;align-items:center!important;justify-content:space-between!important;gap:20px!important;flex-wrap:wrap}
+footer{
+  background:linear-gradient(135deg,#35426E 0%,#2E548A 100%)!important;
+  color:#bfcadd!important;
+  border-top:1px solid rgba(255,255,255,.08);
+  padding:22px 0!important;
+  font-size:.78rem!important;
+  margin-top:26px;
+}footer>.container{max-width:1240px!important;margin:auto!important;padding:0 24px!important;display:flex!important;align-items:center!important;justify-content:space-between!important;gap:20px!important;flex-wrap:wrap}
 footer a{color:#dbe4ef!important;text-decoration:none!important;margin-right:16px}
 footer a:hover{color:#fff!important;text-decoration:underline!important}
 .footer-socials{display:flex;align-items:center;gap:12px}
@@ -133,29 +155,25 @@ footer a:hover{color:#fff!important;text-decoration:underline!important}
 <body>
 <!-- Shared Header & Navigation -->
 <header class="site-header">
-  <nav aria-label="Main navigation" class="site-nav">
-    <a class="site-brand" href="aiox26.html#home">
-      <img alt="NLP at VinUniversity" src="./assets/vinnlp.png">
-      <span class="brand-copy"><strong>AI of X</strong><span>VinUniversity · 2026</span></span>
-    </a>
-    <button aria-expanded="false" aria-label="Toggle navigation" class="menu-toggle" id="workshopMenuBtn" type="button"><i class="fas fa-bars"></i></button>
-    <ul class="nav-links">
-      <li><a href="aiox26.html#about">About</a></li>
-      <li><a href="aiox26.html#speakers">Speakers</a></li>
-      <li><a href="aiox26.html#format">Format</a></li>
-      <li><a href="aiox26.html#venue">Venue</a></li>
-      <li><a href="aiox26.html#contact">Contact</a></li>
-      <li><a class="programme-link" href="aiox-program.html" aria-current="page">Programme</a></li>
-    </ul>
-  </nav>
-  <div class="mobile-nav" id="workshopMobileNav">
-    <a href="aiox26.html#about">About</a>
-    <a href="aiox26.html#speakers">Speakers</a>
-    <a href="aiox26.html#format">Format</a>
-    <a href="aiox26.html#venue">Venue</a>
-    <a href="aiox26.html#contact">Contact</a>
-    <a href="aiox-program.html" aria-current="page">Programme</a>
-  </div>
+<nav aria-label="Main navigation" class="site-nav">
+<a class="site-brand" href="#home">
+<img alt="VinUniversity" src="./assets/vinunilogo.png"/>
+<span class="brand-copy">
+</span>
+</a>
+<button aria-expanded="false" aria-label="Toggle navigation" class="menu-toggle" id="workshopMenuBtn"><i class="fas fa-bars"></i></button>
+<ul class="nav-links">
+<li><a href="#about">About</a></li>
+<li><a href="#speakers">Speakers</a></li>
+<li><a href="#format">Format</a></li>
+<li><a href="#venue">Venue</a></li>
+<li><a href="#contact">Contact</a></li>
+<li><a class="programme-link" href="aiox-program.html">Programme</a></li>
+</ul>
+</nav>
+<div class="mobile-nav" id="workshopMobileNav">
+<a href="#about">About</a><a href="#speakers">Speakers</a><a href="#format">Format</a><a href="#venue">Venue</a><a href="#contact">Contact</a><a href="aiox-program.html">Programme</a>
+</div>
 </header>
 <header class="hero">
   <div class="hero-inner">
@@ -164,7 +182,15 @@ footer a:hover{color:#fff!important;text-decoration:underline!important}
       <h1>AI of X</h1>
       <div class="subtitle">INTELLIGENCE ACROSS DISCIPLINES AND DOMAINS</div>
     </div>
-    <div class="hero-meta"><strong>16 SEPTEMBER 2026</strong>09:00–17:30 &nbsp;•&nbsp; Peace Room I201<br>VinUniversity, Hanoi</div>
+	
+    <div class="hero-meta">
+		<img
+  class="hero-vinuni-logo"
+  src="https://vinuni.edu.vn/wp-content/uploads/2025/04/VINUNI_LOGO-FULL-.png"
+  alt="VinUniversity"
+/>
+<strong>16 SEPTEMBER 2026</strong>09:00–17:30 &nbsp;•&nbsp; Peace Room I201<br>VinUniversity, Hanoi</div>
+	
   </div>
 </header>
 <main class="container">
@@ -953,7 +979,6 @@ footer a:hover{color:#fff!important;text-decoration:underline!important}
   </div>
 </article></div>
 </section>
-  <p class="footnote">Each invited talk includes 20 minutes for presentation and 5 minutes for questions. Programme subject to minor changes.</p>
 </main>
 <!-- Shared Footer -->
 <footer>
@@ -966,11 +991,16 @@ footer a:hover{color:#fff!important;text-decoration:underline!important}
       <a href="aiox26.html#venue">Venue</a>
       <a href="aiox26.html#contact">Contact</a>
     </div>
+	<img
+  class="hero-vinuni-logo"
+  src="https://vinuni.edu.vn/wp-content/uploads/2025/04/VINUNI_LOGO-FULL-.png"
+  alt="VinUniversity"
+/>
     <div class="footer-socials">
       <a aria-label="LinkedIn" href="https://www.linkedin.com/company/vinnlp" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i></a>
       <a aria-label="X" href="https://x.com/vinnlp" target="_blank" rel="noopener noreferrer"><i class="fab fa-x-twitter"></i></a>
     </div>
-    <div>© 2025-2026 NLP @ VinUniversity. All rights reserved.</div>
+    <div>© 2026-2027 NLP @ VinUniversity. All rights reserved.</div>
   </div>
 </footer>
 <script>

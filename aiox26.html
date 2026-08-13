@@ -10,34 +10,42 @@
 <link href="./output.css" rel="stylesheet"/>
 <!-- Optionally include Font Awesome for social icons -->
 <!-- <script src="https://kit.fontawesome.com/yourkitid.js" crossorigin="anonymous"></script> -->
-<link href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-MdFKNzCgP2CgcnI2Hg+grrGZ2E1uJtEmG9OAzgBClT49yNdozD1X0xAP0drfQ6d3VWaTb0Dj+0LyEKaRuUEC3w==" referrerpolicy="no-referrer" rel="stylesheet"/>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" rel="stylesheet"/>
 </link></link><style>
 :root{
-  --navy:#14243d;
-  --navy-2:#1d3658;
-  --navy-3:#284a73;
-  --ink:#172033;
+  --navy:#35426E;
+  --navy-2:#2E548A;
+  --navy-3:#2E548A;
+
+  --ink:#20242c;
   --muted:#667085;
-  --line:#dfe5ec;
+  --line:#D2D3D5;
   --paper:#ffffff;
-  --canvas:#f4f7fb;
-  --gold:#dfa30b;
-  --gold-2:#f0bf3a;
-  --gold-soft:#fff7dc;
-  --teal:#287e88;
-  --magenta:#ba276b;
-  --orange:#c68111;
-  --blue:#2d6398;
-  --shadow:0 12px 34px rgba(20,36,61,.09);
-  --shadow-sm:0 6px 20px rgba(20,36,61,.07);
+  --canvas:#f5f7f9;
+
+  --gold:#D2AE6D;
+  --gold-2:#D2AE6D;
+  --gold-soft:#f7f1e5;
+
+  --teal:#5CC6D0;
+  --blue:#4890BD;
+  --red:#C83538;
+
+  --shadow:0 12px 34px rgba(53,66,110,.09);
+  --shadow-sm:0 6px 20px rgba(53,66,110,.07);
+}
+.hero-vinuni-logo{
+  width:150px;
+  height:auto;
+  display:block;
+  margin:0 0 24px 0;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:92px}
-body{margin:0!important;font-family:'Bai Jamjuree','Segoe UI',Arial,sans-serif!important;background:var(--canvas)!important;color:var(--ink)!important;line-height:1.62;-webkit-font-smoothing:antialiased}
-a{color:inherit}
+body{margin:0!important;font-family:'Montserrat',Arial,sans-serif!important;font-size:90%;background:var(--canvas)!important;color:var(--ink)!important;line-height:1.62;-webkit-font-smoothing:antialiased}
 img{max-width:100%}
 ::selection{background:#f3d477;color:#172033}
 
@@ -60,7 +68,13 @@ img{max-width:100%}
 .mobile-nav a{display:block;text-decoration:none;padding:10px 4px;font-weight:700;color:#42546b;border-bottom:1px solid #eef1f5}
 
 /* Hero, deliberately matching the programme page */
-.hero{position:relative!important;background:linear-gradient(135deg,var(--navy) 0%,#183050 65%,#214268 100%)!important;color:#fff!important;border-bottom:4px solid var(--gold);overflow:hidden;padding:0!important}
+.hero{
+    background:linear-gradient(
+        135deg,
+        #35426E 0%,
+        #2E548A 100%
+    )!important;
+}
 .hero::before,.hero::after{content:'';position:absolute;border-radius:50%;pointer-events:none}
 .hero::after{width:430px;height:430px;border:1px solid rgba(255,255,255,.08);right:-155px;top:-225px;box-shadow:0 0 0 65px rgba(255,255,255,.025),0 0 0 130px rgba(255,255,255,.018)}
 .hero::before{width:260px;height:260px;background:radial-gradient(circle,rgba(223,163,11,.11),transparent 66%);left:-70px;bottom:-120px}
@@ -208,8 +222,9 @@ footer a:hover{color:#fff!important;text-decoration:underline!important}
 <header class="site-header">
 <nav aria-label="Main navigation" class="site-nav">
 <a class="site-brand" href="#home">
-<img alt="NLP at VinUniversity" src="./assets/vinnlp.png"/>
-<span class="brand-copy"><strong>AI of X</strong><span>VinUniversity · 2026</span></span>
+<img alt="VinUniversity" src="./assets/vinunilogo.png"/>
+<span class="brand-copy">
+</span>
 </a>
 <button aria-expanded="false" aria-label="Toggle navigation" class="menu-toggle" id="workshopMenuBtn"><i class="fas fa-bars"></i></button>
 <ul class="nav-links">
@@ -229,6 +244,7 @@ footer a:hover{color:#fff!important;text-decoration:underline!important}
 <section class="hero" id="home">
 <div class="hero-inner">
 <div>
+
 <div class="hero-kicker">Workshop · VinUniversity · Hanoi</div>
 <h1>AI of X</h1>
 <p class="hero-subtitle">Intelligence Across Disciplines and Domains</p>
@@ -239,6 +255,11 @@ footer a:hover{color:#fff!important;text-decoration:underline!important}
 </div>
 </div>
 <div aria-label="Workshop details" class="hero-meta">
+<img
+  class="hero-vinuni-logo"
+  src="https://vinuni.edu.vn/wp-content/uploads/2025/04/VINUNI_LOGO-FULL-.png"
+  alt="VinUniversity"
+/>
 <div class="meta-line"><i class="far fa-calendar"></i><div><strong>16 September 2026</strong>09:00–17:30</div></div>
 <div class="meta-line"><i class="fas fa-location-dot"></i><div><strong>Peace Room I201</strong>VinUniversity, Hanoi</div></div>
 <div class="meta-line"><i class="fas fa-people-group"></i><div><strong>In person</strong>AI across disciplines</div></div>
@@ -1246,7 +1267,13 @@ footer a:hover{color:#fff!important;text-decoration:underline!important}
 <div class="container mx-auto px-6 md:flex md:space-x-12">
 <!-- Contact Info -->
 <div class="contact-panel">
+<img
+  class="hero-vinuni-logo"
+  src="https://vinuni.edu.vn/wp-content/uploads/2025/04/VINUNI_LOGO-FULL-.png"
+  alt="VinUniversity"
+/>
 <h2 class="text-3xl font-bold mb-6">Get in Touch</h2>
+
 <p class="mb-2"><strong>Address:</strong> CECS, VinUniversity, Hanoi, Vietnam</p>
 <p class="mb-2">
 <strong>Email:</strong>
@@ -1333,11 +1360,11 @@ footer a:hover{color:#fff!important;text-decoration:underline!important}
 </div>
 <!-- Social Icons -->
 <div class="mb-4 md:mb-0">
-<a aria-label="&lt;span class=" fa-lg"="" fa-linkedin="" fab="" href="#">" class="mr-3 hover:text-white"&gt;<i class="fab fa-linkedin"></i></a>
+<a aria-label="&lt;span class=" fa-lg"="" fa-linkedin="" fab="" href="#"><i class="fab fa-linkedin"></i></a>
 <a aria-label="Twitter" class="mr-3 hover:text-white" href="#"><i class="fab fa-twitter"></i></a>
 </div>
 <!-- Copyright -->
-<div>© 2025-2026 NLP @ VinUniversity. All rights reserved.</div>
+<div>© 2026-2027 NLP @ VinUniversity. All rights reserved.</div>
 </div>
 </footer>
 <!-- JavaScript -->
