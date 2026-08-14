@@ -1,647 +1,312 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-	<link rel="icon" href="img/favicon.ico" type="image/x-icon">
-    <title>NLP @ VinUniversity</title>
-    <!-- Link to your compiled Tailwind CSS -->
-    <link rel="stylesheet" href="./output.css" />
-    <!-- Optionally include Font Awesome for social icons -->
-    <!-- <script src="https://kit.fontawesome.com/yourkitid.js" crossorigin="anonymous"></script> -->
-    <link href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-MdFKNzCgP2CgcnI2Hg+grrGZ2E1uJtEmG9OAzgBClT49yNdozD1X0xAP0drfQ6d3VWaTb0Dj+0LyEKaRuUEC3w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-
-	<style>
-        /* Fallback if Tailwind is not configured with this font */
-        body {
-            font-family: 'Bai Jamjuree', sans-serif;
-        }
-
-        /* Ensure the hero heading is inline-level and doesn’t break to a new line */
-        #hero-h1 {
-            display: inline-block;
-            /* Inline container for the text */
-            white-space: nowrap;
-            /* Prevent wrapping onto a new line */
-        }
-
-        /* Style the Typed.js cursor */
-        .typed-cursor {
-            display: inline;
-            /* Keep cursor in the inline flow */
-            vertical-align: middle;
-            /* Align cursor vertically with text (use middle or baseline as needed) */
-            font-size: inherit;
-            font-weight: normal;
-            margin-left: 0.1em;
-            /* small gap between text and cursor */
-            animation: blink 0.7s infinite;
-        }
-
-        /* Add a blinking cursor after the heading text using a pseudo-element */
-        #hero-h1::after {
-            content: "|";
-            display: inline;
-            vertical-align: middle;
-            font-size: inherit;
-            margin-left: 0.1em;
-            animation: blink 0.7s infinite;
-        }
-
-        @keyframes blink {
-            0% {
-                opacity: 1;
-            }
-
-            50% {
-                opacity: 0;
-            }
-
-            100% {
-                opacity: 1;
-            }
-        }
- a {
-    color: blue !important;
-    text-decoration: underline !important;
-}
-	</style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="LLMs4All: LLMs, Big Data, and Multilinguality for All, a workshop at IEEE BigData 2025 in Macau. Workshop archive, accepted papers, programme, organisers, and proceedings.">
+<link rel="icon" href="img/favicon.ico" type="image/x-icon">
+<title>LLMs4All 2025 | IEEE BigData Workshop</title>
+<link rel="stylesheet" href="./output.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+<style>
+:root{--navy:#35426E;--navy2:#2E548A;--ink:#20242c;--muted:#667085;--line:#dfe5ec;--paper:#fff;--canvas:#f5f7f9;--gold:#D2AE6D;--gold-soft:#f7f1e5;--teal:#5CC6D0;--blue:#4890BD;--shadow:0 12px 34px rgba(53,66,110,.09);--shadow-sm:0 6px 20px rgba(53,66,110,.07)}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{margin:0;font-family:'Montserrat',Arial,sans-serif;color:var(--ink);background:var(--canvas);line-height:1.65;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+img{max-width:100%;display:block}
+.wrap{max-width:1220px;margin:auto;padding:0 24px}
+.site-header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.95);backdrop-filter:blur(15px);border-bottom:1px solid rgba(223,229,236,.9);box-shadow:0 3px 18px rgba(20,36,61,.05)}
+.nav{max-width:1220px;margin:auto;padding:11px 24px;display:flex;align-items:center;justify-content:space-between;gap:25px}
+.brand img{height:52px;width:auto}
+.nav-links{display:flex;gap:4px;list-style:none;padding:0;margin:0;align-items:center}
+.nav-links a{text-decoration:none;color:#48586c;font-weight:700;font-size:.82rem;padding:9px 10px;border-radius:9px}
+.nav-links a:hover{background:#f1f4f8;color:var(--navy)}
+.nav-links .proceedings-link{background:var(--navy);color:#fff;padding-inline:14px}
+.nav-links .proceedings-link:hover{background:var(--navy2);color:#fff}
+.menu-btn{display:none;width:42px;height:42px;border:1px solid var(--line);border-radius:10px;background:#fff;color:var(--navy);font-size:1rem}
+.mobile-nav{display:none;padding:8px 20px 15px;border-top:1px solid var(--line);background:#fff}
+.mobile-nav.open{display:block}
+.mobile-nav a{display:block;padding:10px 3px;text-decoration:none;font-weight:700;color:#48586c;border-bottom:1px solid #edf1f5}
+.hero{position:relative;overflow:hidden;background:linear-gradient(135deg,var(--navy) 0%,var(--navy2) 100%);color:#fff}
+.hero::after{content:'';position:absolute;width:500px;height:500px;border-radius:50%;border:1px solid rgba(255,255,255,.07);right:-180px;top:-260px;box-shadow:0 0 0 70px rgba(255,255,255,.024),0 0 0 140px rgba(255,255,255,.015)}
+.hero::before{content:'';position:absolute;width:330px;height:330px;border-radius:50%;background:radial-gradient(circle,rgba(210,174,109,.15),transparent 66%);left:-110px;bottom:-165px}
+.hero-inner{max-width:1220px;margin:auto;padding:72px 24px 66px;position:relative;z-index:2;display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:50px;align-items:end}
+.kicker{font-size:.78rem;text-transform:uppercase;letter-spacing:.15em;font-weight:700;color:#f1c95d;margin-bottom:12px}
+.hero h1{font-size:clamp(3.5rem,8vw,6.4rem);line-height:.87;letter-spacing:-.065em;margin:0;font-weight:700}
+.hero-sub{font-size:clamp(1.05rem,2.4vw,1.42rem);font-weight:600;color:#dfe7f1;margin:15px 0 0;max-width:800px}
+.hero-copy{font-size:.93rem;color:#cdd8e6;margin:18px 0 0;max-width:790px}
+.hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:29px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:11px 16px;border-radius:10px;text-decoration:none;font-size:.85rem;font-weight:700;transition:.16s ease}
+.btn.primary{background:var(--gold);color:#172033;box-shadow:0 5px 15px rgba(210,174,109,.22)}
+.btn.primary:hover{transform:translateY(-1px);background:#e2bd77}
+.btn.secondary{border:1px solid rgba(255,255,255,.24);background:rgba(255,255,255,.08);color:#fff}
+.btn.secondary:hover{background:rgba(255,255,255,.14)}
+.hero-meta{border-left:1px solid rgba(255,255,255,.18);padding-left:28px;color:#dce5f0}
+.archive-badge{display:inline-flex;align-items:center;gap:7px;border:1px solid rgba(255,255,255,.19);background:rgba(255,255,255,.08);border-radius:999px;padding:7px 11px;font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:14px}
+.meta-line{display:flex;gap:11px;align-items:flex-start;margin:12px 0;font-size:.89rem}
+.meta-line i{color:#f1c95d;width:18px;text-align:center;margin-top:4px}
+.meta-line strong{display:block;color:#fff}
+.section{padding:62px 0}
+.section.white{background:#fff}
+.section.soft{background:var(--canvas)}
+.eyebrow{font-size:.72rem;text-transform:uppercase;letter-spacing:.13em;color:#966d0b;font-weight:700;margin-bottom:7px}
+.section-title{font-size:clamp(1.7rem,3vw,2.4rem);line-height:1.16;color:var(--navy);letter-spacing:-.035em;margin:0 0 13px}
+.section-lead{font-size:1rem;color:#59697b;max-width:900px;margin:0}
+.archive-panel{background:#fff;border:1px solid #e2e7ed;border-radius:18px;box-shadow:var(--shadow-sm);padding:31px 34px;position:relative;overflow:hidden}
+.archive-panel::before{content:'';position:absolute;left:0;top:0;bottom:0;width:5px;background:var(--gold)}
+.archive-panel p{color:#4f5e70;margin:0 0 13px}
+.archive-panel p:last-child{margin-bottom:0}
+.stat-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-top:25px}
+.stat{background:#fff;border:1px solid #e1e7ee;border-radius:15px;padding:21px;box-shadow:var(--shadow-sm)}
+.stat strong{display:block;color:var(--navy);font-size:1.65rem;line-height:1;margin-bottom:8px}
+.stat span{font-size:.79rem;color:#677688;font-weight:600}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:28px}
+.card{background:#fff;border:1px solid #e1e7ee;border-radius:16px;padding:25px;box-shadow:var(--shadow-sm);position:relative;overflow:hidden}
+.card::before{content:'';position:absolute;left:0;top:0;right:0;height:4px;background:var(--gold)}
+.card:nth-child(2)::before{background:var(--teal)}
+.card h3{color:var(--navy);font-size:1.12rem;margin:4px 0 10px}
+.card p,.card li{color:#59697b;font-size:.87rem}
+.card ul{padding-left:20px;margin:10px 0 0}
+.proceedings-card{margin-top:28px;background:linear-gradient(135deg,#fff 0%,#fafbfd 100%);border:1px solid #dfe5ec;border-radius:18px;box-shadow:var(--shadow);display:grid;grid-template-columns:65px minmax(0,1fr) auto;gap:20px;align-items:center;padding:25px 27px}
+.proceedings-icon{width:54px;height:54px;border-radius:14px;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.3rem}
+.proceedings-card h3{margin:0 0 5px;color:var(--navy);font-size:1.2rem}
+.proceedings-card p{margin:0;color:#637285;font-size:.84rem}
+.proceedings-card .btn{white-space:nowrap;background:var(--gold);color:#172033}
+.topic-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:27px}
+.topic{display:flex;gap:13px;align-items:flex-start;background:#fff;border:1px solid #e1e7ee;border-radius:13px;padding:17px 18px}
+.topic i{color:var(--navy2);margin-top:4px;width:20px}
+.topic strong{display:block;color:#283b55;font-size:.88rem;margin-bottom:2px}
+.topic span{display:block;color:#687789;font-size:.78rem;line-height:1.48}
+.section-head{display:flex;align-items:end;justify-content:space-between;gap:20px;margin-bottom:22px}
+.section-note{font-size:.8rem;color:#758395}
+.paper-list{display:grid;grid-template-columns:1fr;gap:10px}
+.paper-row{background:#fff;border:1px solid #e1e7ee;border-radius:13px;padding:17px 19px;display:grid;grid-template-columns:42px minmax(0,1fr);gap:15px;align-items:flex-start;box-shadow:0 3px 12px rgba(53,66,110,.04)}
+.paper-no{font-size:.72rem;font-weight:700;color:#9a6e00;background:var(--gold-soft);border-radius:8px;padding:6px 0;text-align:center}
+.paper-row h3{font-size:.91rem;line-height:1.42;color:#263851;margin:0 0 4px}
+.paper-row p{font-size:.76rem;color:#718093;margin:0;line-height:1.5}
+details.programme{background:#fff;border:1px solid #e1e7ee;border-radius:16px;box-shadow:var(--shadow-sm);overflow:hidden}
+details.programme summary{cursor:pointer;list-style:none;padding:20px 22px;color:var(--navy);font-weight:700;display:flex;align-items:center;justify-content:space-between;gap:15px}
+details.programme summary::-webkit-details-marker{display:none}
+details.programme summary::after{content:'+';width:27px;height:27px;border-radius:50%;border:1px solid #d6dee8;display:flex;align-items:center;justify-content:center;background:#f7f9fb}
+details.programme[open] summary::after{content:'−'}
+.table-wrap{overflow-x:auto;border-top:1px solid #e7ebf0}
+table{width:100%;border-collapse:collapse;min-width:760px}
+th,td{padding:12px 14px;border-bottom:1px solid #e7ebf0;text-align:left;vertical-align:top;font-size:.78rem}
+th{background:#f5f7fa;color:#324762;font-size:.73rem;text-transform:uppercase;letter-spacing:.04em}
+td:first-child{white-space:nowrap;color:#35426E;font-weight:700}
+.break-row td{background:#f8f5ed;color:#765c20!important;font-weight:700;text-align:center}
+.people-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-top:27px}
+.person-card{text-decoration:none;background:#fff;border:1px solid #e1e7ee;border-radius:15px;padding:19px;box-shadow:var(--shadow-sm);transition:.16s ease;display:flex;gap:14px;align-items:center;min-width:0}
+.person-card:hover{transform:translateY(-2px);box-shadow:0 11px 27px rgba(20,36,61,.1)}
+.person-card img{width:64px;height:64px;border-radius:50%;object-fit:cover;box-shadow:0 0 0 1px #dfe5ec}
+.person-copy{min-width:0}
+.person-copy h3{margin:0 0 4px;color:var(--navy);font-size:.91rem;line-height:1.3}
+.person-copy p{margin:2px 0;color:#718093;font-size:.7rem;line-height:1.35}
+.person-copy .role{color:#9a6e00;font-weight:700}
+.contact-band{background:#eef2f7;border-top:1px solid #dfe5ec;padding:38px 0}
+.contact-box{display:flex;align-items:center;justify-content:space-between;gap:25px;background:var(--navy);border-radius:17px;color:#fff;padding:25px 28px;box-shadow:var(--shadow)}
+.contact-box h2{margin:0 0 4px;font-size:1.25rem}
+.contact-box p{margin:0;color:#dce5f0;font-size:.82rem}
+.contact-box a{color:#f1c95d;text-decoration:none;font-weight:700}
+footer{background:var(--navy);color:#bdc8d8;padding:20px 0;font-size:.74rem}
+.footer-inner{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+footer a{color:#e1e8f2;text-decoration:none}
+@media(max-width:1000px){.nav-links{display:none}.menu-btn{display:block}.hero-inner{grid-template-columns:1fr;gap:28px}.hero-meta{border-left:0;border-top:1px solid rgba(255,255,255,.17);padding-left:0;padding-top:20px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}.stat-grid{grid-template-columns:repeat(2,1fr)}.people-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:720px){.wrap,.nav{padding-left:16px;padding-right:16px}.brand img{height:46px}.hero-inner{padding:49px 17px 44px}.hero h1{font-size:clamp(3.2rem,18vw,5rem)}.hero-meta{grid-template-columns:1fr}.archive-panel{padding:25px 22px}.two-col,.topic-grid{grid-template-columns:1fr}.stat-grid{grid-template-columns:1fr 1fr}.proceedings-card{grid-template-columns:52px minmax(0,1fr);padding:21px}.proceedings-card .btn{grid-column:1/-1;justify-content:center}.people-grid{grid-template-columns:1fr}.section-head{align-items:flex-start;flex-direction:column;gap:4px}.contact-box{align-items:flex-start;flex-direction:column}}
+@media(max-width:470px){.stat-grid{grid-template-columns:1fr}}
+</style>
 </head>
-<body class="font-sans antialiased">
-    <!-- Header & Navigation -->
-    <header class="fixed top-0 w-full bg-white shadow z-50">
-        <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
-            <!-- Logo -->
-            <a href="index.html#home" class="text-2xl md:text-3xl font-bold text-gray-800">
-                <img src="./assets/vinnlp.png" alt="" class="h-24">
-            </a>
-            <!-- Mobile menu button -->
-            <button id="menuBtn" class="md:hidden px-3 py-2 border rounded text-gray-600 border-gray-400"
-                aria-label="Toggle Navigation">
-                <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
-                    <path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="2" />
-                </svg>
-            </button>
-             <!-- Desktop Navigation -->
-            <ul class="hidden md:flex space-x-6 text-gray-700">
-                <li><a href="index.html#home" class="hover:text-blue-600">Home</a></li>
-                <li><a href="index.html#about" class="hover:text-blue-600">About</a></li>
-                <li><a href="index.html#people" class="hover:text-blue-600">People</a></li>
-                <li><a href="index.html#research" class="hover:text-blue-600">Research</a></li>
-                <li><a href="index.html#research" class="hover:text-blue-600">Projects</a></li>
-                <li><a href="index.html#partners" class="hover:text-blue-600">Collaborations</a></li>
-				<li><a href="jobs.html" class="hover:text-blue-600">Jobs</a></li>
-				<li><a href="nlp_bridges.html" class="hover:text-blue-600">NLP Bridges</a></li>
-                <li><a href="index.html#contact" class="hover:text-blue-600">Contact</a></li>
-            </ul>
-        </nav>
-        <!-- Mobile Navigation Menu -->
-        <div id="mobileMenu" class="md:hidden hidden bg-white shadow">
-            <ul class="flex flex-col space-y-2 px-6 py-4 text-gray-700">
-                <li><a href="index.html#home" class="block hover:text-blue-600">Home</a></li>
-                <li><a href="index.html#about" class="block hover:text-blue-600">About</a></li>
-                <li><a href="index.html#people" class="block hover:text-blue-600">People</a></li>
-                <li><a href="index.html#research" class="block hover:text-blue-600">Research</a></li>
-                <li><a href="index.html#research" class="block hover:text-blue-600">Projects</a></li>
-                <li><a href="index.html#partners" class="block hover:text-blue-600">Collaborations</a></li>				
-				<li><a href="nlp_bridges.html" class="hover:text-blue-600">NLP Bridges</a></li>
-				<li><a href="jobs.html" class="hover:text-blue-600">Jobs</a></li>
-                <li><a href="index.html#contact" class="block hover:text-blue-600">Contact</a></li>
-            </ul>
-        </div>
-    </header>
-
-    <!-- Hero Section -->
-    <section id="home" class="relative hero bg-cover bg-center text-white pt-20"
-        style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('./assets/bg1.jpeg');">
-<div class="container mx-auto px-6 flex flex-col items-center justify-center text-center" style="min-height: 70vh;">
-            <h1 id="hero-h1" class="inline-block text-4xl md:text-6xl font-bold mb-8"></h1>
-            <a href="#about"
-                class="bg-blue-600 hover:bg-blue-700 px-6 py-3 rounded text-white font-medium shadow-lg transition duration-300">
-                Learn More
-            </a>
-        </div>
-    </section>
-    <!-- About Section -->
-    
-	
-<section id="about" class="py-12 bg-gray-100">
-    <div class="container mx-auto px-6">
-        <h2 class="text-3xl font-bold text-center mb-8">LLMs, Big Data, and Multilinguality for All (LLMs4All)</h2>
-        <h2 class="text-3xl font-bold text-center mb-8">Workshop at IEEE BigData 2025 Conference, Macau – December 8–11, 2025</h2>
-
-        <p class="text-center mb-6"><strong>The submission deadline is now closed.</strong></p>
-        <p class="text-center mb-6"><strong>The workshop will take place on 10 December 2025 as a hybrid event (09:00–17:00 Macau local time).</strong></p>
-        <p class="text-center mb-10">
-            To attend, please register for free using the webinar link:<br>
-            <a class="text-blue-600 underline" 
-               href="https://events.teams.microsoft.com/event/962ab065-bd9d-413e-8fa8-c23bf32e8aa0@58f82789-6695-4f4a-abdb-357668d55cff" 
-               target="_blank">
-               Registration Link (Free)
-            </a>
-        </p>
-
-        <div class="md:flex md:items-start md:space-x-8">
-            <div class="md:w-2/3">
-                <h3 class="text-xl font-semibold mb-2">Introduction</h3>
-
-                    <p class="mb-4">
-					The rapid evolution of Large Language Models (LLMs) has reshaped the landscape of natural language processing (NLP), enabling remarkable progress in tasks such as machine translation, text summarisation, question answering, and speech recognition. Yet, these advances remain unevenly distributed, with low-resource languages continuing to face significant barriers. Limited data availability, linguistic complexity, and the dominance of high-resource languages in public datasets have led to persistent disparities in LLM performance and accessibility—undermining efforts toward global linguistic inclusivity and digital equity.
-					</p><p class="mb-4">The rise of Big Data offers new avenues to mitigate these challenges. By harnessing large-scale datasets from digital platforms, social media, online archives, and multilingual corpora, researchers are better positioned to build robust models that reflect the linguistic richness of underrepresented languages. Techniques such as web scraping, data augmentation, and scalable data pipelines have become instrumental in collecting and curating the diverse data necessary for training and fine-tuning LLMs. Moreover, advanced approaches like cross-lingual transfer learning and multilingual embeddings allow for the transfer of knowledge from high-resource to low-resource languages, improving model effectiveness despite limited local resources.
-					</p><p class="mb-4">This workshop seeks to examine how Big Data methodologies and LLM architectures can be leveraged together to advance NLP research across low-resource settings. Topics will span innovative data collection strategies, efficient training techniques, and practical applications of LLMs in multilingual and low-resource contexts. Particular attention will be paid to solutions that address data scarcity, promote generalisability, and preserve linguistic diversity.
-					</p><p class="mb-4">Given the location of this year’s conference in Macau, a core emphasis will be placed on low-resource languages, which pose unique challenges due to the scarcity of high-quality annotated resources. The workshop will spotlight research tackling these challenges, including annotation methodologies and regionally grounded collaborations. More broadly, we welcome submissions on all low-resource and underrepresented languages, as well as efforts that enhance the accessibility of LLMs across diverse languages, countries, domains, and social contexts—whether through inclusive data practices, novel modelling strategies, or real-world deployment under resource constraints. We also encourage contributions on multilingual LLMs, scalable architectures, and responsible AI, with the aim of fostering cross-disciplinary dialogue and catalysing future collaborations toward equitable and inclusive language technologies.
-</p>
-		
-<h2 class="text-3xl font-bold text-center mb-8">Research Topics:</h2>
-		
-    <ul class="list-disc list-inside mb-6 space-y-1">
-      <li>Scalable Data Collection and Curation: Efficient strategies for collecting, annotating, and managing large-scale multilingual datasets from diverse sources such as text, speech, video, and social media, particularly for underrepresented or emerging languages.</li>
-<li>Cross-Lingual and Multilingual Learning: Techniques such as transfer learning, multilingual embeddings, and knowledge distillation to improve LLM performance for low-resource settings by leveraging high-resource language data.</li>
-<li>Efficient and Inclusive Model Training: Approaches that reduce the resource burden of training and fine-tuning LLMs, including parameter-efficient fine-tuning (e.g., LoRA, PEFT), quantisation, and model distillation—enabling deployment in constrained environments.</li>
-<li>Retrieval-Augmented Generation (RAG) and External Knowledge Integration: Enhancing LLMs with dynamic access to structured or unstructured external data to improve context relevance and factual grounding in multilingual use cases.</li>
-<li>Multimodal Language Models: Developing and applying LLMs that integrate multiple modalities (e.g., text, image, audio) to support richer interaction in linguistically diverse environments.</li>
-<li>Real-World Applications: Deployments of LLMs for machine translation, summarisation, conversational AI, question answering, and speech processing in low-resource languages or multilingual contexts.</li>
-<li>Big Data Infrastructure and Pipelines: Architectures and tools for managing data at scale, including distributed processing, data lakes, and cloud-based platforms tailored for NLP research.</li>
-<li>Ethical, Fair, and Culturally Aware AI: Research addressing linguistic bias, representation, digital colonialism, and fairness in LLMs, with a focus on inclusive design and evaluation practices.</li>
-<li>Benchmarking and Evaluation: Creation of shared benchmarks, evaluation frameworks, and metrics that reflect the realities of low-resource and multilingual settings, including measures for faithfulness, robustness, and generalisability.</li>
-<li>Regional Case Studies and Collaborative Initiatives: Projects and insights from Southeast Asia and beyond that demonstrate the challenges and successes of building and deploying LLMs in real-world low-resource scenarios, including healthcare, education, legal, and governmental domains.
-</li>
+<body>
+<header class="site-header">
+  <nav class="nav" aria-label="Main navigation">
+    <a class="brand" href="index.html#home"><img src="./assets/vinnlp.png" alt="NLP @ VinUniversity"></a>
+    <button class="menu-btn" id="menuBtn" aria-label="Toggle navigation" aria-expanded="false"><i class="fa-solid fa-bars"></i></button>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li><li><a href="#topics">Topics</a></li><li><a href="#papers">Papers</a></li><li><a href="#programme">Programme</a></li><li><a href="#team">Organisers</a></li>
+      <li><a class="proceedings-link" href="https://www.computer.org/csdl/proceedings/bigdata/2025/2eDscyvqhVe" target="_blank" rel="noopener noreferrer">Proceedings</a></li>
     </ul>
+  </nav>
+  <div class="mobile-nav" id="mobileNav"><a href="#about">About</a><a href="#topics">Topics</a><a href="#papers">Papers</a><a href="#programme">Programme</a><a href="#team">Organisers</a><a href="https://www.computer.org/csdl/proceedings/bigdata/2025/2eDscyvqhVe" target="_blank" rel="noopener noreferrer">IEEE Proceedings</a></div>
+</header>
 
-    <p class="mb-6"><strong>Paper Submission:</strong></p>
-<p>
-    The submission deadline is now closed and we are no longer accepting papers.
-</p>
-</br>
-
-<p>
-    Thank you to all authors who submitted their work. Accepted papers are now listed below along with the workshop schedule.
-</p>
-</br>
-</br>
-
-<p class="mb-6"><strong>Important Dates:</strong></p>
-<ul class="list-disc list-inside mb-6 space-y-1">
-    <li><s>First Call for Papers: 25 June 2025</s></li>
-    <li><s>Second Call for Papers: 28 September 2025</s></li>
-    <li><s>Final Call for Papers: 17 October 2025</s></li>
-    <li><strong><s>Submission Deadline: 1 November 2025</s> (now closed)</strong></li>
-    <li><s>Notification of Acceptance: 15 November 2025</s></li>
-    <li><strong><s>Camera Ready Deadline: 23 November 2025</s> (strict)</strong></li>
-</ul>
-
-<p class="mt-4 mb-6"><strong>The workshop will take place on 10 December 2025, 09:00–17:00 (Macau local time).</strong></p>
-</ul>
-
-</div>
-</div>
-</div>
-</section>
-
-
-<<h2 class="text-3xl font-bold text-center mb-6 mt-12">Accepted Papers</h2>
-
-<table class="min-w-full bg-white border mb-10">
-    <thead>
-        <tr class="bg-gray-200 border">
-            <th class="px-4 py-2 border">Paper Title</th>
-            <th class="px-4 py-2 border">Authors</th>
-        </tr>
-    </thead>
-    <tbody>
-
-        <tr>
-            <td class="px-4 py-2 border">IDR-RAG: An Iterative Draft-Revision Agent-like RAG Pipeline for Efficient and Accurate Knowledge Retrieval in Large-Scale Private Domains</td>
-            <td class="px-4 py-2 border">Xia Jiaju, Cao Lei</td>
-        </tr>
-
-        <tr>
-            <td class="px-4 py-2 border">Polypersona: Persona-Grounded LLM for Synthetic Survey Responses</td>
-            <td class="px-4 py-2 border">Tejaswani Dash, Dinesh Karri, Anudeep Vurity, Gautam Datla, Tazeem Ahmad, Saima Rafi, Rohith Tangudu</td>
-        </tr>
-
-        <tr>
-            <td class="px-4 py-2 border">Evaluation of Large Language Models for Understanding Counterfactual Reasoning in Texts</td>
-            <td class="px-4 py-2 border">S. I. M. Adnan, Abrar Hameem, Shikha Anirban, Md. Saiful Islam, Md. Musfique Anwar</td>
-        </tr>
-
-        <tr>
-            <td class="px-4 py-2 border">How Small Can You Go? Compact Language Models for On-Device Critical Error Detection in Machine Translation</td>
-            <td class="px-4 py-2 border">Muskaan Chopra, Lorenz Sparrenberg, Sarthak Khanna, Rafet Sifa</td>
-        </tr>
-
-        <tr>
-            <td class="px-4 py-2 border">Scaling Classical NLP Pipelines for Under-Resourced Old English: Character-Level Models, Unsupervised Pretraining, and Supervised Data Growth</td>
-            <td class="px-4 py-2 border">Ana Elvira Ojanguren López, Javier Martín Arista, Darío Metola Rodríguez</td>
-        </tr>
-
-        <tr>
-            <td class="px-4 py-2 border">Enhanced Old English NER via Morphology-Aware Analysis, Cross-Germanic Transfer, and Domain-Specific Patterns</td>
-            <td class="px-4 py-2 border">Javier Martín Arista, Darío Metola Rodríguez, Daniel B. Morris</td>
-        </tr>
-
-        <tr>
-            <td class="px-4 py-2 border">Benchmarking LLM Optimization Strategies for Clinical NER: A Comparative Analysis of DSPy GEPA against Domain-Specific Transformers</td>
-            <td class="px-4 py-2 border">Justin Varghese, Yi Shang</td>
-        </tr>
-
-        <tr>
-            <td class="px-4 py-2 border">Arabic Prompts with English Tools: A Benchmark</td>
-            <td class="px-4 py-2 border">Konstantin Kubrak, Ahmed El-Moselhy, Ammar Alsulami, Remaz Altuwaim, Hassan Ismail Fawaz, Faisal Alsaby</td>
-        </tr>
-
-        <tr>
-            <td class="px-4 py-2 border">AraFinNews: Arabic Financial Summarisation with Domain-Adapted LLMs</td>
-            <td class="px-4 py-2 border">Mo El-Haj, Paul Rayson</td>
-        </tr>
-
-        <tr>
-            <td class="px-4 py-2 border">Temporal-Aware RAG for Multilingual ESG Document Retrieval: A Low-Resource Approach to Time-Sensitive Question Answering</td>
-            <td class="px-4 py-2 border">Nguyen Anh Kiet Truong</td>
-        </tr>
-
-        <tr>
-            <td class="px-4 py-2 border">UniFi-LLM: A Unified Large Language Model for Financial Data Generation and Fraud Prediction</td>
-            <td class="px-4 py-2 border">Giridhar Pamisetty, Subbareddy Batreddy, Priya Verma, Sobhan Babu Chintapalli</td>
-        </tr>
-
-        <tr>
-            <td class="px-4 py-2 border">Tackling Low-Resource K-12 Hand-Drawn Mathematics VQA: Unified Regularization with Compute-Aware Expert Token Architecture</td>
-            <td class="px-4 py-2 border">Hai Li, Wanli Xing, Chenglu Li, Bailing Lyu</td>
-        </tr>
-
-        <tr>
-            <td class="px-4 py-2 border">Improving Translation Quality by Selecting Better Data for LLM Fine-Tuning: A Comparative Analysis</td>
-            <td class="px-4 py-2 border">Felipe Ribeiro Fujita de Mello, Hideyuki Takada</td>
-        </tr>
-
-        <tr>
-            <td class="px-4 py-2 border">Governance-Aware Hybrid Fine-Tuning for Multilingual Large Language Models</td>
-            <td class="px-4 py-2 border">Haomin Qi, Chengbo Huang, Zihan Dai, Yunkai Gao</td>
-        </tr>
-
-        <tr>
-            <td class="px-4 py-2 border">Leveraging LLM Agents for Autonomous Web Penetration Testing Targeting SQL Injection Vulnerability</td>
-            <td class="px-4 py-2 border">Thanh Phong Tran, Le Bao Phuc Nguyen, Trong Nghia To, Van Hau Pham, The Duy Phan</td>
-        </tr>
-
-        <tr>
-            <td class="px-4 py-2 border">XDoGE: Multilingual Data Reweighting to Enhance Language Inclusivity in LLMs</td>
-            <td class="px-4 py-2 border">Iñaki Lacunza, José Javier Saiz, Alexander Shvets, Aitor Gonzalez-Agirre, Marta Villegas</td>
-        </tr>
-
-        <tr>
-            <td class="px-4 py-2 border">Arabic OCR in the Age of Multimodal Models: A Comprehensive Comparative Evaluation</td>
-            <td class="px-4 py-2 border">Hossam Elsafty, Farizeh Aldabbas, Rafet Sifa</td>
-        </tr>
-
-        <tr>
-            <td class="px-4 py-2 border">Copyright Infringement Issues and Mitigations in Data for Training Generative AI</td>
-            <td class="px-4 py-2 border">Anna Arnaudo, Riccardo Coppola, Maurizio Morisio, Antonio Vetrò, Maurizio Borghi, Bryan Khan, Riccardo Raso</td>
-        </tr>
-
-        <tr>
-            <td class="px-4 py-2 border">Cluster-aware Item Prompt Learning for Session-based Recommendation</td>
-            <td class="px-4 py-2 border">Wooseong Yang, Chen Wang, Zihe Song, Weizhi Zhang, Philip S. Yu</td>
-        </tr>
-
-        <tr>
-            <td class="px-4 py-2 border">Fine-tuning Large-Language-Models using Federated Learning & Blockchain</td>
-            <td class="px-4 py-2 border">Soham Ratnaparkhi, Saeed Samet</td>
-        </tr>
-
-        <tr>
-            <td class="px-4 py-2 border">Targeted Knowledge Enhancement: A Systematic Continual Pre-training Approach for Effective Domain Adaptation</td>
-            <td class="px-4 py-2 border">Yiqun Wang, Chaoqun Wan, Xiang Tian, Xuesong Liu, Yaowu Chen</td>
-        </tr>
-
-    </tbody>
-</table>
-
-
-<h2 class="text-3xl font-bold text-center mb-6">Workshop Schedule (10 December 2025)</h2>
-
-<table class="min-w-full bg-white border mb-10">
-    <thead>
-        <tr class="bg-gray-200 border">
-            <th class="px-4 py-2 border">Time</th>
-            <th class="px-4 py-2 border">Title</th>
-            <th class="px-4 py-2 border">Presenter</th>
-        </tr>
-    </thead>
-    <tbody>
-
-        <tr><td class="px-4 py-2 border">09:00–09:15</td><td class="px-4 py-2 border">Evaluation of Large Language Models for Understanding Counterfactual Reasoning in Texts</td><td class="px-4 py-2 border">Md. Saiful Islam</td></tr>
-        <tr><td class="px-4 py-2 border">09:15–09:30</td><td class="px-4 py-2 border">Scaling Classical NLP Pipelines for Under-Resourced Old English: Character-Level Models, Unsupervised Pretraining, and Supervised Data Growth</td><td class="px-4 py-2 border">Ana Elvira Ojanguren López</td></tr>
-        <tr><td class="px-4 py-2 border">09:30–09:45</td><td class="px-4 py-2 border">Polypersona: Persona-Grounded LLM for Synthetic Survey Responses</td><td class="px-4 py-2 border">Anudeep Vurity</td></tr>
-        <tr><td class="px-4 py-2 border">09:45–10:00</td><td class="px-4 py-2 border">IDR-RAG: An Iterative Draft-Revision Agent-like RAG Pipeline</td><td class="px-4 py-2 border">Cao Lei</td></tr>
-        <tr><td class="px-4 py-2 border">10:00–10:15</td><td class="px-4 py-2 border">Benchmarking LLM Optimisation Strategies for Clinical NER</td><td class="px-4 py-2 border">Justin Varghese</td></tr>
-        <tr><td class="px-4 py-2 border">10:15–10:30</td><td class="px-4 py-2 border">Targeted Knowledge Enhancement</td><td class="px-4 py-2 border">Yiqun Wang</td></tr>
-
-        <tr class="bg-gray-100"><td class="px-4 py-2 border">10:30–11:00</td><td class="px-4 py-2 border text-center" colspan="2"><strong>Coffee break</strong></td></tr>
-
-        <tr><td class="px-4 py-2 border">11:00–11:15</td><td class="px-4 py-2 border">Enhanced Old English NER</td><td class="px-4 py-2 border">Javier Martín Arista</td></tr>
-        <tr><td class="px-4 py-2 border">11:15–11:30</td><td class="px-4 py-2 border">Arabic Prompts with English Tools: A Benchmark</td><td class="px-4 py-2 border">Konstantin Kubrak</td></tr>
-        <tr><td class="px-4 py-2 border">11:30–11:45</td><td class="px-4 py-2 border">UniFi-LLM</td><td class="px-4 py-2 border">Giridhar Pamisetty</td></tr>
-        <tr><td class="px-4 py-2 border">11:45–12:00</td><td class="px-4 py-2 border">Federated Learning & Blockchain</td><td class="px-4 py-2 border">Soham Ratnaparkhi</td></tr>
-        <tr><td class="px-4 py-2 border">12:00–12:15</td><td class="px-4 py-2 border">LLM Agents for Web Penetration Testing</td><td class="px-4 py-2 border">Thanh Phong Tran</td></tr>
-        <tr><td class="px-4 py-2 border">12:15–12:30</td><td class="px-4 py-2 border">Temporal-Aware RAG for Multilingual ESG</td><td class="px-4 py-2 border">Nguyen Anh Kiet Truong</td></tr>
-
-        <tr class="bg-gray-100"><td class="px-4 py-2 border">12:30–14:00</td><td class="px-4 py-2 border text-center" colspan="2"><strong>Lunch break</strong></td></tr>
-
-        <tr><td class="px-4 py-2 border">14:00–14:15</td><td class="px-4 py-2 border">AraFinNews: Arabic Financial Summarisation</td><td class="px-4 py-2 border">Mo El-Haj</td></tr>
-        <tr><td class="px-4 py-2 border">14:15–14:30</td><td class="px-4 py-2 border">XDoGE: Multilingual Data Reweighting</td><td class="px-4 py-2 border">Iñaki Lacunza</td></tr>
-        <tr><td class="px-4 py-2 border">14:30–14:45</td><td class="px-4 py-2 border">Copyright Infringement in Generative AI</td><td class="px-4 py-2 border">Anna Arnaudo</td></tr>
-        <tr><td class="px-4 py-2 border">14:45–15:00</td><td class="px-4 py-2 border">Arabic OCR in the Age of Multimodal Models</td><td class="px-4 py-2 border">Hossam Elsafty</td></tr>
-        <tr><td class="px-4 py-2 border">15:00–15:15</td><td class="px-4 py-2 border">Compact LMs for On-Device MT Error Detection</td><td class="px-4 py-2 border">Muskaan Chopra</td></tr>
-        <tr><td class="px-4 py-2 border">15:15–15:30</td><td class="px-4 py-2 border">Better Data Selection for LLM Fine-Tuning</td><td class="px-4 py-2 border">Felipe Ribeiro Fujita de Mello</td></tr>
-
-        <tr class="bg-gray-100"><td class="px-4 py-2 border">15:30–16:00</td><td class="px-4 py-2 border text-center" colspan="2"><strong>Coffee break</strong></td></tr>
-
-        <tr><td class="px-4 py-2 border">16:00–16:15</td><td class="px-4 py-2 border">Governance-Aware Hybrid Fine-Tuning</td><td class="px-4 py-2 border">Haomin Qi</td></tr>
-        <tr><td class="px-4 py-2 border">16:15–16:30</td><td class="px-4 py-2 border">Low-Resource K-12 Math VQA</td><td class="px-4 py-2 border">Hai Li</td></tr>
-        <tr><td class="px-4 py-2 border">16:30–16:45</td><td class="px-4 py-2 border">Cluster-aware Item Prompt Learning</td><td class="px-4 py-2 border">Wooseong Yang</td></tr>
-
-    </tbody>
-</table>
-
-
-  <!-- Team Section -->
-<section id="team" class="py-12 bg-white">
-  <div class="container mx-auto px-6 text-center">
-    <h2 class="text-3xl font-bold mb-8">LLMs4All</h2>
-    <p class="mb-10 text-lg">Meet the core team behind the LLMs, Big Data, and Multilinguality for All (LLMs4All) workshop</p>
-	</br>
-    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-10 items-center">
-
-      <div class="flex flex-col items-center">
-        <a href="https://elhaj.uk" target="_blank" class="block text-center">
-		<img src="./img/mohaj.jpg" alt="Mo El-Haj" class="w-32 h-32 rounded-full object-cover shadow-md" />
-		 <p class="text-base font-medium mt-4">Mo El-Haj</p>
-		 <p class="text-sm text-gray-600">General Chair</p>
-        <p class="text-sm text-gray-600">VinUniversity</p>
-		</br>
-		 </a>
+<section class="hero" id="home">
+  <div class="hero-inner">
+    <div>
+      <div class="kicker">IEEE BigData 2025 · Workshop Archive</div>
+      <h1>LLMs4All</h1>
+      <p class="hero-sub">LLMs, Big Data, and Multilinguality for All</p>
+      <p class="hero-copy">A workshop on inclusive, multilingual and scalable language technologies, with particular attention to low-resource and underrepresented languages.</p>
+      <div class="hero-actions">
+        <a class="btn primary" href="https://www.computer.org/csdl/proceedings/bigdata/2025/2eDscyvqhVe" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-book-open"></i> View published proceedings</a>
+        <a class="btn secondary" href="#papers"><i class="fa-regular fa-file-lines"></i> Accepted papers</a>
       </div>
-
-      <div class="flex flex-col items-center">
-		<a href="https://vinuni.edu.vn/people/wray-buntine-phd/" target="_blank" class="block text-center">
-		<img src="./assets/WrayStudioHead24.png" alt="Wray Buntine" class="w-32 h-32 rounded-full object-cover shadow-md" />
-        <p class="text-base font-medium mt-4">Wray Buntine</p>
-		 <p class="text-sm text-gray-600">Programme Chair</p>
-        <p class="text-sm text-gray-600">VinUniversity</p>
-		</br>
-		</a>
-      </div>
-
-      <div class="flex flex-col items-center">
-        <a href="https://vinuni.edu.vn/people/le-duy-dung/" target="_blank" class="block text-center">
-		<img src="./assets/dung.jpg" alt="Le Duy Dung" class="w-32 h-32 rounded-full object-cover shadow-md" />
-        <p class="text-base font-medium mt-4">Le Duy Dung</p>
-		 <p class="text-sm text-gray-600">Programme Chair</p>
-        <p class="text-sm text-gray-600">VinUniversity</p>
-		</br>
-		</a>
-      </div>
-
-      <div class="flex flex-col items-center">
-        <a href="https://vinuni.edu.vn/people/vo-diep-nhu/" target="_blank" class="block text-center">
-        <img src="./assets/Vo-Diep-Nhu.png" alt="Vo Diep Nhu" class="w-32 h-32 rounded-full object-cover shadow-md" />
-        <p class="text-base font-medium mt-4">Vo Diep Nhu</p>
-		<p class="text-sm text-gray-600">Publication Chair</p>
-        <p class="text-sm text-gray-600">VinUniversity</p>
-		</br>
-		</a>
-      </div>
-
-
-      <div class="flex flex-col items-center">
-        <a href="https://www.linkedin.com/in/nguyen-tran-nhat-minh-b50461289?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank" class="block text-center">
-        <img src="./assets/minhng.jfif" alt="Nguyen Tran Nhat Minh" class="w-32 h-32 rounded-full object-cover shadow-md" />
-        <p class="text-base font-medium mt-4">Nguyen Tran Nhat Minh</p>
-		<p class="text-sm text-gray-600">Publication Chair</p>
-        <p class="text-sm text-gray-600">VinUniversity</p>
-		</br>
-		</a>
-      </div>
-	  
-	  
-	        <div class="flex flex-col items-center">
-        <a href="https://www.linkedin.com/in/ch%C6%B0%C6%A1ng-tr%E1%BA%A7n-anh-6a02b3286?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank" class="block text-center">
-        <img src="./assets/chuongPic.jfif" alt="Tran Anh Chuong" class="w-32 h-32 rounded-full object-cover shadow-md" />
-        <p class="text-base font-medium mt-4">Tran Anh Chuong</p>
-		<p class="text-sm text-gray-600">Publicity Chair</p>
-        <p class="text-sm text-gray-600">VinUniversity</p>
-		</br>
-		</a>
-      </div>
-	  
-	  	<div class="flex flex-col items-center">
-        <a href="https://www.linkedin.com/in/tạ-quang-hiếu-880aa8157" target="_blank" class="block text-center">
-        <img src="./assets/hieu.jfif" alt="Ta Quang Hieu" class="w-32 h-32 rounded-full object-cover shadow-md" />
-        <p class="text-base font-medium mt-4">Ta Quang Hieu</p>
-		<p class="text-sm text-gray-600">Publicity Chair</p>
-        <p class="text-sm text-gray-600">VinUniversity</p>
-		</br>
-		</a>
-      </div>
-	  
-	  	  	<div class="flex flex-col items-center">
-        <a href="https://www.linkedin.com/in/mrs021006/" target="_blank" class="block text-center">
-        <img src="./assets/hieu.JPEG" alt="Ta Quang Hieu" class="w-32 h-32 rounded-full object-cover shadow-md" />
-        <p class="text-base font-medium mt-4">Pham Dinh Hieu</p>
-		<p class="text-sm text-gray-600">Publicity Chair</p>
-        <p class="text-sm text-gray-600">VinUniversity</p>
-		</br>
-		</a>
-      </div>
-	  
-	  
+    </div>
+    <div class="hero-meta">
+      <div class="archive-badge"><i class="fa-solid fa-check"></i> Workshop completed</div>
+      <div class="meta-line"><i class="fa-regular fa-calendar"></i><div><strong>10 December 2025</strong>09:00–17:00, Macau local time</div></div>
+      <div class="meta-line"><i class="fa-solid fa-location-dot"></i><div><strong>Macau</strong>IEEE BigData 2025</div></div>
+      <div class="meta-line"><i class="fa-solid fa-people-group"></i><div><strong>Hybrid workshop</strong>Whole-day programme</div></div>
     </div>
   </div>
 </section>
 
-
-
-
-    <!-- Partners Section 
-    <section id="partners" class="py-12 bg-white">
-        <div class="container mx-auto px-6 text-center">
-            <h2 class="text-3xl font-bold mb-8">ViSAS Collaborations &amp; Partners</h2>
-            <p class="mb-6">ViSAS is a collaborative project that aims towards enriching low-resource languages.</p>
-            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8 items-center">
-
-<div>
-  <a href="https://vinuni.edu.vn" target="_blank" class="block text-center">
-    <img src="./img/vinuni.png" alt="VinUni" class="mx-auto h-12" />
-    <p class="text-sm mt-2">VinUniversity</p>
-  </a>
-</div>
-
-<div>
-  <a href="https://vinnlp.com" target="_blank" class="block text-center">
-    <img src="./img/vinnlp.png" alt="NLP @ VinUniversity" class="mx-auto h-12" />
-    <p class="text-sm mt-2">NLP @ VinUniversity Research Group</p>
-  </a>
-</div>
-
-
-<div>
-  <a href="https://ucrel.lancs.ac.uk/" target="_blank" class="block text-center">
-    <img src="./assets/ucrel.png" alt="UCREL" class="mx-auto h-12" />
-    <p class="text-sm mt-2">UCREL NLP Group</p>
-  </a>
-</div>
-<div>
-  <a href="https://lancaster.ac.uk" target="_blank" class="block text-center">
-    <img src="./assets/lancaster.png" alt="Lancaster University" class="mx-auto h-12" />
-    <p class="text-sm mt-2">Lancaster University, UK</p>
-  </a>
-</div>
-
-<div>
-  <a href="https://www.cardiff.ac.uk/" target="_blank" class="block text-center">
-    <img src="./assets/cardiff.png" alt="Cardiff University" class="mx-auto h-12" />
-    <p class="text-sm mt-2">Cardiff University</p>
-  </a>
-</div>
-
-
-            </div>
-        </div>
-    </section>
--->
-    <!-- Contact Section -->
-   <section id="contact" class="py-12 bg-gray-100">
-  <div class="container mx-auto px-6 md:flex md:space-x-12">
-    <!-- Contact Info -->
-    <div class="md:w-1/2 mb-8 md:mb-0">
-      <h2 class="text-3xl font-bold mb-6">Get in Touch</h2>
-      <p class="mb-2"><strong>Address:</strong> CECS, VinUniversity, Hanoi, Vietnam</p>
-      <p class="mb-2">
-        <strong>Email:</strong>
-        <a href="mailto:elhaj.m@vinuni.edu.vn" class="text-blue-600 hover:underline">elhaj.m@vinuni.edu.vn</a>
-      </p>
-      <p class="mb-6">
-        <strong>Website:</strong>
-        <a href="https://vinnlp.com" class="text-blue-600 hover:underline">NLP @ VinUniversity</a>
-      </p>
-<div class="flex space-x-4 mb-6">
-  <!-- LinkedIn -->
-  <a href="https://www.linkedin.com/company/vinnlp" target="_blank" aria-label="LinkedIn" class="text-gray-500 hover:text-gray-700 text-2xl">
-    <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
-      <path d="M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.76 
-               0 5-2.24 5-5v-14c0-2.76-2.24-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.3c-.97 
-               0-1.75-.78-1.75-1.75s.78-1.75 
-               1.75-1.75 1.75.78 1.75 
-               1.75-.78 1.75-1.75 1.75zm13.5 
-               11.3h-3v-5.6c0-1.34-.03-3.06-1.87-3.06-1.87 
-               0-2.16 1.46-2.16 
-               2.96v5.7h-3v-10h2.89v1.37h.04c.4-.76 
-               1.38-1.56 2.84-1.56 3.04 0 3.6 2 3.6 
-               4.59v5.6z"/>
-    </svg>
-  </a>
-
-  <!-- X (Twitter) -->
-  <a href="https://x.com/vinnlp" target="_blank" aria-label="X" class="text-gray-500 hover:text-gray-700 text-2xl">
-    <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
-      <path d="M20.66 3H3.34C2.6 3 2 3.6 2 
-               4.34v15.32C2 20.4 2.6 21 3.34 
-               21h17.32c.74 0 1.34-.6 1.34-1.34V4.34C22 
-               3.6 21.4 3 20.66 3zM17.75 17h-2.2l-3.12-4.1-3.13 
-               4.1H7.1l4.2-5.49L7.5 7h2.2l2.84 
-               3.73L15.38 7h2.17l-4.1 5.32 4.3 
-               5.68z"/>
-    </svg>
-  </a>
-</div>
-
-      <div>
-        <a 
-          href="https://cecs.vinuni.edu.vn/phd-in-computer-science/" 
-          target="_blank" 
-          class="block mt-2 text-blue-600 transition hover:underline cursor-pointer"
-        >
-          Apply for a PhD in Computer Science/NLP
-        </a>
-        <a 
-          href="https://vinuni.edu.vn/jobs/" 
-          target="_blank" 
-          class="block mt-2 text-blue-600 transition hover:underline cursor-pointer"
-        >
-          Work with us – Explore professional opportunities
-        </a>
-      </div>
+<section class="section soft" id="about">
+  <div class="wrap">
+    <div class="archive-panel">
+      <div class="eyebrow">About LLMs4All</div>
+      <h2 class="section-title">Inclusive language technology at the intersection of LLMs and Big Data</h2>
+      <p class="section-lead">LLMs4All brought together research on large language models, multilinguality and scalable data methods, with a strong focus on languages and communities that remain underrepresented in mainstream NLP.</p>
+      <p>The workshop examined how large-scale data collection, cross-lingual transfer, efficient adaptation, retrieval-augmented generation and multilingual evaluation can improve the reach and reliability of language technologies in low-resource settings. It also provided a forum for practical work spanning text, speech, multimodal systems, domain adaptation and responsible AI.</p>
+      <p>Hosted as a whole-day hybrid workshop at IEEE BigData 2025 in Macau, LLMs4All is now maintained as an archive of the event, its programme, accepted papers and published proceedings.</p>
     </div>
-            <!-- Contact Form -->
-            <div class="md:w-1/2">
-    <form action="https://usebasin.com/f/24f2d90b8cdf" method="POST" accept-charset="UTF-8">
-        <!-- Name -->
-        <div class="mb-4">
-            <input type="text" name="name" placeholder="Your Name"
-                class="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-                required>
-        </div>
+    <div class="stat-grid">
+      <div class="stat"><strong>21</strong><span>accepted workshop papers</span></div>
+      <div class="stat"><strong>1 day</strong><span>full workshop programme</span></div>
+      <div class="stat"><strong>Hybrid</strong><span>Macau and online participation</span></div>
+      <div class="stat"><strong>IEEE</strong><span>published conference proceedings</span></div>
+    </div>
+    <div class="proceedings-card">
+      <div class="proceedings-icon"><i class="fa-solid fa-book-open"></i></div>
+      <div><h3>Proceedings are now published</h3><p>The LLMs4All papers are available through the IEEE Computer Society Digital Library as part of the IEEE BigData 2025 proceedings.</p></div>
+      <a class="btn" href="https://www.computer.org/csdl/proceedings/bigdata/2025/2eDscyvqhVe" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-arrow-up-right-from-square"></i> IEEE proceedings</a>
+    </div>
+  </div>
+</section>
 
-        <!-- Email -->
-        <div class="mb-4">
-            <input type="email" name="email" placeholder="Your Email"
-                class="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-                required>
-        </div>
+<section class="section white" id="topics">
+  <div class="wrap">
+    <div class="eyebrow">Workshop scope</div><h2 class="section-title">Research themes</h2><p class="section-lead">The programme covered methods, infrastructure, evaluation and applications for multilingual and low-resource language technologies.</p>
+    <div class="topic-grid">
+      <div class="topic"><i class="fa-solid fa-database"></i><div><strong>Scalable data collection and curation</strong><span>Large-scale multilingual datasets, annotation, web data and multimodal resources.</span></div></div>
+      <div class="topic"><i class="fa-solid fa-language"></i><div><strong>Cross-lingual and multilingual learning</strong><span>Transfer learning, multilingual embeddings, distillation and language-inclusive modelling.</span></div></div>
+      <div class="topic"><i class="fa-solid fa-microchip"></i><div><strong>Efficient and inclusive model training</strong><span>Parameter-efficient fine-tuning, LoRA, PEFT, quantisation and compact models.</span></div></div>
+      <div class="topic"><i class="fa-solid fa-magnifying-glass-chart"></i><div><strong>Retrieval-augmented generation</strong><span>Grounding multilingual LLMs in external structured and unstructured knowledge.</span></div></div>
+      <div class="topic"><i class="fa-solid fa-photo-film"></i><div><strong>Multimodal language models</strong><span>Systems combining text, image, audio and other modalities across languages.</span></div></div>
+      <div class="topic"><i class="fa-solid fa-gears"></i><div><strong>Big Data infrastructure and pipelines</strong><span>Distributed processing, data engineering and scalable NLP infrastructure.</span></div></div>
+      <div class="topic"><i class="fa-solid fa-scale-balanced"></i><div><strong>Responsible and culturally aware AI</strong><span>Bias, fairness, representation, cultural context and equitable access.</span></div></div>
+      <div class="topic"><i class="fa-solid fa-chart-column"></i><div><strong>Benchmarking and evaluation</strong><span>Metrics and benchmarks for robustness, faithfulness and multilingual generalisation.</span></div></div>
+    </div>
+  </div>
+</section>
 
-        <!-- Message -->
-        <div class="mb-4">
-            <textarea name="message" rows="4" placeholder="Your Message"
-                class="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-                required></textarea>
-        </div>
+<section class="section soft" id="papers">
+  <div class="wrap">
+    <div class="section-head"><div><div class="eyebrow">Workshop contributions</div><h2 class="section-title">Accepted papers</h2></div><div class="section-note">21 papers accepted for LLMs4All 2025</div></div>
+    <div class="paper-list"><div class="paper-row"><div class="paper-no">01</div><div><h3>IDR-RAG: An Iterative Draft-Revision Agent-like RAG Pipeline for Efficient and Accurate Knowledge Retrieval in Large-Scale Private Domains</h3><p>Xia Jiaju, Cao Lei</p></div></div>
+<div class="paper-row"><div class="paper-no">02</div><div><h3>Polypersona: Persona-Grounded LLM for Synthetic Survey Responses</h3><p>Tejaswani Dash, Dinesh Karri, Anudeep Vurity, Gautam Datla, Tazeem Ahmad, Saima Rafi, Rohith Tangudu</p></div></div>
+<div class="paper-row"><div class="paper-no">03</div><div><h3>Evaluation of Large Language Models for Understanding Counterfactual Reasoning in Texts</h3><p>S. I. M. Adnan, Abrar Hameem, Shikha Anirban, Md. Saiful Islam, Md. Musfique Anwar</p></div></div>
+<div class="paper-row"><div class="paper-no">04</div><div><h3>How Small Can You Go? Compact Language Models for On-Device Critical Error Detection in Machine Translation</h3><p>Muskaan Chopra, Lorenz Sparrenberg, Sarthak Khanna, Rafet Sifa</p></div></div>
+<div class="paper-row"><div class="paper-no">05</div><div><h3>Scaling Classical NLP Pipelines for Under-Resourced Old English: Character-Level Models, Unsupervised Pretraining, and Supervised Data Growth</h3><p>Ana Elvira Ojanguren López, Javier Martín Arista, Darío Metola Rodríguez</p></div></div>
+<div class="paper-row"><div class="paper-no">06</div><div><h3>Enhanced Old English NER via Morphology-Aware Analysis, Cross-Germanic Transfer, and Domain-Specific Patterns</h3><p>Javier Martín Arista, Darío Metola Rodríguez, Daniel B. Morris</p></div></div>
+<div class="paper-row"><div class="paper-no">07</div><div><h3>Benchmarking LLM Optimization Strategies for Clinical NER: A Comparative Analysis of DSPy GEPA against Domain-Specific Transformers</h3><p>Justin Varghese, Yi Shang</p></div></div>
+<div class="paper-row"><div class="paper-no">08</div><div><h3>Arabic Prompts with English Tools: A Benchmark</h3><p>Konstantin Kubrak, Ahmed El-Moselhy, Ammar Alsulami, Remaz Altuwaim, Hassan Ismail Fawaz, Faisal Alsaby</p></div></div>
+<div class="paper-row"><div class="paper-no">09</div><div><h3>AraFinNews: Arabic Financial Summarisation with Domain-Adapted LLMs</h3><p>Mo El-Haj, Paul Rayson</p></div></div>
+<div class="paper-row"><div class="paper-no">10</div><div><h3>Temporal-Aware RAG for Multilingual ESG Document Retrieval: A Low-Resource Approach to Time-Sensitive Question Answering</h3><p>Nguyen Anh Kiet Truong</p></div></div>
+<div class="paper-row"><div class="paper-no">11</div><div><h3>UniFi-LLM: A Unified Large Language Model for Financial Data Generation and Fraud Prediction</h3><p>Giridhar Pamisetty, Subbareddy Batreddy, Priya Verma, Sobhan Babu Chintapalli</p></div></div>
+<div class="paper-row"><div class="paper-no">12</div><div><h3>Tackling Low-Resource K-12 Hand-Drawn Mathematics VQA: Unified Regularization with Compute-Aware Expert Token Architecture</h3><p>Hai Li, Wanli Xing, Chenglu Li, Bailing Lyu</p></div></div>
+<div class="paper-row"><div class="paper-no">13</div><div><h3>Improving Translation Quality by Selecting Better Data for LLM Fine-Tuning: A Comparative Analysis</h3><p>Felipe Ribeiro Fujita de Mello, Hideyuki Takada</p></div></div>
+<div class="paper-row"><div class="paper-no">14</div><div><h3>Governance-Aware Hybrid Fine-Tuning for Multilingual Large Language Models</h3><p>Haomin Qi, Chengbo Huang, Zihan Dai, Yunkai Gao</p></div></div>
+<div class="paper-row"><div class="paper-no">15</div><div><h3>Leveraging LLM Agents for Autonomous Web Penetration Testing Targeting SQL Injection Vulnerability</h3><p>Thanh Phong Tran, Le Bao Phuc Nguyen, Trong Nghia To, Van Hau Pham, The Duy Phan</p></div></div>
+<div class="paper-row"><div class="paper-no">16</div><div><h3>XDoGE: Multilingual Data Reweighting to Enhance Language Inclusivity in LLMs</h3><p>Iñaki Lacunza, José Javier Saiz, Alexander Shvets, Aitor Gonzalez-Agirre, Marta Villegas</p></div></div>
+<div class="paper-row"><div class="paper-no">17</div><div><h3>Arabic OCR in the Age of Multimodal Models: A Comprehensive Comparative Evaluation</h3><p>Hossam Elsafty, Farizeh Aldabbas, Rafet Sifa</p></div></div>
+<div class="paper-row"><div class="paper-no">18</div><div><h3>Copyright Infringement Issues and Mitigations in Data for Training Generative AI</h3><p>Anna Arnaudo, Riccardo Coppola, Maurizio Morisio, Antonio Vetrò, Maurizio Borghi, Bryan Khan, Riccardo Raso</p></div></div>
+<div class="paper-row"><div class="paper-no">19</div><div><h3>Cluster-aware Item Prompt Learning for Session-based Recommendation</h3><p>Wooseong Yang, Chen Wang, Zihe Song, Weizhi Zhang, Philip S. Yu</p></div></div>
+<div class="paper-row"><div class="paper-no">20</div><div><h3>Fine-tuning Large-Language-Models using Federated Learning &amp; Blockchain</h3><p>Soham Ratnaparkhi, Saeed Samet</p></div></div>
+<div class="paper-row"><div class="paper-no">21</div><div><h3>Targeted Knowledge Enhancement: A Systematic Continual Pre-training Approach for Effective Domain Adaptation</h3><p>Yiqun Wang, Chaoqun Wan, Xiang Tian, Xuesong Liu, Yaowu Chen</p></div></div></div>
+  </div>
+</section>
 
-        <!-- Submit Button -->
-        <button type="submit"
-            class="bg-blue-600 cursor-pointer text-white font-semibold px-6 py-3 rounded hover:bg-blue-700 transition duration-300">
-            Send Message
-        </button>
-    </form>
-</div>
+<section class="section white" id="programme">
+  <div class="wrap">
+    <div class="eyebrow">10 December 2025</div><h2 class="section-title">Workshop programme</h2><p class="section-lead" style="margin-bottom:22px">The final programme is retained here as an archive of the workshop day.</p>
+    <details class="programme">
+      <summary>View the full workshop schedule</summary>
+      <div class="table-wrap"><table><thead><tr><th>Time</th><th>Title</th><th>Presenter</th></tr></thead><tbody><tr><td>09:00–09:15</td><td>Evaluation of Large Language Models for Understanding Counterfactual Reasoning in Texts</td><td>Md. Saiful Islam</td></tr>
+<tr><td>09:15–09:30</td><td>Scaling Classical NLP Pipelines for Under-Resourced Old English: Character-Level Models, Unsupervised Pretraining, and Supervised Data Growth</td><td>Ana Elvira Ojanguren López</td></tr>
+<tr><td>09:30–09:45</td><td>Polypersona: Persona-Grounded LLM for Synthetic Survey Responses</td><td>Anudeep Vurity</td></tr>
+<tr><td>09:45–10:00</td><td>IDR-RAG: An Iterative Draft-Revision Agent-like RAG Pipeline</td><td>Cao Lei</td></tr>
+<tr><td>10:00–10:15</td><td>Benchmarking LLM Optimisation Strategies for Clinical NER</td><td>Justin Varghese</td></tr>
+<tr><td>10:15–10:30</td><td>Targeted Knowledge Enhancement</td><td>Yiqun Wang</td></tr>
+<tr class="break-row"><td>10:30–11:00</td><td colspan="2">Coffee break</td></tr>
+<tr><td>11:00–11:15</td><td>Enhanced Old English NER</td><td>Javier Martín Arista</td></tr>
+<tr><td>11:15–11:30</td><td>Arabic Prompts with English Tools: A Benchmark</td><td>Konstantin Kubrak</td></tr>
+<tr><td>11:30–11:45</td><td>UniFi-LLM</td><td>Giridhar Pamisetty</td></tr>
+<tr><td>11:45–12:00</td><td>Federated Learning &amp; Blockchain</td><td>Soham Ratnaparkhi</td></tr>
+<tr><td>12:00–12:15</td><td>LLM Agents for Web Penetration Testing</td><td>Thanh Phong Tran</td></tr>
+<tr><td>12:15–12:30</td><td>Temporal-Aware RAG for Multilingual ESG</td><td>Nguyen Anh Kiet Truong</td></tr>
+<tr class="break-row"><td>12:30–14:00</td><td colspan="2">Lunch break</td></tr>
+<tr><td>14:00–14:15</td><td>AraFinNews: Arabic Financial Summarisation</td><td>Mo El-Haj</td></tr>
+<tr><td>14:15–14:30</td><td>XDoGE: Multilingual Data Reweighting</td><td>Iñaki Lacunza</td></tr>
+<tr><td>14:30–14:45</td><td>Copyright Infringement in Generative AI</td><td>Anna Arnaudo</td></tr>
+<tr><td>14:45–15:00</td><td>Arabic OCR in the Age of Multimodal Models</td><td>Hossam Elsafty</td></tr>
+<tr><td>15:00–15:15</td><td>Compact LMs for On-Device MT Error Detection</td><td>Muskaan Chopra</td></tr>
+<tr><td>15:15–15:30</td><td>Better Data Selection for LLM Fine-Tuning</td><td>Felipe Ribeiro Fujita de Mello</td></tr>
+<tr class="break-row"><td>15:30–16:00</td><td colspan="2">Coffee break</td></tr>
+<tr><td>16:00–16:15</td><td>Governance-Aware Hybrid Fine-Tuning</td><td>Haomin Qi</td></tr>
+<tr><td>16:15–16:30</td><td>Low-Resource K-12 Math VQA</td><td>Hai Li</td></tr>
+<tr><td>16:30–16:45</td><td>Cluster-aware Item Prompt Learning</td><td>Wooseong Yang</td></tr></tbody></table></div>
+    </details>
+  </div>
+</section>
 
-        </div>
-    </section>
+<section class="section soft" id="team">
+  <div class="wrap">
+    <div class="eyebrow">Organising committee</div><h2 class="section-title">LLMs4All organisers</h2><p class="section-lead">The workshop was organised by researchers from VinUniversity and the NLP @ VinUniversity Research Group.</p>
+    <div class="people-grid">
+<a class="person-card" href="https://elhaj.uk" target="_blank" rel="noopener noreferrer">
+  <img src="./img/mohaj.jpg" alt="Mo El-Haj">
+  <div class="person-copy"><h3>Mo El-Haj</h3><p class="role">General Chair</p><p>VinUniversity</p></div>
+</a>
 
-    <!-- Footer -->
-    <footer class="bg-gray-800 text-gray-300 text-sm py-4">
-        <div class="container mx-auto px-6 md:flex md:items-center md:justify-between">
-            <!-- Secondary Nav Links -->
-            <div class="mb-4 md:mb-0">
-                <a href="#home" class="mr-4 hover:underline">Home</a>
-                <a href="#about" class="mr-4 hover:underline">About</a>
-                <a href="#people" class="mr-4 hover:underline">People</a>
-                <a href="#research" class="mr-4 hover:underline">Research</a>
-				<a href="#research" class="mr-4 hover:underline">Projects</a>
-				<a href="jobs.html" class="mr-4 hover:underline">Jobs</a>
-				<a href="nlp_bridges.html" class="mr-4 hover:underline">NLP Bridges</a>
-                <a href="#contact" class="mr-4 hover:underline">Contact</a>
-            </div>
-            <!-- Social Icons -->
-            <div class="mb-4 md:mb-0">
-                <a href="#" aria-label="LinkedIn" class="mr-3 hover:text-white"><i class="fab fa-linkedin"></i></a>
-                <a href="#" aria-label="Twitter" class="mr-3 hover:text-white"><i class="fab fa-twitter"></i></a>
-            </div>
-            <!-- Copyright -->
-      <div>&copy; 2025-2026 NLP @ VinUniversity. All rights reserved.</div>
+<a class="person-card" href="https://vinuni.edu.vn/people/wray-buntine-phd/" target="_blank" rel="noopener noreferrer">
+  <img src="./assets/WrayStudioHead24.png" alt="Wray Buntine">
+  <div class="person-copy"><h3>Wray Buntine</h3><p class="role">Programme Chair</p><p>VinUniversity</p></div>
+</a>
 
-        </div>
-    </footer>
+<a class="person-card" href="https://vinuni.edu.vn/people/le-duy-dung/" target="_blank" rel="noopener noreferrer">
+  <img src="./assets/dung.jpg" alt="Le Duy Dung">
+  <div class="person-copy"><h3>Le Duy Dung</h3><p class="role">Programme Chair</p><p>VinUniversity</p></div>
+</a>
 
-    <!-- JavaScript -->
-    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
-    <!-- JavaScript -->
-    <script src="./mainfile.js"></script>
+<a class="person-card" href="https://vinuni.edu.vn/people/vo-diep-nhu/" target="_blank" rel="noopener noreferrer">
+  <img src="./assets/Vo-Diep-Nhu.png" alt="Vo Diep Nhu">
+  <div class="person-copy"><h3>Vo Diep Nhu</h3><p class="role">Publication Chair</p><p>VinUniversity</p></div>
+</a>
 
+<a class="person-card" href="https://www.linkedin.com/in/nguyen-tran-nhat-minh-b50461289" target="_blank" rel="noopener noreferrer">
+  <img src="./assets/minhng.jfif" alt="Nguyen Tran Nhat Minh">
+  <div class="person-copy"><h3>Nguyen Tran Nhat Minh</h3><p class="role">Publication Chair</p><p>VinUniversity</p></div>
+</a>
+
+<a class="person-card" href="https://www.linkedin.com/in/ch%C6%B0%C6%A1ng-tr%E1%BA%A7n-anh-6a02b3286" target="_blank" rel="noopener noreferrer">
+  <img src="./assets/chuongPic.jfif" alt="Tran Anh Chuong">
+  <div class="person-copy"><h3>Tran Anh Chuong</h3><p class="role">Publicity Chair</p><p>VinUniversity</p></div>
+</a>
+
+<a class="person-card" href="https://www.linkedin.com/in/tạ-quang-hiếu-880aa8157" target="_blank" rel="noopener noreferrer">
+  <img src="./assets/hieu.jfif" alt="Ta Quang Hieu">
+  <div class="person-copy"><h3>Ta Quang Hieu</h3><p class="role">Publicity Chair</p><p>VinUniversity</p></div>
+</a>
+
+<a class="person-card" href="https://www.linkedin.com/in/mrs021006/" target="_blank" rel="noopener noreferrer">
+  <img src="./assets/hieu.JPEG" alt="Pham Dinh Hieu">
+  <div class="person-copy"><h3>Pham Dinh Hieu</h3><p class="role">Publicity Chair</p><p>VinUniversity</p></div>
+</a></div>
+  </div>
+</section>
+
+<section class="contact-band">
+  <div class="wrap"><div class="contact-box"><div><h2>LLMs4All workshop archive</h2><p>For enquiries about the workshop or future NLP @ VinUniversity activities, contact the research group.</p></div><div><a href="mailto:elhaj.m@vinuni.edu.vn">elhaj.m@vinuni.edu.vn</a> &nbsp;·&nbsp; <a href="https://vinnlp.com">vinnlp.com</a></div></div></div>
+</section>
+<footer><div class="wrap footer-inner"><div>© 2025–2026 NLP @ VinUniversity. All rights reserved.</div><div><a href="index.html#home">NLP @ VinUniversity</a> · <a href="https://www.computer.org/csdl/proceedings/bigdata/2025/2eDscyvqhVe" target="_blank" rel="noopener noreferrer">IEEE BigData 2025 Proceedings</a></div></div></footer>
+<script>
+const btn=document.getElementById('menuBtn'), nav=document.getElementById('mobileNav');
+btn.addEventListener('click',()=>{const open=nav.classList.toggle('open');btn.setAttribute('aria-expanded',open?'true':'false')});
+nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('open');btn.setAttribute('aria-expanded','false')}));
+</script>
 </body>
-
 </html>
