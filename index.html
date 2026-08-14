@@ -1,565 +1,703 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-	<link rel="icon" href="img/favicon.ico" type="image/x-icon">
-    <title>NLP @ VinUniversity</title>
-    <!-- Link to your compiled Tailwind CSS -->
-    <link rel="stylesheet" href="./output.css" />
-    <!-- Optionally include Font Awesome for social icons -->
-    <!-- <script src="https://kit.fontawesome.com/yourkitid.js" crossorigin="anonymous"></script> -->
-    <link href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-MdFKNzCgP2CgcnI2Hg+grrGZ2E1uJtEmG9OAzgBClT49yNdozD1X0xAP0drfQ6d3VWaTb0Dj+0LyEKaRuUEC3w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="NLP @ VinUniversity is a Natural Language Processing research group at VinUniversity working on multilingual and low-resource NLP, large language models, language resources, summarisation, information extraction and applied language technology.">
+  <meta name="author" content="NLP @ VinUniversity">
+  <meta name="robots" content="index,follow">
+  <title>NLP @ VinUniversity | Natural Language Processing Research</title>
+  <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" rel="stylesheet">
 
-	<style>
-	
-	.glow {
-	  color: blue;
-	  font-weight: bold;
-	  animation: glow 1s infinite alternate;
-	}
+  <style>
+    :root{
+      --navy:#35426E;
+      --navy2:#2E548A;
+      --ink:#222832;
+      --muted:#667085;
+      --line:#DDE3EA;
+      --canvas:#f5f7f9;
+      --paper:#ffffff;
+      --gold:#D2AE6D;
+      --gold-soft:#f7f1e5;
+      --teal:#5CC6D0;
+      --blue:#4890BD;
+      --green:#5e9f88;
+      --red:#C83538;
+      --shadow:0 15px 42px rgba(53,66,110,.10);
+      --shadow-sm:0 7px 22px rgba(53,66,110,.07);
+      --radius:18px;
+      --max:1240px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth;scroll-padding-top:88px}
+    body{margin:0;font-family:'Montserrat',Arial,sans-serif;background:var(--canvas);color:var(--ink);line-height:1.62;-webkit-font-smoothing:antialiased}
+    img{max-width:100%;display:block}
+    a{color:inherit}
+    ::selection{background:#efd495;color:#172033}
+    .container{max-width:var(--max);margin:0 auto;padding:0 24px}
+    .section{padding:76px 0}
+    .section.alt{background:#fff}
+    .section-head{margin-bottom:31px}
+    .section-eyebrow{font-size:.72rem;text-transform:uppercase;letter-spacing:.15em;color:#966d17;font-weight:700;margin-bottom:8px}
+    .section-title{font-size:clamp(1.95rem,3.7vw,2.75rem);line-height:1.13;letter-spacing:-.04em;color:var(--navy);margin:0 0 13px}
+    .section-lead{max-width:940px;margin:0;color:#5d6b7e;font-size:1rem}
 
-	@keyframes glow {
-	  from {
-		text-shadow: 0 0 5px blue;
-	  }
-	  to {
-		text-shadow: 0 0 15px cyan;
-	  }
-	}
+    .hero-meta-logo{width:148px;height:auto;margin:0 0 22px;filter:brightness(0) invert(1);opacity:.96}
 
-        /* Fallback if Tailwind is not configured with this font */
-        body {
-            font-family: 'Bai Jamjuree', sans-serif;
-        }
 
-        /* Ensure the hero heading is inline-level and doesn’t break to a new line */
-        #hero-h1 {
-            display: inline-block;
-            /* Inline container for the text */
-            white-space: nowrap;
-            /* Prevent wrapping onto a new line */
-        }
+    /* Header */
+    .site-header{position:sticky;top:0;z-index:80;background:rgba(255,255,255,.96);backdrop-filter:blur(16px);border-bottom:1px solid rgba(222,228,235,.95);box-shadow:0 3px 18px rgba(20,36,61,.05)}
+    .site-nav{max-width:var(--max);margin:auto;padding:11px 24px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+    .site-brand{display:flex;align-items:center;gap:12px;text-decoration:none;min-width:max-content}
+    .site-brand img{height:50px;width:auto}
+    .brand-copy{display:flex;flex-direction:column;line-height:1.07}
+    .brand-copy strong{font-size:.98rem;color:var(--navy);letter-spacing:-.02em}
+    .brand-copy span{font-size:.61rem;text-transform:uppercase;letter-spacing:.13em;color:#9a6e00;font-weight:700;margin-top:5px}
+    .nav-links{display:flex;align-items:center;gap:2px;list-style:none;margin:0;padding:0}
+    .nav-links a{text-decoration:none;color:#4c5d70;font-size:.79rem;font-weight:700;padding:9px 10px;border-radius:9px;transition:.16s}
+    .nav-links a:hover{background:#f1f4f8;color:var(--navy)}
+    .nav-links .cta{background:var(--navy);color:#fff;padding-inline:15px}
+    .nav-links .cta:hover{background:var(--navy2);color:#fff}
+    .menu-toggle{display:none;width:42px;height:42px;border-radius:10px;border:1px solid var(--line);background:#fff;color:var(--navy);font-size:1rem;align-items:center;justify-content:center}
+    .mobile-nav{display:none;background:#fff;border-top:1px solid var(--line);padding:9px 22px 16px}
+    .mobile-nav.open{display:block}
+    .mobile-nav a{display:block;text-decoration:none;padding:10px 3px;border-bottom:1px solid #eef1f4;color:#47586c;font-weight:700;font-size:.81rem}
 
-        /* Style the Typed.js cursor */
-        .typed-cursor {
-            display: inline;
-            /* Keep cursor in the inline flow */
-            vertical-align: middle;
-            /* Align cursor vertically with text (use middle or baseline as needed) */
-            font-size: inherit;
-            font-weight: normal;
-            margin-left: 0.1em;
-            /* small gap between text and cursor */
-            animation: blink 0.7s infinite;
-        }
+    /* Hero */
+    .hero{position:relative;overflow:hidden;background:linear-gradient(135deg,var(--navy) 0%,var(--navy2) 100%);color:#fff}
+    .hero::before,.hero::after{content:"";position:absolute;border-radius:50%;pointer-events:none}
+    .hero::after{width:540px;height:540px;border:1px solid rgba(255,255,255,.08);right:-180px;top:-275px;box-shadow:0 0 0 74px rgba(255,255,255,.025),0 0 0 150px rgba(255,255,255,.015)}
+    .hero::before{width:360px;height:360px;background:radial-gradient(circle,rgba(210,174,109,.17),transparent 68%);left:-105px;bottom:-175px}
+    .hero-inner{max-width:var(--max);margin:auto;padding:87px 24px 76px;position:relative;z-index:2;display:grid;grid-template-columns:minmax(0,1.25fr) 360px;gap:58px;align-items:end}
+    .hero-kicker{display:inline-flex;align-items:center;gap:9px;font-size:.74rem;text-transform:uppercase;letter-spacing:.14em;font-weight:700;color:#f1d18d;margin-bottom:15px}
+    .hero-kicker::before{content:"";width:24px;height:2px;background:var(--gold)}
+    .hero h1{font-size:clamp(3.3rem,7.7vw,6.55rem);line-height:.9;letter-spacing:-.065em;margin:0;color:#fff}
+    .hero-subtitle{max-width:860px;margin:19px 0 0;color:#e5ebf4;font-size:clamp(1.08rem,2.1vw,1.45rem);font-weight:600;line-height:1.38}
+    .hero-summary{max-width:850px;margin:18px 0 0;color:#cdd8e6;font-size:.94rem}
+    .hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:29px}
+    .hero-btn{display:inline-flex;align-items:center;gap:8px;text-decoration:none;border-radius:10px;padding:11px 16px;font-size:.82rem;font-weight:700;transition:.16s}
+    .hero-btn.primary{background:var(--gold);color:#172033}
+    .hero-btn.primary:hover{transform:translateY(-1px);background:#deb970}
+    .hero-btn.secondary{border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.075);color:#fff}
+    .hero-btn.secondary:hover{background:rgba(255,255,255,.13)}
+    .hero-panel{background:rgba(255,255,255,.085);border:1px solid rgba(255,255,255,.16);border-radius:20px;padding:25px;backdrop-filter:blur(12px);box-shadow:0 20px 60px rgba(9,18,42,.18)}
+    .hero-panel-label{font-size:.66rem;text-transform:uppercase;letter-spacing:.15em;color:#f1d18d;font-weight:700}
+    .hero-panel h2{font-size:1.32rem;line-height:1.3;margin:7px 0 18px;color:#fff}
+    .hero-fact{padding:12px 0;border-top:1px solid rgba(255,255,255,.14)}
+    .hero-fact strong{display:block;font-size:.78rem;color:#fff;margin-bottom:3px}
+    .hero-fact span{display:block;font-size:.78rem;color:#cfd9e6}
 
-        /* Add a blinking cursor after the heading text using a pseudo-element */
-        #hero-h1::after {
-            content: "|";
-            display: inline;
-            vertical-align: middle;
-            font-size: inherit;
-            margin-left: 0.1em;
-            animation: blink 0.7s infinite;
-        }
+    /* About / focus */
+    .about-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:42px;align-items:start}
+    .about-copy p{margin:0 0 15px;color:#536174}
+    .about-card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:27px;box-shadow:var(--shadow-sm)}
+    .about-card h3{margin:0 0 14px;color:var(--navy);font-size:1.1rem}
+    .focus-list{display:grid;gap:11px}
+    .focus-item{display:grid;grid-template-columns:38px 1fr;gap:12px;align-items:start;padding:11px 0;border-bottom:1px solid #edf0f4}
+    .focus-item:last-child{border-bottom:0;padding-bottom:0}
+    .focus-icon{width:38px;height:38px;border-radius:10px;background:#eef3f8;color:var(--navy2);display:flex;align-items:center;justify-content:center}
+    .focus-item strong{display:block;color:#35426E;font-size:.82rem}
+    .focus-item span{display:block;color:#6b7788;font-size:.73rem;margin-top:2px}
 
-        @keyframes blink {
-            0% {
-                opacity: 1;
-            }
+    /* Director */
+    .director-card{background:#fff;border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow);padding:30px;display:grid;grid-template-columns:170px minmax(0,1fr);gap:28px;align-items:center;position:relative;overflow:hidden}
+    .director-card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:var(--gold)}
+    .director-photo{width:170px;height:170px;border-radius:18px;overflow:hidden;background:#eef2f6;position:relative;box-shadow:0 0 0 1px #dfe4ea}
+    .director-photo img{width:100%;height:100%;object-fit:cover}
+    .director-role{font-size:.69rem;text-transform:uppercase;letter-spacing:.13em;color:#956d17;font-weight:700;margin-bottom:7px}
+    .director-card h3{font-size:1.7rem;line-height:1.14;margin:0 0 7px;color:var(--navy)}
+    .director-affil{color:#526176;font-weight:600;font-size:.86rem;margin-bottom:12px}
+    .director-card p{margin:0;color:#637184;font-size:.87rem;max-width:760px}
+    .director-links{display:flex;gap:9px;flex-wrap:wrap;margin-top:17px}
+    .small-btn{display:inline-flex;align-items:center;gap:7px;border-radius:9px;padding:8px 11px;background:#f2f5f9;text-decoration:none;color:#465a72;font-size:.72rem;font-weight:700}
+    .small-btn:hover{background:var(--gold-soft);color:#76571f}
 
-            50% {
-                opacity: 0;
-            }
+    /* Members */
+    .members-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:17px}
+    .member-card{background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:var(--shadow-sm);transition:.17s}
+    .member-card:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+    .member-photo{height:185px;background:linear-gradient(135deg,#eef2f7,#f6efe2);position:relative;display:grid;place-items:center;overflow:hidden}
+    .member-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+    .member-photo span{font-size:.69rem;text-transform:uppercase;letter-spacing:.13em;color:#8894a3;font-weight:700}
+    .member-copy{padding:17px}
+    .member-copy h3{margin:0 0 5px;color:var(--navy);font-size:.95rem}
+    .member-copy p{margin:0;color:#687587;font-size:.76rem;line-height:1.45}
+    .member-note{margin-top:17px;color:#7a8695;font-size:.76rem;font-style:italic}
 
-            100% {
-                opacity: 1;
-            }
-        }
-    </style>
+    /* Research pillars */
+    .pillar-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:17px}
+    .pillar-card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:23px;box-shadow:var(--shadow-sm);position:relative;overflow:hidden}
+    .pillar-card::before{content:"";position:absolute;left:0;top:0;right:0;height:4px;background:var(--gold)}
+    .pillar-card:nth-child(2)::before{background:var(--teal)}
+    .pillar-card:nth-child(3)::before{background:var(--blue)}
+    .pillar-card:nth-child(4)::before{background:var(--green)}
+    .pillar-card:nth-child(5)::before{background:#7b6fa7}
+    .pillar-card:nth-child(6)::before{background:var(--red)}
+    .pillar-icon{width:42px;height:42px;border-radius:11px;background:#f1f4f8;color:var(--navy);display:flex;align-items:center;justify-content:center;margin-bottom:14px}
+    .pillar-card h3{margin:0 0 8px;color:var(--navy);font-size:1.01rem}
+    .pillar-card p{margin:0;color:#637184;font-size:.82rem}
+
+    /* Projects */
+    .featured-projects{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+    .project-card{position:relative;overflow:hidden;background:#fff;border:1px solid var(--line);border-radius:19px;padding:27px;box-shadow:var(--shadow)}
+    .project-card.new::before{content:"NEW PROJECT";position:absolute;right:18px;top:17px;background:var(--gold-soft);border:1px solid #ead9b8;color:#85631f;border-radius:999px;padding:5px 8px;font-size:.6rem;font-weight:700;letter-spacing:.08em}
+    .project-code{display:inline-flex;align-items:center;gap:7px;color:#7d5d1e;font-size:.68rem;text-transform:uppercase;letter-spacing:.1em;font-weight:700;margin-bottom:11px}
+    .project-card h3{margin:0 0 10px;color:var(--navy);font-size:1.26rem;line-height:1.3;max-width:88%}
+    .project-card p{margin:0;color:#5f6d7f;font-size:.84rem}
+    .project-tags{display:flex;gap:7px;flex-wrap:wrap;margin:17px 0 20px}
+    .tag{display:inline-flex;border:1px solid #dfe5ec;background:#f8fafc;border-radius:999px;padding:6px 8px;color:#596b80;font-size:.65rem;font-weight:700}
+    .project-link{display:inline-flex;align-items:center;gap:7px;text-decoration:none;color:var(--navy2);font-size:.76rem;font-weight:700}
+    .project-link:hover{text-decoration:underline}
+    .project-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:20px}
+    .project-small{background:#fff;border:1px solid var(--line);border-radius:15px;padding:21px;box-shadow:var(--shadow-sm)}
+    .project-small h3{font-size:.98rem;margin:0 0 7px;color:var(--navy);line-height:1.35}
+    .project-small p{margin:0 0 13px;color:#667487;font-size:.78rem}
+    .other-projects{margin-top:23px;background:#fff;border:1px solid var(--line);border-radius:17px;padding:23px 25px}
+    .other-projects h3{margin:0 0 13px;color:var(--navy);font-size:1rem}
+    .project-list{columns:2;column-gap:38px;margin:0;padding-left:20px}
+    .project-list li{break-inside:avoid;margin-bottom:8px;color:#607084;font-size:.79rem}
+
+    /* Collaboration */
+    .partner-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:14px;align-items:stretch}
+    .partner-card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px 13px;text-align:center;text-decoration:none;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:138px;box-shadow:var(--shadow-sm)}
+    .partner-card img{height:44px;max-width:125px;object-fit:contain;margin-bottom:10px}
+    .partner-card span{color:#5c6b7d;font-size:.69rem;font-weight:700;line-height:1.35}
+    .partner-card:hover{box-shadow:var(--shadow)}
+
+    /* Contact */
+    .contact-shell{display:grid;grid-template-columns:.9fr 1.1fr;gap:22px}
+    .contact-info,.contact-form{background:#fff;border:1px solid var(--line);border-radius:18px;padding:28px;box-shadow:var(--shadow-sm)}
+    .contact-info h3,.contact-form h3{margin:0 0 12px;color:var(--navy);font-size:1.25rem}
+    .contact-info p{margin:0 0 10px;color:#5f6d7e;font-size:.84rem}
+    .contact-info a{color:var(--navy2)}
+    .socials{display:flex;gap:9px;margin-top:17px}
+    .socials a{width:38px;height:38px;border-radius:10px;background:#eef2f6;color:var(--navy);display:flex;align-items:center;justify-content:center;text-decoration:none}
+    .form-grid{display:grid;gap:11px}
+    .form-grid input,.form-grid textarea{width:100%;border:1px solid #dfe5ec;background:#fbfcfd;border-radius:10px;padding:12px 13px;font:inherit;font-size:.8rem;color:#344054;outline:none}
+    .form-grid input:focus,.form-grid textarea:focus{border-color:#9eb3cb;box-shadow:0 0 0 3px rgba(72,144,189,.08)}
+    .submit-btn{border:0;border-radius:10px;background:var(--navy);color:#fff;padding:12px 16px;font:inherit;font-size:.8rem;font-weight:700;cursor:pointer;width:max-content}
+    .submit-btn:hover{background:var(--navy2)}
+
+    footer{background:var(--navy);color:#bdc8d8;padding:23px 0;font-size:.75rem}
+    footer .container{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+    .footer-links{display:flex;gap:12px;flex-wrap:wrap}
+    footer a{color:#edf2f8;text-decoration:none}
+
+    @media(max-width:1080px){
+      .nav-links{display:none}.menu-toggle{display:flex}
+      .hero-inner{grid-template-columns:1fr;gap:30px}
+      .hero-panel{max-width:650px}
+      .members-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+      .partner-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+    }
+    @media(max-width:820px){
+      .about-grid,.director-card,.contact-shell{grid-template-columns:1fr}
+      .director-photo{width:150px;height:150px}
+      .pillar-grid,.project-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .featured-projects{grid-template-columns:1fr}
+      .members-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .partner-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+      .project-list{columns:1}
+    }
+    @media(max-width:560px){
+      .container{padding:0 17px}.site-nav{padding:10px 16px}.site-brand img{height:44px}
+      .section{padding:58px 0}.hero-inner{padding:58px 18px 52px}.hero h1{font-size:clamp(3rem,17vw,4.7rem)}
+      .pillar-grid,.project-grid,.members-grid,.partner-grid{grid-template-columns:1fr}
+      .member-photo{height:260px}
+      .project-card h3{max-width:100%;padding-top:27px}
+    }
+  </style>
 </head>
 
-<body class="font-sans antialiased">
-    <!-- Header & Navigation -->
-    <header class="fixed top-0 w-full bg-white shadow z-50">
-        <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
-            <!-- Logo -->
-            <a href="#home" class="text-2xl md:text-3xl font-bold text-gray-800">
-                <img src="./assets/vinnlp.png" alt="" class="h-24">
-            </a>
-            <!-- Mobile menu button -->
-            <button id="menuBtn" class="md:hidden px-3 py-2 border rounded text-gray-600 border-gray-400"
-                aria-label="Toggle Navigation">
-                <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
-                    <path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="2" />
-                </svg>
-            </button>
-            <!-- Desktop Navigation -->
-            <ul class="hidden md:flex space-x-6 text-gray-700">
-                <li><a href="#home" class="hover:text-blue-600">Home</a></li>
-                <li><a href="#about" class="hover:text-blue-600">About</a></li>
-                <li><a href="#people" class="hover:text-blue-600">People</a></li>
-                <li><a href="#research" class="hover:text-blue-600">Research</a></li>
-                <li><a href="#research" class="hover:text-blue-600">Projects</a></li>
-                <li><a href="#partners" class="hover:text-blue-600">Collaborations</a></li>
-				<li><a href="jobs.html" class="hover:text-blue-600">Jobs</a></li>
-				<li><a href="nlp_bridges.html" class="hover:text-blue-600">NLP Bridges</a></li>
-                <li><a href="#contact" class="hover:text-blue-600">Contact</a></li>
-            </ul>
-        </nav>
-        <!-- Mobile Navigation Menu -->
-        <div id="mobileMenu" class="md:hidden hidden bg-white shadow">
-            <ul class="flex flex-col space-y-2 px-6 py-4 text-gray-700">
-                <li><a href="#home" class="block hover:text-blue-600">Home</a></li>
-                <li><a href="#about" class="block hover:text-blue-600">About</a></li>
-                <li><a href="#people" class="block hover:text-blue-600">People</a></li>
-                <li><a href="#research" class="block hover:text-blue-600">Research</a></li>
-                <li><a href="#research" class="block hover:text-blue-600">Projects</a></li>
-                <li><a href="#partners" class="block hover:text-blue-600">Collaborations</a></li>				
-				<li><a href="nlp_bridges.html" class="hover:text-blue-600">NLP Bridges</a></li>
-				<li><a href="jobs.html" class="hover:text-blue-600">Jobs</a></li>
-                <li><a href="#contact" class="block hover:text-blue-600">Contact</a></li>
-            </ul>
-        </div>
-    </header>
+<body>
+<header class="site-header">
+  <nav class="site-nav" aria-label="Primary navigation">
+    <a href="#home" class="site-brand">
+      <img src="assets/vinnlp.png" alt="NLP @ VinUniversity" onerror="this.onerror=null;this.src='img/vinnlp.png'">
+      <div class="brand-copy">
+        <strong>NLP @ VinUniversity</strong>
+        <span>Natural Language Processing Research</span>
+      </div>
+    </a>
 
-    <!-- Hero Section -->
-    <section id="home" class="relative hero bg-cover bg-center text-white pt-20"
-        style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('./assets/bg1.jpeg');">
-<div class="container mx-auto px-6 flex flex-col items-center justify-center text-center" style="min-height: 70vh;">
-            <h1 id="hero-h1" class="inline-block text-4xl md:text-6xl font-bold mb-8"></h1>
-            <a href="#about"
-                class="bg-blue-600 hover:bg-blue-700 px-6 py-3 rounded text-white font-medium shadow-lg transition duration-300">
-                Learn More
-            </a>
-        </div>
-    </section>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#director">Director</a></li>
+      <li><a href="#members">Members</a></li>
+      <li><a href="#research">Research</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#partners">Collaborations</a></li>
+      <li><a href="jobs.html">Jobs</a></li>
+      <li><a class="cta" href="#contact">Contact</a></li>
+    </ul>
 
-    <!-- About Section -->
-    <section id="about" class="py-12 bg-gray-100">
-        <div class="container mx-auto px-6">
-            <h2 class="text-3xl font-bold text-center mb-8">About Us</h2>
-            <div class="md:flex md:items-start md:space-x-8">
-                <!-- Left: Extended Text Content -->
-                <div class="md:w-2/3">
-                    <h3 class="text-xl font-semibold mb-2">Who We Are</h3>
-                    <p class="mb-4">
-                        NLP @ VinUniversity is the Natural Language Processing (NLP) research group at VinUniversity, dedicated to
-                        advancing AI-driven language
-                        technologies with a strong focus on low-resource languages, machine learning, and applied NLP
-                        research.
-                    </p>
-                    <p class="mb-4">
-                        We collaborate with academic institutions, industry partners, and government bodies to develop
-                        cutting-edge LLMs, text
-                        summarisation techniques, machine translation models, and more.
-                    </p>
-                    <h3 class="text-xl font-semibold mb-2">Our Mission</h3>
-                    <p class="mb-4">
-                        Our mission is to push the boundaries of NLP research by developing language technologies for
-                        underrepresented languages,
-                        improving multilingual AI, and contributing to the global AI research community.
-                    </p>
-                    <h3 class="text-xl font-semibold mb-2">Our Focus Areas</h3>
-                    <ul class="list-disc list-inside mb-4">
-                        <li>Low-resource language modelling</li>
-                        <li>Text summarisation &amp; information extraction</li>
-                        <li>Machine translation &amp; multilingual NLP</li>
-                        <li>AI applications in healthcare, finance, and social sciences</li>
-                        <li>Ethical AI and bias mitigation in NLP</li>
-                    </ul>
-                    <p>
-                        We are part of VinUniversity’s College of Engineering and Computer Science (CECS) and
-                        collaborate with leading international
-                        research groups to create impactful AI-driven solutions.
-                    </p>
-                </div>
-                <!-- Right: Images -->
-                <div class="md:w-1/3 mt-8 md:mt-0 grid grid-cols-1 gap-4">
-                    <img src="/assets/bg1.jpeg" alt="NLP @ VinUniversity Team" class="rounded-lg shadow-xl w-full">
-                    <img src="/assets/bg2.jpg" alt="Research Collaboration"
-                        class="rounded-lg shadow-xl w-full">
-                </div>
-            </div>
-        </div>
-    </section>
+    <button class="menu-toggle" id="menuToggle" aria-label="Open navigation">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+  </nav>
 
-    <!-- People Section -->
-    <section id="people" class="py-12">
-        <div class="container mx-auto px-6">
-            <h2 class="text-3xl font-bold text-center mb-8">NLP @ VinUniversity Leaders</h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Dr. Mo El-Haj -->
-                <a href="profile.html?member=dr-mo-el-haj" class="block">
+  <div class="mobile-nav" id="mobileNav">
+    <a href="#about">About</a>
+    <a href="#director">Director</a>
+    <a href="#members">Members</a>
+    <a href="#research">Research</a>
+    <a href="#projects">Projects</a>
+    <a href="#partners">Collaborations</a>
+    <a href="jobs.html">Jobs</a>
+    <a href="#contact">Contact</a>
+  </div>
+</header>
 
-
-                    <div
-                        class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl hover:-translate-y-1 transform transition text-center">
-                        <div class="w-32 h-32 overflow-hidden mx-auto rounded-full mb-4 border">
-                            <img src="./img/mo.png" alt="Dr. Mo El-Haj" class="h-full w-full object-cover" />
-                        </div>
-                        <h3 class="text-xl font-semibold">Dr. Mo El-Haj</h3>
-                        <p class="text-gray-600">
-                            Director, NLP @ VinUniversity<br />
-                            <small>Associate Professor (Reader) in NLP</small>
-                        </p>
-                        <p class="text-sm mt-2">
-                            Research focus: LLMs for low-resource languages, text summarisation &amp; information
-                            extraction.
-                        </p>
-                    </div>
-                </a>
-                <!-- Prof. Wray Buntine -->
-                <a href="profile.html?member=prof-wray-buntine" class="block">
-
-
-                    <div
-                        class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl hover:-translate-y-1 transform transition text-center">
-                        <div class="w-32 h-32 overflow-hidden mx-auto rounded-full mb-4 border">
-                            <img src="./assets/WrayStudioHead24.png" alt="Prof. Wray Buntine"
-                                class="h-full w-full object-cover" />
-                        </div>
-                        <h3 class="text-xl font-semibold">Prof. Wray Buntine</h3>
-                        <p class="text-gray-600">
-                            Professor in NLP<br />
-                            <small>Affiliate Faculty</small>
-                        </p>
-                        <p class="text-sm mt-2">
-                            Research focus: Probabilistic graphical models, deep learning, and NLP.
-                        </p>
-                    </div>
-                </a>
-                <!-- Dr. Le Duy Dung -->
-                <a href="profile.html?member=dr-le-duy-dung" class="block">
-                    <div
-                        class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl hover:-translate-y-1 transform transition text-center">
-                        <div class="w-32 h-32 overflow-hidden mx-auto rounded-full mb-4 border">
-                            <img src="./assets/dung.jpg" alt="Dr. Le Duy Dung" class="h-full w-full object-cover" />
-                        </div>
-                        <h3 class="text-xl font-semibold">Dr. Le Duy Dung</h3>
-                        <p class="text-gray-600">
-                            Assistant Professor, Computer Science<br />
-                            <small>Director of Data Science Program</small>
-                        </p>
-                        <p class="text-sm mt-2">
-                            Research focus: Data science, AI applications, and data-driven NLP research.
-                        </p>
-                    </div>
-                </a>
-            </div>
-            <!-- PhD Students Section -->
-            <div class="mt-12 text-center">
-                <h3 class="text-2xl font-semibold mb-4">Researchers and PhD Students</h3>
-                <p class="mb-2">Our group supports PhD students working on NLP-related research.</p>
-                <p class="text-sm">
-                    [Kieu Hai Dang] – Research focus: [Research Topic]<br>
-                    [Vo Diep Nhu] – Research focus: [Research Topic]<br>
-                    [Ta Quang Hieu] – Research focus: [Research Topic]<br>
-                    [Nguyen Tien Dong] – Research focus: [Research Topic]<br>
-                </p>
-				<a 
-			  href="https://cecs.vinuni.edu.vn/phd-in-computer-science/" 
-			  target="_blank" 
-			  class="block mt-2 text-blue-600 transition hover:underline cursor-pointer"
-			>
-			  Apply to join our research group as a PhD student
-			</a>
-			<a 
-			  href="jobs.html" 
-			  target="_blank" 
-			  class="block mt-2 text-blue-600 transition hover:underline cursor-pointer"
-			>
-			  Explore professional opportunities with our NLP team
-			</a>
-			<a 
-			  href="https://vinuni.edu.vn/jobs/" 
-			  target="_blank" 
-			  class="block mt-2 text-blue-600 transition hover:underline cursor-pointer"
-			>
-			  Explore professional opportunities at VinUniversity
-			</a>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- Research & Projects Section -->
-    <section id="research" class="py-12 bg-gray-100">
-        <div class="container mx-auto px-6">
-            <h2 class="text-3xl font-bold text-center mb-6">Research &amp; Projects</h2>
-            <!-- Pill-Style Tabs for switching -->
-            <div class="flex justify-center mb-6">
-                                <button id="tabProjects"
-                         class="px-6 py-2 rounded-full font-medium bg-blue-600 text-white focus:outline-none transition-all duration-300">
-                    Research Projects
-                </button>
-				<button id="tabTopics"
-               class="px-6 py-2 rounded-full font-medium bg-gray-200 text-gray-700 focus:outline-none transition-all duration-300 ml-4">
-                    Research Topics
-                </button>
-
-            </div>
-                <!-- Research Projects Content -->
-            <div id="contentProjects">
-                <h3 class="text-2xl font-semibold mb-4">Research Projects</h3>
-                <ul class="list-disc list-inside space-y-2 mb-6">
-				    <li><strong>Projects by Dr Mo El-Haj</strong></li>
-										<li><span class="ml-2 glow">New</span>: <a href="policyverse.html" class="hover:text-blue-600">
-						PolicyVerse: Multilingual Multi-Agent LLMs for Policy Reasoning
-					  </a>
-					</li>
-					<li><a href="freetxt-vi.html" class="hover:text-blue-600">
-						English-Vietnamese Free-Text Survey Analysis (FreeTxt-Vi) [Văn Bản Tự Do]
-					 
-					  </a>
-					</li>
-                    <li><a href="visas.html" class="hover:text-blue-600">Vietnamese Semantic Tagging System (ViSaS)</a></i>
-					<li>Welsh Language Model (a pilot)</li>
-					<li>DigiGrid for Welsh Language Resources</li>
-					<li>Using NLP to Monitor Water Pipes Burst</li>
-					<li>Catalyst Fund for Advancing Celtic NLP Research</li>
-					<li>FreeTxt: Supporting Bilingual Free-Text Survey and Questionnaire Data Analysis</li>
-					<li>Talent Track Application for NLP and Econometric Techniques</li>
-					<li>Canadian Annual Reports Extractor (CARE)</li>
-					<li>Using Word Embeddings to Create a Thesaurus of Contemporary Welsh</li>
-					<li>Welsh Summary Creator (WSC)</li>
-					<li>CLARA-Fin: Readability and Simplification in Financial Narrative</li>
-					<li>An Assessment of Corporate Disclosures from Accounting Standards</li>
-					<li>Arabic USAS Semantic Tagger (AraSAS)</li>
-					<li>FinT-esp: Financial Texts in Spanish</li>
-					
-					<li><strong>Projects by Prof. Wray Buntine</strong></li>
-					<li>Robust Vietnamese-English Clinical and Educational </li>
-					<li>Medical Translation</li>
-					<li>Towards Reliable Output Generation from LLMs</li>
-					<li>Verifiable Logical Reasoning with Language Models</li>
-					<li>Low-Resource Medical Named Entity Recognition</li>
-					<li>Improving Data Labelling Efficacy with Deep Neural 
-					<li>Network via Active Learning</li>
-					<li>Data-Driven Closed-Loop Medication Management</li>
-					<li>Deep Anomaly Detection on Graph-structured Data</li>
-					<li>Statistical Machine Learning Methods for Modelling</li>
-					<li>Imaging, and Monitoring the Brain</li>
-					
-					<li><strong>Projects by Dr Le Duy Dung</strong></li>
-					<li>Robust Vietnamese-English Clinical and Educational</li> 
-					<li>Medical Translation (PI: Prof. Wray Buntine)</li>
-					<li>Language Processing Adaptations for Multiple Recommendation Tasks (PI)</li>
-					<li>Multimodal Federated Learning for Multi-objectives Recommendation (PI)</li>
-					<li>SMART-CEM: Applying Artificial Intelligence (AI) and eye-tracking in designing and managing delightful customer experiences in the hospitality sector (Co-PI)</li>
-                </ul>
-                 <!--  <h3 class="text-2xl font-semibold mb-4">Past Projects</h3>
-                <ul class="list-disc list-inside space-y-2">
-                    <li>Project 1 Description.....</li>
-                    <li>Project 2 Description.....</li>
-                    <li>Project 3 Description.....</li>
-                </ul> -->
-            </div>
-			        <!-- Research Topics Content -->
-			<div id="contentTopics" class="hidden mt-6">
-
-                <ul class="list-disc list-inside space-y-2">
-                    <li><strong>Low-resource language processing:</strong> Developing AI models for underrepresented
-                        languages.</li>
-                    <li><strong>Text summarisation:</strong> Creating models for extractive and abstractive
-                        summarisation.</li>
-                    <li><strong>Machine translation:</strong> Improving multilingual and domain-specific translations.
-                    </li>
-                    <li><strong>Sentiment analysis &amp; opinion mining:</strong> Extracting emotions and opinions from
-                        texts.</li>
-                    <li><strong>Question answering &amp; information retrieval:</strong> Advancing AI-driven search and
-                        knowledge retrieval.</li>
-                    <li><strong>Conversational AI &amp; chatbots:</strong> Developing domain-specific virtual
-                        assistants.</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <!-- Partners Section -->
-    <section id="partners" class="py-12 bg-white">
-        <div class="container mx-auto px-6 text-center">
-            <h2 class="text-3xl font-bold mb-8">Collaborations &amp; Partners</h2>
-            <p class="mb-6">We work with academic, governmental, and industry partners worldwide.</p>
-            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8 items-center">
-<div>
-  <a href="https://vinai.io/" target="_blank" class="block text-center">
-    <img src="./assets/vinai.png" alt="VinAI" class="mx-auto h-12" />
-    <p class="text-sm mt-2">VinAI</p>
-  </a>
-</div>
-<div>
-  <a href="https://vinuni.edu.vn/club/vintelligence/" target="_blank" class="block text-center">
-    <img src="./assets/Thiết kế chưa có tên.jpg" alt="VinTelligence" class="mx-auto h-24" />
-    <p class="text-sm mt-2">VinTelligence</p>
-  </a>
-</div>
-<div>
-  <a href="https://ucrel.lancs.ac.uk/" target="_blank" class="block text-center">
-    <img src="./assets/ucrel.png" alt="UCREL" class="mx-auto h-12" />
-    <p class="text-sm mt-2">UCREL NLP Group</p>
-  </a>
-</div>
-<div>
-  <a href="https://lancaster.ac.uk" target="_blank" class="block text-center">
-    <img src="./assets/lancaster.png" alt="Lancaster University" class="mx-auto h-12" />
-    <p class="text-sm mt-2">Lancaster University, UK</p>
-  </a>
-</div>
-<div>
-  <a href="https://www.monash.edu/" target="_blank" class="block text-center">
-    <img src="./assets/monash.svg" alt="Monash University" class="mx-auto h-12" />
-    <p class="text-sm mt-2">Monash University</p>
-  </a>
-</div>
-<div>
-  <a href="https://www.cardiff.ac.uk/" target="_blank" class="block text-center">
-    <img src="./assets/cardiff.png" alt="Cardiff University" class="mx-auto h-12" />
-    <p class="text-sm mt-2">Cardiff University</p>
-  </a>
-</div>
-<div>
-  <a href="https://www.sdu.dk/" target="_blank" class="block text-center">
-    <img src="./assets/sdu.png" alt="University of Southern Denmark" class="mx-auto h-12" />
-    <p class="text-sm mt-2">University of Southern Denmark</p>
-  </a>
-</div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-   <section id="contact" class="py-12 bg-gray-100">
-  <div class="container mx-auto px-6 md:flex md:space-x-12">
-    <!-- Contact Info -->
-    <div class="md:w-1/2 mb-8 md:mb-0">
-      <h2 class="text-3xl font-bold mb-6">Get in Touch</h2>
-      <p class="mb-2"><strong>Address:</strong> CECS, VinUniversity, Hanoi, Vietnam</p>
-      <p class="mb-2">
-        <strong>Email:</strong>
-        <a href="mailto:cecs.vinnlp@vinuni.edu.vn" class="text-blue-600 hover:underline">elhaj.m@vinuni.edu.vn</a>
-      </p>
-      <p class="mb-6">
-        <strong>Website:</strong>
-        <a href="https://vinnlp.com" class="text-blue-600 hover:underline">NLP @ VinUniversity</a>
-      </p>
-<div class="flex space-x-4 mb-6">
-  <!-- LinkedIn -->
-  <a href="https://www.linkedin.com/company/vinnlp" target="_blank" aria-label="LinkedIn" class="text-gray-500 hover:text-gray-700 text-2xl">
-    <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
-      <path d="M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.76 
-               0 5-2.24 5-5v-14c0-2.76-2.24-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.3c-.97 
-               0-1.75-.78-1.75-1.75s.78-1.75 
-               1.75-1.75 1.75.78 1.75 
-               1.75-.78 1.75-1.75 1.75zm13.5 
-               11.3h-3v-5.6c0-1.34-.03-3.06-1.87-3.06-1.87 
-               0-2.16 1.46-2.16 
-               2.96v5.7h-3v-10h2.89v1.37h.04c.4-.76 
-               1.38-1.56 2.84-1.56 3.04 0 3.6 2 3.6 
-               4.59v5.6z"/>
-    </svg>
-  </a>
-
-  <!-- X (Twitter) -->
-  <a href="https://x.com/vinnlp" target="_blank" aria-label="X" class="text-gray-500 hover:text-gray-700 text-2xl">
-    <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
-      <path d="M20.66 3H3.34C2.6 3 2 3.6 2 
-               4.34v15.32C2 20.4 2.6 21 3.34 
-               21h17.32c.74 0 1.34-.6 1.34-1.34V4.34C22 
-               3.6 21.4 3 20.66 3zM17.75 17h-2.2l-3.12-4.1-3.13 
-               4.1H7.1l4.2-5.49L7.5 7h2.2l2.84 
-               3.73L15.38 7h2.17l-4.1 5.32 4.3 
-               5.68z"/>
-    </svg>
-  </a>
-</div>
-
-      <div>
-        <a 
-          href="https://cecs.vinuni.edu.vn/phd-in-computer-science/" 
-          target="_blank" 
-          class="block mt-2 text-blue-600 transition hover:underline cursor-pointer"
-        >
-          Apply for a PhD in Computer Science/NLP
-        </a>
-        <a 
-          href="https://vinuni.edu.vn/jobs/" 
-          target="_blank" 
-          class="block mt-2 text-blue-600 transition hover:underline cursor-pointer"
-        >
-          Work with us – Explore professional opportunities
-        </a>
+<main>
+<section id="home" class="hero">
+  <div class="hero-inner">
+    <div>
+	  <img class="hero-meta-logo" src="./assets/vinnlp.png" alt="NLP at VinUniversity" />
+      <div class="hero-kicker">Research Group · VinUniversity · Hanoi</div>
+      <h1>NLP @<br>VinUniversity</h1>
+      <p class="hero-subtitle">Researching language technologies for multilingual, low-resource and real-world settings.</p>
+      <p class="hero-summary">We develop Natural Language Processing methods, datasets, language resources and AI systems spanning multilingual NLP, large language models, text summarisation, information extraction and applications in areas including finance, healthcare, education and public policy.</p>
+      <div class="hero-actions">
+        <a href="#projects" class="hero-btn primary"><i class="fa-solid fa-diagram-project"></i> Explore our projects</a>
+        <a href="#members" class="hero-btn secondary"><i class="fa-solid fa-users"></i> Meet the group</a>
       </div>
     </div>
-            <!-- Contact Form -->
-            <div class="md:w-1/2">
-    <form action="https://usebasin.com/f/24f2d90b8cdf" method="POST" accept-charset="UTF-8">
-        <!-- Name -->
-        <div class="mb-4">
-            <input type="text" name="name" placeholder="Your Name"
-                class="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-                required>
+
+    <aside class="hero-panel">
+	        
+
+      <div class="hero-panel-label">What defines our research</div>
+      <h2>Language technology that works across languages, domains and communities.</h2>
+      <div class="hero-fact">
+        <strong>Multilingual by design</strong>
+        <span>Research spanning Vietnamese, Arabic, English, Welsh and other language settings.</span>
+      </div>
+      <div class="hero-fact">
+        <strong>Open research</strong>
+        <span>Datasets, benchmarks, models and reproducible research resources.</span>
+      </div>
+      <div class="hero-fact">
+        <strong>International collaboration</strong>
+        <span>Projects with research partners across the UK, Australia, Europe and Asia.</span>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<section id="about" class="section">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-eyebrow">About the group</div>
+      <h2 class="section-title">Natural Language Processing research at VinUniversity</h2>
+      <p class="section-lead">NLP @ VinUniversity is the Natural Language Processing research group at VinUniversity. Our work combines core NLP research with multilingual and low-resource language technology, open language resources and applied AI.</p>
+    </div>
+
+    <div class="about-grid">
+      <div class="about-copy">
+        <p>Our research asks how language technologies can become more capable, reliable and useful beyond the small number of languages and domains that dominate mainstream AI development. This includes building datasets and benchmarks, developing new NLP methods, adapting large language models, and evaluating systems in linguistically and culturally diverse settings.</p>
+        <p>The group works across computational linguistics, machine learning and generative AI. We are particularly interested in multilingual NLP, under-resourced languages, language resources, text summarisation, information extraction, machine translation, retrieval and reasoning, as well as responsible evaluation of modern language models.</p>
+        <p>We collaborate with academic institutions, research communities, government and industry partners internationally, while developing research programmes that connect VinUniversity to the wider NLP community.</p>
+      </div>
+
+      <aside class="about-card">
+        <h3>Core research themes</h3>
+        <div class="focus-list">
+          <div class="focus-item"><div class="focus-icon"><i class="fa-solid fa-language"></i></div><div><strong>Multilingual & low-resource NLP</strong><span>Methods, datasets and evaluation across diverse languages.</span></div></div>
+          <div class="focus-item"><div class="focus-icon"><i class="fa-solid fa-brain"></i></div><div><strong>Large language models</strong><span>Adaptation, evaluation, reasoning, retrieval and agentic AI.</span></div></div>
+          <div class="focus-item"><div class="focus-icon"><i class="fa-solid fa-database"></i></div><div><strong>Language resources</strong><span>Open datasets, benchmarks, corpora, lexicons and tools.</span></div></div>
+          <div class="focus-item"><div class="focus-icon"><i class="fa-solid fa-file-lines"></i></div><div><strong>Document intelligence</strong><span>Summarisation, information extraction and document understanding.</span></div></div>
         </div>
+      </aside>
+    </div>
+  </div>
+</section>
 
-        <!-- Email -->
-        <div class="mb-4">
-            <input type="email" name="email" placeholder="Your Email"
-                class="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-                required>
+<section id="director" class="section alt">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-eyebrow">Leadership</div>
+      <h2 class="section-title">Group Director</h2>
+    </div>
+
+    <article class="director-card">
+      <div class="director-photo">
+        <img src="img/mo.png" alt="Dr Mo El-Haj" onerror="this.onerror=null;this.src='speakers/mo.png'">
+      </div>
+      <div>
+        <div class="director-role">Director · NLP @ VinUniversity</div>
+        <h3>Dr Mo El-Haj</h3>
+        <div class="director-affil">Associate Professor (Reader) in Natural Language Processing · VinUniversity, Vietnam · Lancaster University, UK</div>
+        <p>Dr Mo El-Haj leads NLP @ VinUniversity and works on multilingual and low-resource NLP, Arabic language technology, text summarisation, information extraction, financial NLP, language resources and large language models.</p>
+        <div class="director-links">
+          <a class="small-btn" href="https://elhaj.uk/" target="_blank" rel="noopener"><i class="fa-solid fa-globe"></i> Personal website</a>
+          <a class="small-btn" href="https://scholar.google.com/citations?user=diBeuuEAAAAJ&hl=en" target="_blank" rel="noopener"><i class="fa-solid fa-graduation-cap"></i> Google Scholar</a>
+          <a class="small-btn" href="https://github.com/drelhaj" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> GitHub</a>
         </div>
+      </div>
+    </article>
+  </div>
+</section>
 
-        <!-- Message -->
-        <div class="mb-4">
-            <textarea name="message" rows="4" placeholder="Your Message"
-                class="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-                required></textarea>
+<section id="members" class="section">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-eyebrow">Research community</div>
+      <h2 class="section-title">NLP @ VinUni members & Collaborators</h2>
+      <p class="section-lead">A flexible directory for faculty, researchers, research assistants, PhD students, visiting researchers and collaborators associated with the group.</p>
+    </div>
+
+    <div class="members-grid">
+      
+      <article class="member-card">
+        <div class="member-photo">
+          <span>Photo</span>
+          <img src="assets/WrayStudioHead24.png" alt="NLP @ VinUni member 01" onerror="this.style.display='none'">
         </div>
-
-        <!-- Submit Button -->
-        <button type="submit"
-            class="bg-blue-600 cursor-pointer text-white font-semibold px-6 py-3 rounded hover:bg-blue-700 transition duration-300">
-            Send Message
-        </button>
-    </form>
-</div>
-
+        <div class="member-copy">
+          <h3>Prof. Wray Buntine</h3>
+          <p>Monash University, Australia</p>
         </div>
-    </section>
+      </article>
 
-    <!-- Footer -->
-    <footer class="bg-gray-800 text-gray-300 text-sm py-4">
-        <div class="container mx-auto px-6 md:flex md:items-center md:justify-between">
-            <!-- Secondary Nav Links -->
-            <div class="mb-4 md:mb-0">
-                <a href="#home" class="mr-4 hover:underline">Home</a>
-                <a href="#about" class="mr-4 hover:underline">About</a>
-                <a href="#people" class="mr-4 hover:underline">People</a>
-                <a href="#research" class="mr-4 hover:underline">Research</a>
-				<a href="#research" class="mr-4 hover:underline">Projects</a>
-				<a href="jobs.html" class="mr-4 hover:underline">Jobs</a>
-				<a href="nlp_bridges.html" class="mr-4 hover:underline">NLP Bridges</a>
-                <a href="#contact" class="mr-4 hover:underline">Contact</a>
-            </div>
-            <!-- Social Icons -->
-            <div class="mb-4 md:mb-0">
-                <a href="#" aria-label="LinkedIn" class="mr-3 hover:text-white"><i class="fab fa-linkedin"></i></a>
-                <a href="#" aria-label="Twitter" class="mr-3 hover:text-white"><i class="fab fa-twitter"></i></a>
-            </div>
-            <!-- Copyright -->
-      <div>&copy; 2025-2026 NLP @ VinUniversity. All rights reserved.</div>
-
+      <article class="member-card">
+        <div class="member-photo">
+          <span>Photo</span>
+          <img src="speakers/prayson.jpg" alt="NLP @ VinUni member 02" onerror="this.style.display='none'">
         </div>
-    </footer>
+        <div class="member-copy">
+          <h3>Prof. Paul Rayson</h3>
+          <p>Lancaster University, UK</p>
+        </div>
+      </article>
 
-    <!-- JavaScript -->
-    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
-    <!-- JavaScript -->
-    <script src="./mainfile.js"></script>
+      <article class="member-card">
+        <div class="member-photo">
+          <span>Photo</span>
+          <img src="speakers/knight.jpg" alt="NLP @ VinUni member 03" onerror="this.style.display='none'">
+        </div>
+        <div class="member-copy">
+          <h3>Prof. Dawn Knight</h3>
+          <p>Cardiff University, UK</p>
+        </div>
+      </article>
 
+      <article class="member-card">
+        <div class="member-photo">
+          <span>Photo</span>
+          <img src="speakers/antonio-moreno.jpg" alt="NLP @ VinUni member 04" onerror="this.style.display='none'">
+        </div>
+        <div class="member-copy">
+          <h3>Prof. Antonio Moreno Sandoval</h3>
+          <p>Autonomous University of Madrid, Spain</p>
+        </div>
+      </article>
+
+      <article class="member-card">
+        <div class="member-photo">
+          <span>Photo</span>
+          <img src="speakers/leandro.jpg" alt="NLP @ VinUni member 05" onerror="this.style.display='none'">
+        </div>
+        <div class="member-copy">
+          <h3>Dr. Leandro Marcolino</h3>
+          <p>VinUniversity, Vietnam</p>
+        </div>
+      </article>
+
+      <article class="member-card">
+        <div class="member-photo">
+          <span>Photo</span>
+          <img src="speakers/claire-hardy.png" alt="NLP @ VinUni member 06" onerror="this.style.display='none'">
+        </div>
+        <div class="member-copy">
+          <h3>Dr. Claire Hardy</h3>
+          <p>VinUniversity, Vietnam</p>
+        </div>
+      </article>
+
+    <article class="member-card">
+        <div class="member-photo">
+          <span>Photo</span>
+          <img src="speakers/menon.jpg" alt="NLP @ VinUni member 15" onerror="this.style.display='none'">
+        </div>
+        <div class="member-copy">
+          <h3>Dr. Seetha Menon</h3>
+          <p>University of Southern Denmark, Denmark</p>
+        </div>
+      </article>
+	  
+      <article class="member-card">
+        <div class="member-photo">
+          <span>Photo</span>
+          <img src="speakers/alex.jpg" alt="NLP @ VinUni member 07" onerror="this.style.display='none'">
+        </div>
+        <div class="member-copy">
+          <h3>Dr. Nguyen Thi Mai Lan</h3>
+          <p>VinUniversity, Vietnam</p>
+        </div>
+      </article>
+
+      <article class="member-card">
+        <div class="member-photo">
+          <span>Photo</span>
+          <img src="speakers/thanh.png" alt="NLP @ VinUni member 08" onerror="this.style.display='none'">
+        </div>
+        <div class="member-copy">
+          <h3>Dr. Nguyen Ha Thanh</h3>
+          <p>VinUniversity, Vietnam</p>
+        </div>
+      </article>
+
+      <article class="member-card">
+        <div class="member-photo">
+          <span>Photo</span>
+          <img src="speakers/mustafa-jarrar.jpg" alt="NLP @ VinUni member 09" onerror="this.style.display='none'">
+        </div>
+        <div class="member-copy">
+          <h3>Prof. Mustafa Jarrar</h3>
+          <p>HBKU, Qatar</p>
+        </div>
+      </article>
+
+      <article class="member-card">
+        <div class="member-photo">
+          <span>Photo</span>
+          <img src="speakers/dung.jpg" alt="NLP @ VinUni member 10" onerror="this.style.display='none'">
+        </div>
+        <div class="member-copy">
+          <h3>Dr. Le Duy Dung</h3>
+          <p>VinUniversity, Vietnam</p>
+        </div>
+      </article>
+
+      <article class="member-card">
+        <div class="member-photo">
+          <span>Photo</span>
+          <img src="speakers/saad-ezzini.jpg" alt="NLP @ VinUni member 11" onerror="this.style.display='none'">
+        </div>
+        <div class="member-copy">
+          <h3>Dr. Saad Ezzini</h3>
+          <p>KFUP, Saudi Arabia</p>
+        </div>
+      </article>
+
+      <article class="member-card">
+        <div class="member-photo">
+          <span>Photo</span>
+          <img src="speakers/abhishek.png" alt="NLP @ VinUni member 12" onerror="this.style.display='none'">
+        </div>
+        <div class="member-copy">
+          <h3>Dr Nayak Abhishek Shashikant</h3>
+          <p>VinUniversity, Vietnam</p>
+        </div>
+      </article>  
+	  
+      <article class="member-card">
+        <div class="member-photo">
+          <span>Photo</span>
+          <img src="speakers/hung.jpg" alt="NLP @ VinUni member 16" onerror="this.style.display='none'">
+        </div>
+        <div class="member-copy">
+          <h3>Mr. Nguyen Huy Hung</h3>
+          <p>VinUniversity, Vietnam</p>
+        </div>
+      </article>
+	  
+      <article class="member-card">
+        <div class="member-photo">
+          <span>Photo</span>
+          <img src="speakers/minhchi.jpg" alt="NLP @ VinUni member 13" onerror="this.style.display='none'">
+        </div>
+        <div class="member-copy">
+          <h3>Mr. Nguyen Minh Chi</h3>
+          <p>VinUniversity, Vietnam</p>
+        </div>
+      </article>
+
+      <article class="member-card">
+        <div class="member-photo">
+          <span>Photo</span>
+          <img src="speakers/quan.jpg" alt="NLP @ VinUni member 14" onerror="this.style.display='none'">
+        </div>
+        <div class="member-copy">
+          <h3>Nguyen Minh Quan</h3>
+          <p>VinUniversity, Vietnam</p>
+        </div>
+      </article>
+
+
+
+    </div>
+    <p class="member-note">The member cards are intentionally prepared as editable placeholders. Replace the name, affiliation and image path for each person as the group directory is updated.</p>
+  </div>
+</section>
+
+<section id="research" class="section alt">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-eyebrow">Research</div>
+      <h2 class="section-title">Research areas</h2>
+      <p class="section-lead">Our research combines foundational NLP with multilingual resources, generative AI and applied language technology.</p>
+    </div>
+
+    <div class="pillar-grid">
+      <div class="pillar-card"><div class="pillar-icon"><i class="fa-solid fa-earth-asia"></i></div><h3>Multilingual & Low-Resource NLP</h3><p>Language modelling, transfer, evaluation and resource development for languages and varieties that remain under-represented in NLP.</p></div>
+      <div class="pillar-card"><div class="pillar-icon"><i class="fa-solid fa-robot"></i></div><h3>Generative AI & LLMs</h3><p>Instruction tuning, adaptation, retrieval-augmented generation, multi-agent systems, model evaluation and reasoning.</p></div>
+      <div class="pillar-card"><div class="pillar-icon"><i class="fa-solid fa-book-open"></i></div><h3>Language Resources</h3><p>Corpora, benchmarks, datasets, lexicons, annotation frameworks and open-source NLP tools.</p></div>
+      <div class="pillar-card"><div class="pillar-icon"><i class="fa-solid fa-file-contract"></i></div><h3>Summarisation & Information Extraction</h3><p>Document understanding, automatic summarisation, information extraction and structured analysis of complex text.</p></div>
+      <div class="pillar-card"><div class="pillar-icon"><i class="fa-solid fa-comments"></i></div><h3>Language Understanding & Evaluation</h3><p>Sentiment, classification, question answering, retrieval, human evaluation and robust multilingual benchmarking.</p></div>
+      <div class="pillar-card"><div class="pillar-icon"><i class="fa-solid fa-stethoscope"></i></div><h3>Applied NLP</h3><p>Language technology for public policy, finance, healthcare, education, social sciences and cultural heritage.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="projects" class="section">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-eyebrow">Research portfolio</div>
+      <h2 class="section-title">Projects</h2>
+      <p class="section-lead">Current and recent projects illustrate the group's emphasis on multilingual AI, open resources, low-resource language technology and real-world NLP.</p>
+    </div>
+
+    <div class="featured-projects">
+      <article class="project-card new">
+        <div class="project-code"><i class="fa-solid fa-network-wired"></i> Multilingual reasoning</div>
+        <h3>PolicyVerse: Multilingual Multi-Agent LLMs for Policy Reasoning</h3>
+        <p>PolicyVerse develops multilingual retrieval, policy world models and evidence-grounded multi-agent reasoning for analysing complex policy information across languages.</p>
+        <div class="project-tags"><span class="tag">Multi-agent LLMs</span><span class="tag">RAG</span><span class="tag">Policy reasoning</span><span class="tag">Multilingual AI</span></div>
+        <a class="project-link" href="policyverse.html">Explore PolicyVerse <i class="fa-solid fa-arrow-right"></i></a>
+      </article>
+
+      <article class="project-card new">
+        <div class="project-code"><i class="fa-solid fa-language"></i> Multilingual LLM adaptation</div>
+        <h3>PolyDrift: Instruction-Language Drift in Adapted Multilingual Instruction-Tuned LLMs</h3>
+        <p>PolyDrift investigates how multilingual instruction-tuned language models change their language behaviour after adaptation, including when models drift away from the language requested by users.</p>
+        <div class="project-tags"><span class="tag">LLM adaptation</span><span class="tag">Instruction tuning</span><span class="tag">Language drift</span><span class="tag">Multilingual evaluation</span></div>
+        <a class="project-link" href="polydrif.html">Explore PolyDrift <i class="fa-solid fa-arrow-right"></i></a>
+      </article>
+    </div>
+
+    <div class="project-grid">
+      <article class="project-small">
+        <h3>FreeTxt-Vi</h3>
+        <p>A benchmarked Vietnamese-English toolkit for segmentation, sentiment, summarisation and free-text corpus exploration.</p>
+        <a class="project-link" href="freetxt-vi.html">View project <i class="fa-solid fa-arrow-right"></i></a>
+      </article>
+
+      <article class="project-small">
+        <h3>Vietnamese Semantic Tagging System (ViSaS)</h3>
+        <p>Research and resource development for semantic analysis and tagging of Vietnamese text.</p>
+        <a class="project-link" href="visas.html">View project <i class="fa-solid fa-arrow-right"></i></a>
+      </article>
+
+      <article class="project-small">
+        <h3>FreeTxt</h3>
+        <p>Supporting bilingual free-text survey and questionnaire analysis through corpus-based and NLP methods.</p>
+        <a class="project-link" href="https://freetxt.app/" target="_blank" rel="noopener">Visit FreeTxt <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+      </article>
+    </div>
+
+    <div class="other-projects">
+      <h3>Selected earlier and continuing research initiatives</h3>
+      <ul class="project-list">
+        <li>Welsh Language Model pilot</li>
+        <li>DigiGrid for Welsh Language Resources</li>
+        <li>Using NLP to Monitor Water Pipes Burst</li>
+        <li>Catalyst Fund for Advancing Celtic NLP Research</li>
+        <li>Talent Track Application for NLP and Econometric Techniques</li>
+        <li>Canadian Annual Reports Extractor (CARE)</li>
+        <li>Using Word Embeddings to Create a Thesaurus of Contemporary Welsh</li>
+        <li>Welsh Summary Creator (WSC)</li>
+        <li>CLARA-Fin: Readability and Simplification in Financial Narrative</li>
+        <li>An Assessment of Corporate Disclosures from Accounting Standards</li>
+        <li>Arabic USAS Semantic Tagger (AraSAS)</li>
+        <li>FinT-esp: Financial Texts in Spanish</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="partners" class="section alt">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-eyebrow">International collaboration</div>
+      <h2 class="section-title">Collaborations & partners</h2>
+      <p class="section-lead">The group works with research organisations and universities internationally across multilingual NLP, language resources and applied AI.</p>
+    </div>
+
+    <div class="partner-grid">
+      <a class="partner-card" href="https://vinai.io/" target="_blank" rel="noopener"><img src="img/vinai.png" alt="VinAI"><span>VinAI</span></a>
+      <a class="partner-card" href="https://vinuni.edu.vn/club/vintelligence/" target="_blank" rel="noopener"><img src="img/vintelligence.jpg" alt="VinTelligence" onerror="this.style.display='none'"><span>VinTelligence</span></a>
+      <a class="partner-card" href="https://ucrel.lancs.ac.uk/" target="_blank" rel="noopener"><img src="assets/ucrel.png" alt="UCREL"><span>UCREL, Lancaster University</span></a>
+      <a class="partner-card" href="https://www.lancaster.ac.uk/" target="_blank" rel="noopener"><img src="assets/lancaster.png" alt="Lancaster University"><span>Lancaster University</span></a>
+      <a class="partner-card" href="https://www.monash.edu/" target="_blank" rel="noopener"><img src="assets/monash.svg" alt="Monash University"><span>Monash University</span></a>
+      <a class="partner-card" href="https://www.cardiff.ac.uk/" target="_blank" rel="noopener"><img src="assets/cardiff.png" alt="Cardiff University"><span>Cardiff University</span></a>
+      <a class="partner-card" href="https://www.sdu.dk/" target="_blank" rel="noopener"><img src="assets/sdu.png" alt="University of Southern Denmark" onerror="this.style.display='none'"><span>University of Southern Denmark</span></a>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="section">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-eyebrow">Contact</div>
+      <h2 class="section-title">Get in touch</h2>
+      <p class="section-lead">For research collaboration, projects, doctoral study and enquiries about NLP @ VinUniversity.</p>
+    </div>
+
+    <div class="contact-shell">
+      <div class="contact-info">
+        <h3>NLP @ VinUniversity</h3>
+        <p><strong>College of Engineering & Computer Science</strong><br>VinUniversity, Hanoi, Vietnam</p>
+        <p><strong>Email:</strong> <a href="mailto:elhaj.m@vinuni.edu.vn">elhaj.m@vinuni.edu.vn</a></p>
+        <p><strong>Website:</strong> <a href="https://vinnlp.com/">vinnlp.com</a></p>
+        <p><a href="https://cecs.vinuni.edu.vn/phd-in-computer-science/" target="_blank" rel="noopener">Apply for a PhD in Computer Science / NLP ↗</a></p>
+        <p><a href="jobs.html">Explore opportunities with the group →</a></p>
+
+        <div class="socials">
+          <a href="https://www.linkedin.com/company/vinnlp" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a href="https://x.com/vinnlp" target="_blank" rel="noopener" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="https://github.com/VinNLP" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+        </div>
+      </div>
+
+      <div class="contact-form">
+        <h3>Send a message</h3>
+        <form class="form-grid" action="https://usebasin.com/f/24f2d90b8cdf" method="POST" accept-charset="UTF-8">
+          <input type="text" name="name" placeholder="Your name" required>
+          <input type="email" name="email" placeholder="Your email" required>
+          <textarea name="message" rows="5" placeholder="Your message" required></textarea>
+          <button class="submit-btn" type="submit">Send message</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="container">
+    <div>© 2025–2026 NLP @ VinUniversity. All rights reserved.</div>
+    <div class="footer-links">
+      <a href="#about">About</a>
+      <a href="#members">Members</a>
+      <a href="#projects">Projects</a>
+      <a href="jobs.html">Jobs</a>
+      <a href="nlp_bridges.html">NLP Bridges</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const menuToggle=document.getElementById('menuToggle');
+  const mobileNav=document.getElementById('mobileNav');
+  menuToggle.addEventListener('click',()=>mobileNav.classList.toggle('open'));
+  mobileNav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>mobileNav.classList.remove('open')));
+</script>
 </body>
-
 </html>
