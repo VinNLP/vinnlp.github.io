@@ -1,395 +1,542 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-	<link rel="icon" href="img/favicon.ico" type="image/x-icon">
-    <title>NLP @ VinUniversity</title>
-    <!-- Link to your compiled Tailwind CSS -->
-    <link rel="stylesheet" href="./output.css" />
-    <!-- Optionally include Font Awesome for social icons -->
-    <!-- <script src="https://kit.fontawesome.com/yourkitid.js" crossorigin="anonymous"></script> -->
-    <link href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-MdFKNzCgP2CgcnI2Hg+grrGZ2E1uJtEmG9OAzgBClT49yNdozD1X0xAP0drfQ6d3VWaTb0Dj+0LyEKaRuUEC3w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="FreeTxt-Vi is a Vietnamese-English research toolkit for free-text analysis, combining segmentation, sentiment analysis, summarisation and corpus exploration." />
+  <link rel="icon" href="img/favicon.ico" type="image/x-icon" />
+  <title>FreeTxt-Vi | Vietnamese-English Free-Text Analysis</title>
+  <link rel="stylesheet" href="./output.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" />
+  <style>
+    :root{
+      --navy:#35426E;
+      --navy-2:#2E548A;
+      --ink:#20242c;
+      --muted:#667085;
+      --line:#DDE3EA;
+      --paper:#fff;
+      --canvas:#f5f7f9;
+      --gold:#D2AE6D;
+      --teal:#5CC6D0;
+      --teal-deep:#318B99;
+      --blue:#4890BD;
+      --green:#54A77A;
+      --shadow:0 12px 34px rgba(53,66,110,.09);
+      --shadow-sm:0 6px 20px rgba(53,66,110,.07);
+      --radius:18px;
+    }
 
-	<style>
-        /* Fallback if Tailwind is not configured with this font */
-        body {
-            font-family: 'Bai Jamjuree', sans-serif;
-        }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth;scroll-padding-top:86px}
+    body{margin:0!important;font-family:'Montserrat',Arial,sans-serif!important;background:var(--canvas)!important;color:var(--ink)!important;line-height:1.65;-webkit-font-smoothing:antialiased}
+    img{max-width:100%;display:block}
+    a{color:inherit}
+    ::selection{background:#dff5f7;color:#172033}
 
-        /* Ensure the hero heading is inline-level and doesn’t break to a new line */
-        #hero-h1 {
-            display: inline-block;
-            /* Inline container for the text */
-            white-space: nowrap;
-            /* Prevent wrapping onto a new line */
-        }
+    /* Header */
+    .site-header{position:sticky;top:0;z-index:80;background:rgba(255,255,255,.96);backdrop-filter:blur(14px);border-bottom:1px solid rgba(221,227,234,.95);box-shadow:0 3px 18px rgba(20,36,61,.05)}
+    .site-nav{max-width:1240px;margin:auto;padding:11px 24px;display:flex;align-items:center;justify-content:space-between;gap:22px}
+    .site-brand{display:flex;align-items:center;text-decoration:none;min-width:max-content}
+    .site-brand img{height:48px;width:auto}
+    .nav-links{display:flex;align-items:center;gap:3px;list-style:none;padding:0;margin:0}
+    .nav-links a{text-decoration:none;color:#4b5a6d;font-weight:700;font-size:.8rem;padding:9px 10px;border-radius:9px;transition:.16s ease}
+    .nav-links a:hover{background:#f1f4f8;color:var(--navy)}
+    .nav-links .paper-link{background:var(--navy);color:#fff;padding-inline:14px}
+    .nav-links .paper-link:hover{background:var(--navy-2);color:#fff}
+    .menu-toggle{display:none;border:1px solid var(--line);background:#fff;color:var(--navy);border-radius:10px;width:42px;height:42px;align-items:center;justify-content:center;cursor:pointer}
+    .mobile-nav{display:none;background:#fff;border-top:1px solid var(--line);padding:9px 22px 15px}
+    .mobile-nav.open{display:block}
+    .mobile-nav a{display:block;text-decoration:none;padding:10px 3px;font-weight:700;color:#42546b;border-bottom:1px solid #eef1f5;font-size:.85rem}
 
-        /* Style the Typed.js cursor */
-        .typed-cursor {
-            display: inline;
-            /* Keep cursor in the inline flow */
-            vertical-align: middle;
-            /* Align cursor vertically with text (use middle or baseline as needed) */
-            font-size: inherit;
-            font-weight: normal;
-            margin-left: 0.1em;
-            /* small gap between text and cursor */
-            animation: blink 0.7s infinite;
-        }
+    /* Shared */
+    .container{max-width:1240px;margin:auto;padding:0 24px}
+    .section{padding:68px 0}
+    .section.alt{background:#eef2f7}
+    .section-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:26px}
+    .section-head-copy{max-width:860px}
+    .eyebrow{font-size:.72rem;text-transform:uppercase;letter-spacing:.13em;color:#8a6b28;font-weight:700;margin-bottom:7px}
+    .section-title{font-size:clamp(1.7rem,3vw,2.4rem);line-height:1.15;letter-spacing:-.035em;color:var(--navy);margin:0 0 11px;font-weight:700}
+    .section-lead{font-size:.98rem;color:#5e6d7f;margin:0;max-width:900px}
+    .pill{display:inline-flex;align-items:center;gap:7px;border:1px solid #dce4ec;background:#fbfcfd;border-radius:999px;padding:7px 11px;color:#536478;font-size:.73rem;font-weight:700}
+    .pill i{color:var(--teal-deep)}
 
-        /* Add a blinking cursor after the heading text using a pseudo-element */
-        #hero-h1::after {
-            content: "|";
-            display: inline;
-            vertical-align: middle;
-            font-size: inherit;
-            margin-left: 0.1em;
-            animation: blink 0.7s infinite;
-        }
+    /* Hero */
+    .hero{position:relative;overflow:hidden;background:linear-gradient(135deg,#35426E 0%,#2E548A 65%,#297687 140%);color:#fff}
+    .hero::after{content:'';position:absolute;width:500px;height:500px;border:1px solid rgba(255,255,255,.08);border-radius:50%;right:-180px;top:-260px;box-shadow:0 0 0 70px rgba(255,255,255,.025),0 0 0 140px rgba(255,255,255,.017)}
+    .hero::before{content:'';position:absolute;width:320px;height:320px;border-radius:50%;background:radial-gradient(circle,rgba(92,198,208,.18),transparent 67%);left:-85px;bottom:-135px}
+    .hero-inner{max-width:1240px;margin:auto;padding:78px 24px 70px;position:relative;z-index:2;display:grid;grid-template-columns:minmax(0,1fr) 330px;gap:50px;align-items:end}
+    .hero-kicker{font-size:.77rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:#b9eef1;margin-bottom:12px}
+    .hero h1{font-size:clamp(3.2rem,8vw,6.4rem);line-height:.88;margin:0;font-weight:700;letter-spacing:-.065em;color:#fff}
+    .hero h1 span{color:#b9eef1}
+    .hero-subtitle{margin:16px 0 0;font-size:clamp(1.05rem,2.4vw,1.36rem);font-weight:600;color:#dce7f1;max-width:900px;line-height:1.4}
+    .hero-summary{max-width:880px;margin:18px 0 0;color:#cfdbe7;font-size:.93rem}
+    .hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:29px}
+    .hero-btn{display:inline-flex;align-items:center;gap:8px;text-decoration:none;border-radius:10px;padding:11px 16px;font-size:.84rem;font-weight:700;transition:.16s ease}
+    .hero-btn.primary{background:var(--teal);color:#142a37;box-shadow:0 5px 15px rgba(92,198,208,.22)}
+    .hero-btn.primary:hover{background:#75d2d9;transform:translateY(-1px)}
+    .hero-btn.secondary{border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.08);color:#fff}
+    .hero-btn.secondary:hover{background:rgba(255,255,255,.14)}
+    .hero-meta{border-left:1px solid rgba(255,255,255,.18);padding-left:30px;color:#dce4ef}
+    .hero-meta-logo{width:148px;height:auto;margin:0 0 22px;filter:brightness(0) invert(1);opacity:.96}
+    .meta-line{display:flex;gap:12px;align-items:flex-start;margin:16px 0;font-size:.84rem}
+    .meta-line i{color:#b9eef1;width:18px;margin-top:4px;text-align:center}
+    .meta-line strong{color:#fff;display:block;font-weight:700;margin-bottom:2px}
 
-        @keyframes blink {
-            0% {
-                opacity: 1;
-            }
+    /* Intro */
+    .intro-card{background:#fff;border:1px solid #e3e8ee;border-radius:var(--radius);padding:32px 35px;box-shadow:var(--shadow-sm);position:relative;overflow:hidden}
+    .intro-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:5px;background:var(--teal)}
+    .intro-card p{color:#4e5c6d;margin:0 0 13px}
+    .intro-card p:last-child{margin-bottom:0}
+    .definition{margin-top:23px;padding:21px 23px;background:linear-gradient(135deg,#f8fafc,#f4f8f9);border:1px solid #e1e9ec;border-radius:14px;display:grid;grid-template-columns:45px minmax(0,1fr);gap:15px;align-items:start}
+    .definition-icon{width:45px;height:45px;border-radius:12px;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center}
+    .definition h3{margin:0 0 6px;color:var(--navy);font-size:1rem}
+    .definition p{margin:0;color:#5d6b7d;font-size:.88rem}
+    .quick-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:25px}
+    .quick-card{background:#fff;border:1px solid #e1e7ee;border-radius:16px;padding:23px;box-shadow:var(--shadow-sm);position:relative;overflow:hidden}
+    .quick-card::before{content:'';position:absolute;left:0;top:0;right:0;height:4px;background:var(--teal)}
+    .quick-card:nth-child(2)::before{background:var(--gold)}
+    .quick-card:nth-child(3)::before{background:var(--blue)}
+    .quick-icon{width:39px;height:39px;border-radius:10px;background:#f1f6f7;color:var(--navy);display:flex;align-items:center;justify-content:center;margin-bottom:14px}
+    .quick-card h3{font-size:1.04rem;color:var(--navy);margin:0 0 8px}
+    .quick-card p{font-size:.84rem;color:#5b6b7d;margin:0}
 
-            50% {
-                opacity: 0;
-            }
+    /* Capabilities */
+    .capability-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
+    .capability-card{background:#fff;border:1px solid #e1e7ee;border-radius:17px;padding:25px;box-shadow:var(--shadow-sm);position:relative;overflow:hidden;min-height:230px}
+    .capability-card::before{content:'';position:absolute;left:0;top:0;right:0;height:4px;background:var(--teal)}
+    .capability-card:nth-child(2)::before{background:var(--blue)}
+    .capability-card:nth-child(3)::before{background:var(--gold)}
+    .capability-card:nth-child(4)::before{background:var(--green)}
+    .capability-icon{width:43px;height:43px;border-radius:12px;background:#f2f5f9;color:var(--navy);display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+    .capability-card h3{font-size:1.04rem;color:var(--navy);margin:0 0 9px;line-height:1.35}
+    .capability-card p{font-size:.83rem;color:#5b6b7d;margin:0}
+    .tech-tag-row{display:flex;gap:7px;flex-wrap:wrap;margin-top:15px}
+    .tech-tag{font-size:.68rem;font-weight:700;color:#587084;background:#f3f6f8;border:1px solid #e1e7ec;border-radius:7px;padding:5px 7px}
 
-            100% {
-                opacity: 1;
-            }
-        }
-    </style>
+    /* Pipeline */
+    .pipeline-shell{background:linear-gradient(135deg,#fff,#fbfcfe);border:1px solid #e1e7ee;border-radius:20px;padding:30px;box-shadow:var(--shadow);overflow:hidden}
+    .pipeline{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));align-items:center;gap:11px}
+    .pipeline-step{background:#fff;border:1px solid #dfe5ec;border-radius:14px;padding:19px 13px;text-align:center;box-shadow:var(--shadow-sm);height:100%}
+    .pipeline-step i{display:flex;align-items:center;justify-content:center;width:42px;height:42px;margin:0 auto 11px;border-radius:12px;background:#edf6f7;color:var(--teal-deep)}
+    .pipeline-step strong{display:block;color:var(--navy);font-size:.84rem;margin-bottom:4px}
+    .pipeline-step span{display:block;color:#708092;font-size:.7rem;line-height:1.42}
+    .pipeline-arrow{text-align:center;color:#9cacbd;font-size:1.1rem}
+    .evaluation-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:17px;margin-top:24px}
+    .evaluation-card{background:#fff;border:1px solid #e1e7ee;border-radius:15px;padding:21px;position:relative;overflow:hidden}
+    .evaluation-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:4px;background:var(--teal)}
+    .evaluation-card:nth-child(2)::before{background:var(--gold)}
+    .evaluation-card:nth-child(3)::before{background:var(--blue)}
+    .evaluation-card h3{margin:0 0 7px;color:var(--navy);font-size:.98rem}
+    .evaluation-card p{margin:0;color:#617083;font-size:.8rem}
+
+    /* Outputs */
+    .publication-card{background:#fff;border:1px solid #e0e6ed;border-radius:19px;box-shadow:var(--shadow);display:grid;grid-template-columns:165px minmax(0,1fr);overflow:hidden}
+    .publication-badge{background:linear-gradient(145deg,var(--navy),var(--navy-2));color:#fff;padding:30px 24px;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;position:relative;overflow:hidden}
+    .publication-badge::after{content:'';position:absolute;width:150px;height:150px;border-radius:50%;border:1px solid rgba(255,255,255,.08);right:-75px;bottom:-80px;box-shadow:0 0 0 28px rgba(255,255,255,.025)}
+    .publication-badge i{font-size:1.55rem;color:#b9eef1;margin-bottom:15px}
+    .publication-badge strong{font-size:1.3rem;letter-spacing:-.02em}
+    .publication-badge span{font-size:.71rem;text-transform:uppercase;letter-spacing:.1em;font-weight:700;color:#d7e1eb;margin-top:5px}
+    .publication-copy{padding:29px 32px}
+    .publication-copy h3{font-size:1.2rem;line-height:1.42;color:var(--navy);margin:0 0 9px}
+    .publication-authors{color:#59697b;font-size:.86rem;margin:0 0 13px}
+    .publication-note{color:#657487;font-size:.81rem;margin:0 0 17px}
+    .publication-links{display:flex;gap:9px;flex-wrap:wrap}
+    .publication-links a{display:inline-flex;align-items:center;gap:7px;text-decoration:none;border-radius:9px;padding:8px 11px;font-size:.75rem;font-weight:700;background:#f2f5f9;color:var(--navy);border:1px solid #dde4eb}
+    .publication-links a:hover{background:#eaf1f5}
+    .output-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:24px}
+    .output-card{background:#fff;border:1px solid #e1e7ee;border-radius:16px;padding:23px;box-shadow:var(--shadow-sm);position:relative;overflow:hidden}
+    .output-card::before{content:'';position:absolute;left:0;top:0;right:0;height:4px;background:linear-gradient(90deg,var(--teal-deep),var(--teal))}
+    .output-card i{width:40px;height:40px;border-radius:11px;background:#f0f6f7;color:var(--navy);display:flex;align-items:center;justify-content:center;margin-bottom:14px}
+    .output-card h3{margin:0 0 8px;color:var(--navy);font-size:1rem}
+    .output-card p{margin:0;color:#5d6b7d;font-size:.81rem}
+
+    /* Team */
+    .team-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
+    .team-card{background:#fff;border:1px solid #e1e7ee;border-radius:17px;box-shadow:var(--shadow-sm);padding:23px;position:relative;overflow:hidden;display:flex;flex-direction:column;min-height:310px}
+    .team-card::before{content:'';position:absolute;left:0;top:0;right:0;height:4px;background:linear-gradient(90deg,var(--navy-2),var(--teal))}
+    .team-card img{width:92px;height:92px;border-radius:50%;object-fit:cover;border:3px solid #fff;box-shadow:0 0 0 1px #dfe5ec,0 7px 18px rgba(20,36,61,.12);margin:4px 0 16px}
+    .team-card h3{margin:0 0 4px;color:var(--navy);font-size:1.04rem;line-height:1.3}
+    .team-role{font-size:.69rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#8a6b28;margin-bottom:10px}
+    .team-card p{font-size:.78rem;color:#5c6b7d;margin:0 0 6px}
+    .team-card a.profile-link{margin-top:auto;padding-top:14px;border-top:1px solid #e8edf2;color:#315d91;text-decoration:none;font-size:.76rem;font-weight:700}
+    .team-card a.profile-link:hover{text-decoration:underline}
+
+    /* Partners */
+    .partner-panel{background:#fff;border:1px solid #e1e7ee;border-radius:19px;padding:30px;box-shadow:var(--shadow-sm)}
+    .partner-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:22px;align-items:center}
+    .partner{min-height:125px;border:1px solid #e5eaf0;border-radius:14px;background:#fbfcfd;padding:18px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;text-decoration:none;transition:.16s ease}
+    .partner:hover{transform:translateY(-2px);box-shadow:var(--shadow-sm);background:#fff}
+    .partner img{max-width:145px;max-height:55px;width:auto;height:auto;object-fit:contain;margin-bottom:12px}
+    .partner span{font-size:.74rem;color:#5f6e80;font-weight:700}
+
+    /* Impact */
+    .impact-panel{background:linear-gradient(135deg,var(--navy),var(--navy-2));border-radius:20px;color:#fff;padding:35px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+    .impact-panel::after{content:'';position:absolute;width:320px;height:320px;border-radius:50%;border:1px solid rgba(255,255,255,.08);right:-120px;bottom:-175px;box-shadow:0 0 0 50px rgba(255,255,255,.025)}
+    .impact-panel .eyebrow{color:#b9eef1}
+    .impact-panel .section-title{color:#fff;max-width:940px}
+    .impact-panel .section-lead{color:#dce5f0;position:relative;z-index:2}
+    .impact-points{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px;margin-top:24px;position:relative;z-index:2}
+    .impact-point{border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.06);border-radius:14px;padding:18px}
+    .impact-point i{color:#b9eef1;margin-bottom:10px;font-size:1.1rem}
+    .impact-point strong{display:block;font-size:.9rem;margin-bottom:5px}
+    .impact-point span{display:block;color:#d4dfeb;font-size:.75rem;line-height:1.5}
+
+    /* Contact */
+    .contact-grid{display:grid;grid-template-columns:.88fr 1.12fr;gap:24px}
+    .contact-panel{background:var(--navy);color:#fff;border-radius:18px;padding:31px 32px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+    .contact-panel::after{content:'';position:absolute;width:250px;height:250px;border-radius:50%;border:1px solid rgba(255,255,255,.08);right:-100px;bottom:-130px;box-shadow:0 0 0 40px rgba(255,255,255,.025)}
+    .contact-panel h2{font-size:2rem;color:#fff;margin:0 0 18px;letter-spacing:-.035em}
+    .contact-panel p{color:#dce5f0;font-size:.86rem;margin:7px 0;position:relative;z-index:2}
+    .contact-panel a{color:#b9eef1;text-decoration:none}
+    .contact-panel a:hover{text-decoration:underline}
+    .social-row{display:flex;gap:10px;margin-top:20px;position:relative;z-index:2}
+    .social-row a{width:39px;height:39px;border:1px solid rgba(255,255,255,.18);border-radius:10px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.07);color:#fff}
+    .social-row a:hover{background:rgba(255,255,255,.13);text-decoration:none}
+    .contact-form{background:#fff;border:1px solid #e1e7ee;border-radius:18px;padding:30px 32px;box-shadow:var(--shadow-sm)}
+    .contact-form h3{font-size:1.24rem;color:var(--navy);margin:0 0 17px}
+    .contact-form input,.contact-form textarea{width:100%;border:1px solid #d9e0e8;background:#fbfcfd;color:var(--ink);border-radius:10px;padding:11px 13px;font:inherit;font-size:.84rem;outline:none;transition:.15s ease;margin-bottom:12px}
+    .contact-form input:focus,.contact-form textarea:focus{border-color:#75aeb4;box-shadow:0 0 0 3px rgba(92,198,208,.12);background:#fff}
+    .contact-form button{background:var(--teal);color:#17313a;border:0;border-radius:10px;padding:11px 17px;font:inherit;font-size:.84rem;font-weight:700;cursor:pointer;box-shadow:0 5px 14px rgba(92,198,208,.18)}
+    .contact-form button:hover{background:#73d1d9}
+
+    footer{background:var(--navy);color:#c3cfdd;border-top:1px solid rgba(255,255,255,.08);padding:22px 0;font-size:.76rem}
+    footer .container{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+    footer a{color:#dbe4ef;text-decoration:none;margin-right:13px}
+    footer a:hover{color:#fff;text-decoration:underline}
+
+    @media(max-width:1050px){
+      .nav-links{display:none}.menu-toggle{display:flex}
+      .hero-inner{grid-template-columns:1fr;gap:30px;padding-top:62px}.hero-meta{border-left:0;border-top:1px solid rgba(255,255,255,.16);padding-left:0;padding-top:20px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px}.hero-meta-logo{display:none}.meta-line{margin:0}
+      .capability-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .team-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .partner-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+    }
+    @media(max-width:780px){
+      .site-nav{padding:10px 16px}.site-brand img{height:44px}.container{padding-left:17px;padding-right:17px}.section{padding:54px 0}
+      .hero-inner{padding:52px 18px 48px}.hero h1{font-size:clamp(3rem,18vw,5.1rem)}.hero-meta{grid-template-columns:1fr}.hero-summary{font-size:.88rem}
+      .section-head{align-items:flex-start;flex-direction:column;gap:6px}.intro-card{padding:26px 22px}.quick-grid,.capability-grid,.evaluation-grid,.output-grid,.impact-points{grid-template-columns:1fr}
+      .pipeline{grid-template-columns:1fr}.pipeline-arrow{transform:rotate(90deg);padding:2px 0}
+      .publication-card{grid-template-columns:1fr}.publication-badge{min-height:145px}.publication-copy{padding:24px 22px}
+      .team-grid{grid-template-columns:1fr}.team-card{min-height:0}
+      .partner-grid{grid-template-columns:1fr 1fr}.partner-panel{padding:22px}
+      .contact-grid{grid-template-columns:1fr}.contact-panel,.contact-form{padding:26px 22px}
+      footer .container{flex-direction:column;align-items:flex-start}
+    }
+    @media(max-width:520px){.partner-grid{grid-template-columns:1fr}.hero-actions{flex-direction:column;align-items:stretch}.hero-btn{justify-content:center}}
+    @media print{.site-header,.hero-actions,.contact-form,footer{display:none!important}body{background:#fff!important}.team-card,.intro-card,.capability-card,.publication-card,.partner-panel{box-shadow:none!important;break-inside:avoid}}
+  </style>
 </head>
-<body class="font-sans antialiased">
-    <!-- Header & Navigation -->
-    <header class="fixed top-0 w-full bg-white shadow z-50">
-        <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
-            <!-- Logo -->
-            <a href="index.html#home" class="text-2xl md:text-3xl font-bold text-gray-800">
-                <img src="./assets/vinnlp.png" alt="" class="h-10">
-            </a>
-            <!-- Mobile menu button -->
-            <button id="menuBtn" class="md:hidden px-3 py-2 border rounded text-gray-600 border-gray-400"
-                aria-label="Toggle Navigation">
-                <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
-                    <path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="2" />
-                </svg>
-            </button>
-            <!-- Desktop Navigation -->
-            <ul class="hidden md:flex space-x-6 text-gray-700">
-                <li><a href="index.html#home" class="hover:text-blue-600">Home</a></li>
-                <li><a href="index.html#about" class="hover:text-blue-600">About</a></li>
-                <li><a href="index.html#people" class="hover:text-blue-600">People</a></li>
-                <li><a href="index.html#research" class="hover:text-blue-600">Research</a></li>
-                <li><a href="index.html#research" class="hover:text-blue-600">Projects</a></li>
-                <li><a href="index.html#partners" class="hover:text-blue-600">Collaborations</a></li>
-				<li><a href="jobs.html" class="hover:text-blue-600">Jobs</a></li>
-				<li><a href="nlp_bridges.html" class="hover:text-blue-600">NLP Bridges</a></li>
-                <li><a href="index.html#contact" class="hover:text-blue-600">Contact</a></li>
-            </ul>
-        </nav>
-        <!-- Mobile Navigation Menu -->
-        <div id="mobileMenu" class="md:hidden hidden bg-white shadow">
-            <ul class="flex flex-col space-y-2 px-6 py-4 text-gray-700">
-                <li><a href="index.html#home" class="block hover:text-blue-600">Home</a></li>
-                <li><a href="index.html#about" class="block hover:text-blue-600">About</a></li>
-                <li><a href="index.html#people" class="block hover:text-blue-600">People</a></li>
-                <li><a href="index.html#research" class="block hover:text-blue-600">Research</a></li>
-                <li><a href="index.html#research" class="block hover:text-blue-600">Projects</a></li>
-                <li><a href="index.html#partners" class="block hover:text-blue-600">Collaborations</a></li>				
-				<li><a href="nlp_bridges.html" class="hover:text-blue-600">NLP Bridges</a></li>
-				<li><a href="jobs.html" class="hover:text-blue-600">Jobs</a></li>
-                <li><a href="index.html#contact" class="block hover:text-blue-600">Contact</a></li>
-            </ul>
-        </div>
-    </header>
-
-    <!-- Hero Section -->
-    <section id="home" class="relative hero bg-cover bg-center text-white pt-20"
-        style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('./assets/bg1.jpeg');">
-<div class="container mx-auto px-6 flex flex-col items-center justify-center text-center" style="min-height: 20vh;">
-
-            <a href="#about"
-                class="bg-blue-600 hover:bg-blue-700 px-6 py-3 rounded text-white font-medium shadow-lg transition duration-300">
-                FreeTxt-Vi Project
-            </a>
-        </div>
-    </section>
-    <!-- About Section -->
-    
-	
-	    <!-- About Section -->
-    <section id="about" class="py-12 bg-gray-100">
-        <div class="container mx-auto px-6">
-            <h2 class="text-3xl font-bold text-center mb-8">Vietnamese-English Free-Text Survey Analysis (FreeTxt-Vi)[Văn Bản Tự Do]</h2>
-            <div class="md:flex md:items-start md:space-x-8">
-                <!-- Left: Extended Text Content -->
-                <div class="md:w-2/3">
-                    <h3 class="text-xl font-semibold mb-2">FreeTxt-Vi Research Project</h3>
-			<p class="text-lg mb-6">
-    <strong>Partners:</strong> 
-    <a href="https://cecs.vinuni.edu.vn/" target="_blank" class="text-blue-600 underline">College of Engineering and Computer Science (CECS)</a>,
-    <a href="https://vinuni.edu.vn" target="_blank" class="text-blue-600 underline">VinUniversity</a>, Vietnam, 
-    <a href="https://ucrel.lancs.ac.uk/" target="_blank" class="text-blue-600 underline">UCREL</a>, 
-    <a href="https://lancaster.ac.uk" target="_blank" class="text-blue-600 underline">Lancaster University</a>, UK, and 
-    <a href="https://www.cardiff.ac.uk/" target="_blank" class="text-blue-600 underline">Cardiff University</a>, UK
-</p>
-
-                    <p class="mb-4">
-					FreeTxt-Vi extends the <a href="https://freetxt.app/" target="_blank" class="text-blue-600 underline">Welsh-English FreeTxt</a> toolkit to support bilingual Vietnamese-English survey and questionnaire analysis. It enables the automatic processing, summarisation, and sentiment analysis of civic and service-oriented feedback.</p>
-				
-    <ul class="list-disc list-inside mb-6 space-y-1">
-      <li>Extend FreeTxt’s architecture for Vietnamese support</li>
-      <li>Analyse LLM performance on bilingual text responses</li>
-      <li>Integrate Vietnamese NLP tools (e.g. PhoBERT, VnCoreNLP)</li>
-      <li>Curate bilingual datasets and evaluate model outputs</li>
-      <li>Create user-facing guides and visualisation tools</li>
-    </ul>
-
-    <p class="mb-6"><strong>Duration:</strong> 12 months (Starting May 2025)</p>
-
-	</div>
-	</div>      
-	</div>
-</section>
-
-  <!-- Team Section -->
-<section id="team" class="py-12 bg-white">
-  <div class="container mx-auto px-6 text-center">
-    <h2 class="text-3xl font-bold mb-8">FreeTxt-Vi Team</h2>
-    <p class="mb-10 text-lg">Meet the core team behind the Vietnamese-English Free-Text Survey Analysis (FreeTxt-Vi)[Văn Bản Tự Do]</p>
-	</br>
-    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-10 items-center">
-
-      <div class="flex flex-col items-center">
-        <a href="https://elhaj.uk" target="_blank" class="block text-center">
-		<img src="./img/mohaj.jpg" alt="Mo El-Haj" class="w-32 h-32 rounded-full object-cover shadow-md" />
-		 <p class="text-base font-medium mt-4">Mo El-Haj</p>
-		 <p class="text-sm text-gray-600">Project PI</p>
-        <p class="text-sm text-gray-600">VinUniversity</p>
-		</br>
-		 </a>
-      </div>
-
-      <div class="flex flex-col items-center">
-		<a href="https://www.lancaster.ac.uk/lira/people/paul-rayson" target="_blank" class="block text-center">
-		<img src="./img/prayson.jpg" alt="Paul Rayson" class="w-32 h-32 rounded-full object-cover shadow-md" />
-        <p class="text-base font-medium mt-4">Paul Rayson</p>
-		<p class="text-sm text-gray-600">Project Co-I</p>
-        <p class="text-sm text-gray-600">Lancaster University</p>
-		</br>
-		</a>
-      </div>
-
-      <div class="flex flex-col items-center">
-        <a href="https://profiles.cardiff.ac.uk/staff/knightd5" target="_blank" class="block text-center">
-		<img src="./img/knight.jpg" alt="Dawn Knight" class="w-32 h-32 rounded-full object-cover shadow-md" />
-        <p class="text-base font-medium mt-4">Dawn Knight</p>
-		<p class="text-sm text-gray-600">Project Co-I</p>
-        <p class="text-sm text-gray-600">Cardiff University</p>
-		</br>
-		</a>
-      </div>
-
-      <div class="flex flex-col items-center">
-       <a href="https://www.linkedin.com/in/huyt02/" target="_blank" class="block text-center">
-	   <img src="./img/hung.jpg" alt="Nguyen Huy Hung" class="w-32 h-32 rounded-full object-cover shadow-md" />
-        <p class="text-base font-medium mt-4">Nguyen Huy Hung</p>
-		<p class="text-sm text-gray-600">Research Assistant</p>
-        <p class="text-sm text-gray-600">VinUniversity</p>
-		</br>
-		</a>
-      </div>
-
-
-
+<body>
+  <header class="site-header">
+    <nav class="site-nav" aria-label="Main navigation">
+      <a class="site-brand" href="index.html#home"><img src="./assets/vinnlp.png" alt="NLP at VinUniversity" /></a>
+      <button class="menu-toggle" id="menuBtn" aria-label="Toggle navigation" aria-expanded="false"><i class="fas fa-bars"></i></button>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#toolkit">Toolkit</a></li>
+        <li><a href="#pipeline">Research</a></li>
+        <li><a href="#outputs">Outputs</a></li>
+        <li><a href="#team">Team</a></li>
+        <li><a href="#partners">Partners</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a class="paper-link" href="https://arxiv.org/abs/2603.05690" target="_blank" rel="noopener"><i class="far fa-file-lines"></i> LREC 2026 paper</a></li>
+      </ul>
+    </nav>
+    <div class="mobile-nav" id="mobileNav">
+      <a href="#about">About</a><a href="#toolkit">Toolkit</a><a href="#pipeline">Research</a><a href="#outputs">Outputs</a><a href="#team">Team</a><a href="#partners">Partners</a><a href="#contact">Contact</a><a href="https://arxiv.org/abs/2603.05690" target="_blank" rel="noopener">LREC 2026 paper</a>
     </div>
-  </div>
-</section>
+  </header>
 
-
-
-
-    <!-- Partners Section -->
-    <section id="partners" class="py-12 bg-white">
-        <div class="container mx-auto px-6 text-center">
-            <h2 class="text-3xl font-bold mb-8">FreeTxt-Vi Collaborations &amp; Partners</h2>
-            <p class="mb-6">FreeTxt-Vi is a collaborative project that aims towards enriching low-resource languages.</p>
-            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8 items-center">
-
-<div>
-  <a href="https://vinuni.edu.vn" target="_blank" class="block text-center">
-    <img src="./img/vinuni.png" alt="VinUni" class="mx-auto h-12" />
-    <p class="text-sm mt-2">VinUniversity</p>
-  </a>
-</div>
-
-<div>
-  <a href="https://vinnlp.com" target="_blank" class="block text-center">
-    <img src="./img/vinnlp.png" alt="VinNLP" class="mx-auto h-12" />
-    <p class="text-sm mt-2">NLP @ VinUniversity Research Group</p>
-  </a>
-</div>
-
-
-<div>
-  <a href="https://ucrel.lancs.ac.uk/" target="_blank" class="block text-center">
-    <img src="./assets/ucrel.png" alt="UCREL" class="mx-auto h-12" />
-    <p class="text-sm mt-2">UCREL NLP Group</p>
-  </a>
-</div>
-<div>
-  <a href="https://lancaster.ac.uk" target="_blank" class="block text-center">
-    <img src="./assets/lancaster.png" alt="Lancaster University" class="mx-auto h-12" />
-    <p class="text-sm mt-2">Lancaster University, UK</p>
-  </a>
-</div>
-
-<div>
-  <a href="https://www.cardiff.ac.uk/" target="_blank" class="block text-center">
-    <img src="./assets/cardiff.png" alt="Cardiff University" class="mx-auto h-12" />
-    <p class="text-sm mt-2">Cardiff University</p>
-  </a>
-</div>
-
-
-            </div>
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-inner">
+        <div>
+          <div class="hero-kicker">Multilingual NLP · Vietnamese &amp; English · Free-text analytics</div>
+          <h1>FreeTxt<span>-Vi</span></h1>
+          <p class="hero-subtitle">A benchmarked Vietnamese-English toolkit for segmentation, sentiment, summarisation and corpus exploration.</p>
+          <p class="hero-summary">FreeTxt-Vi brings corpus linguistics and modern NLP together in an accessible web-based environment for building, exploring and interpreting bilingual free-text collections, without requiring users to write code.</p>
+          <div class="hero-actions">
+            <a class="hero-btn primary" href="#toolkit"><i class="fas fa-layer-group"></i> Explore the toolkit</a>
+            <a class="hero-btn secondary" href="https://doi.org/10.48550/arXiv.2603.05690" target="_blank" rel="noopener"><i class="far fa-file-lines"></i> Read the LREC 2026 paper</a>
+            <a class="hero-btn secondary" href="https://freetxt.app/" target="_blank" rel="noopener"><i class="fas fa-arrow-up-right-from-square"></i> FreeTxt</a>
+          </div>
         </div>
-    </section>
-
-    <!-- Contact Section -->
-   <section id="contact" class="py-12 bg-gray-100">
-  <div class="container mx-auto px-6 md:flex md:space-x-12">
-    <!-- Contact Info -->
-    <div class="md:w-1/2 mb-8 md:mb-0">
-      <h2 class="text-3xl font-bold mb-6">Get in Touch</h2>
-      <p class="mb-2"><strong>Address:</strong> CECS, VinUniversity, Hanoi, Vietnam</p>
-      <p class="mb-2">
-        <strong>Email:</strong>
-        <a href="mailto:elhaj.m@vinuni.edu.vn" class="text-blue-600 hover:underline">elhaj.m@vinuni.edu.vn</a>
-      </p>
-      <p class="mb-6">
-        <strong>Website:</strong>
-        <a href="https://vinnlp.com" class="text-blue-600 hover:underline">NLP @ VinUniversity</a>
-      </p>
-<div class="flex space-x-4 mb-6">
-  <!-- LinkedIn -->
-  <a href="https://www.linkedin.com/company/vinnlp" target="_blank" aria-label="LinkedIn" class="text-gray-500 hover:text-gray-700 text-2xl">
-    <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
-      <path d="M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.76 
-               0 5-2.24 5-5v-14c0-2.76-2.24-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.3c-.97 
-               0-1.75-.78-1.75-1.75s.78-1.75 
-               1.75-1.75 1.75.78 1.75 
-               1.75-.78 1.75-1.75 1.75zm13.5 
-               11.3h-3v-5.6c0-1.34-.03-3.06-1.87-3.06-1.87 
-               0-2.16 1.46-2.16 
-               2.96v5.7h-3v-10h2.89v1.37h.04c.4-.76 
-               1.38-1.56 2.84-1.56 3.04 0 3.6 2 3.6 
-               4.59v5.6z"/>
-    </svg>
-  </a>
-
-  <!-- X (Twitter) -->
-  <a href="https://x.com/vinnlp" target="_blank" aria-label="X" class="text-gray-500 hover:text-gray-700 text-2xl">
-    <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
-      <path d="M20.66 3H3.34C2.6 3 2 3.6 2 
-               4.34v15.32C2 20.4 2.6 21 3.34 
-               21h17.32c.74 0 1.34-.6 1.34-1.34V4.34C22 
-               3.6 21.4 3 20.66 3zM17.75 17h-2.2l-3.12-4.1-3.13 
-               4.1H7.1l4.2-5.49L7.5 7h2.2l2.84 
-               3.73L15.38 7h2.17l-4.1 5.32 4.3 
-               5.68z"/>
-    </svg>
-  </a>
-</div>
-
-      <div>
-        <a 
-          href="https://cecs.vinuni.edu.vn/phd-in-computer-science/" 
-          target="_blank" 
-          class="block mt-2 text-blue-600 transition hover:underline cursor-pointer"
-        >
-          Apply for a PhD in Computer Science/NLP
-        </a>
-        <a 
-          href="https://vinuni.edu.vn/jobs/" 
-          target="_blank" 
-          class="block mt-2 text-blue-600 transition hover:underline cursor-pointer"
-        >
-          Work with us – Explore professional opportunities
-        </a>
+        <div class="hero-meta" aria-label="Project summary">
+          <img class="hero-meta-logo" src="./assets/vinnlp.png" alt="NLP at VinUniversity" />
+          <div class="meta-line"><i class="fas fa-language"></i><div><strong>Vietnamese + English</strong>Bilingual free-text analysis</div></div>
+          <div class="meta-line"><i class="fas fa-flask"></i><div><strong>Benchmarked NLP</strong>Segmentation, sentiment &amp; summarisation</div></div>
+          <div class="meta-line"><i class="fas fa-calendar"></i><div><strong>12-month project</strong>Launched May 2025</div></div>
+        </div>
       </div>
-    </div>
-            <!-- Contact Form -->
-            <div class="md:w-1/2">
-    <form action="https://usebasin.com/f/24f2d90b8cdf" method="POST" accept-charset="UTF-8">
-        <!-- Name -->
-        <div class="mb-4">
-            <input type="text" name="name" placeholder="Your Name"
-                class="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-                required>
-        </div>
-
-        <!-- Email -->
-        <div class="mb-4">
-            <input type="email" name="email" placeholder="Your Email"
-                class="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-                required>
-        </div>
-
-        <!-- Message -->
-        <div class="mb-4">
-            <textarea name="message" rows="4" placeholder="Your Message"
-                class="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-                required></textarea>
-        </div>
-
-        <!-- Submit Button -->
-        <button type="submit"
-            class="bg-blue-600 cursor-pointer text-white font-semibold px-6 py-3 rounded hover:bg-blue-700 transition duration-300">
-            Send Message
-        </button>
-    </form>
-</div>
-
-        </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="bg-gray-800 text-gray-300 text-sm py-4">
-        <div class="container mx-auto px-6 md:flex md:items-center md:justify-between">
-            <!-- Secondary Nav Links -->
-            <div class="mb-4 md:mb-0">
-                <a href="#home" class="mr-4 hover:underline">Home</a>
-                <a href="#about" class="mr-4 hover:underline">About</a>
-                <a href="#people" class="mr-4 hover:underline">People</a>
-                <a href="#research" class="mr-4 hover:underline">Research</a>
-				<a href="#research" class="mr-4 hover:underline">Projects</a>
-				<a href="jobs.html" class="mr-4 hover:underline">Jobs</a>
-				<a href="nlp_bridges.html" class="mr-4 hover:underline">NLP Bridges</a>
-                <a href="#contact" class="mr-4 hover:underline">Contact</a>
+    <section class="section" id="about">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-head-copy">
+            <div class="eyebrow">About FreeTxt-Vi</div>
+            <h2 class="section-title">Making bilingual free-text analysis more accessible</h2>
+            <p class="section-lead">Qualitative responses from surveys, questionnaires, interviews and feedback forms contain valuable information, but analysing large collections manually is slow and difficult to scale. FreeTxt-Vi provides an integrated environment for exploring Vietnamese-English text with corpus methods and NLP.</p>
+          </div>
+          <span class="pill"><i class="fas fa-earth-asia"></i> Văn Bản Tự Do</span>
+        </div>
+
+        <div class="intro-card">
+          <p><strong>FreeTxt-Vi</strong> extends the Welsh-English <a href="https://freetxt.app/" target="_blank" rel="noopener" style="color:#315d91;font-weight:700;text-decoration:none">FreeTxt</a> research platform to Vietnamese-English data. The project develops a unified bilingual workflow for preparing text, analysing sentiment, generating summaries and exploring patterns in free-text collections.</p>
+          <p>The research places particular emphasis on Vietnamese, a widely spoken language that remains comparatively underrepresented in NLP resources and evaluation. The toolkit is designed for researchers and practitioners who work with qualitative text but may not have specialist programming or machine-learning expertise.</p>
+          <div class="definition">
+            <div class="definition-icon"><i class="fas fa-magnifying-glass-chart"></i></div>
+            <div>
+              <h3>From raw responses to interpretable evidence</h3>
+              <p>The aim is to make bilingual text analysis reproducible and practical by combining language-aware preprocessing, benchmarked NLP components, corpus exploration and interactive visualisation within a single workflow.</p>
             </div>
-            <!-- Social Icons -->
-            <div class="mb-4 md:mb-0">
-                <a href="#" aria-label="LinkedIn" class="mr-3 hover:text-white"><i class="fab fa-linkedin"></i></a>
-                <a href="#" aria-label="Twitter" class="mr-3 hover:text-white"><i class="fab fa-twitter"></i></a>
+          </div>
+        </div>
+
+        <div class="quick-grid">
+          <article class="quick-card"><div class="quick-icon"><i class="fas fa-users"></i></div><h3>Designed for non-programmers</h3><p>A web-based interface lowers the technical barrier for researchers who need to inspect and interpret qualitative text at scale.</p></article>
+          <article class="quick-card"><div class="quick-icon"><i class="fas fa-code-branch"></i></div><h3>Bilingual by design</h3><p>Vietnamese and English are handled within one research workflow rather than as disconnected monolingual pipelines.</p></article>
+          <article class="quick-card"><div class="quick-icon"><i class="fas fa-chart-line"></i></div><h3>Evaluated components</h3><p>The project benchmarks its core language-processing components rather than treating the toolkit as an unevaluated application layer.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt" id="toolkit">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-head-copy">
+            <div class="eyebrow">Toolkit capabilities</div>
+            <h2 class="section-title">A unified environment for analysing bilingual free text</h2>
+            <p class="section-lead">FreeTxt-Vi combines established corpus-linguistic methods with transformer-based NLP so users can move between close inspection of text and scalable automatic analysis.</p>
+          </div>
+        </div>
+
+        <div class="capability-grid">
+          <article class="capability-card">
+            <div class="capability-icon"><i class="fas fa-scissors"></i></div>
+            <h3>Vietnamese-English segmentation</h3>
+            <p>A language-aware segmentation pipeline prepares Vietnamese and English text for downstream analysis, including a hybrid VnCoreNLP and Byte Pair Encoding strategy for Vietnamese.</p>
+            <div class="tech-tag-row"><span class="tech-tag">VnCoreNLP</span><span class="tech-tag">BPE</span><span class="tech-tag">Bilingual preprocessing</span></div>
+          </article>
+          <article class="capability-card">
+            <div class="capability-icon"><i class="fas fa-face-smile"></i></div>
+            <h3>Sentiment analysis</h3>
+            <p>Transformer-based sentiment modelling supports scalable interpretation of opinions and attitudes expressed across Vietnamese-English free-text collections.</p>
+            <div class="tech-tag-row"><span class="tech-tag">Transformer models</span><span class="tech-tag">Fine-tuning</span><span class="tech-tag">Evaluation</span></div>
+          </article>
+          <article class="capability-card">
+            <div class="capability-icon"><i class="fas fa-align-left"></i></div>
+            <h3>Abstractive summarisation</h3>
+            <p>LLM-based summarisation helps users condense larger bodies of responses into shorter, interpretable summaries while retaining the key content of the source collection.</p>
+            <div class="tech-tag-row"><span class="tech-tag">Qwen2.5</span><span class="tech-tag">LLMs</span><span class="tech-tag">Bilingual summaries</span></div>
+          </article>
+          <article class="capability-card">
+            <div class="capability-icon"><i class="fas fa-chart-simple"></i></div>
+            <h3>Corpus exploration &amp; visualisation</h3>
+            <p>Concordancing, keyword analysis, word-relation exploration and interactive visualisation support deeper inspection of recurring themes, language patterns and relationships.</p>
+            <div class="tech-tag-row"><span class="tech-tag">Concordance</span><span class="tech-tag">Keywords</span><span class="tech-tag">Visual analytics</span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="pipeline">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-head-copy">
+            <div class="eyebrow">Research design</div>
+            <h2 class="section-title">From bilingual text collection to interpretable analysis</h2>
+            <p class="section-lead">The project treats FreeTxt-Vi as a set of language-processing components that can be individually evaluated, integrated and used within a broader corpus-analysis workflow.</p>
+          </div>
+        </div>
+
+        <div class="pipeline-shell">
+          <div class="pipeline" aria-label="FreeTxt-Vi analysis pipeline">
+            <div class="pipeline-step"><i class="fas fa-file-import"></i><strong>Collect</strong><span>Import bilingual free-text responses</span></div>
+            <div class="pipeline-arrow"><i class="fas fa-chevron-right"></i></div>
+            <div class="pipeline-step"><i class="fas fa-language"></i><strong>Segment</strong><span>Prepare Vietnamese-English text</span></div>
+            <div class="pipeline-arrow"><i class="fas fa-chevron-right"></i></div>
+            <div class="pipeline-step"><i class="fas fa-brain"></i><strong>Analyse</strong><span>Sentiment and corpus-level patterns</span></div>
+            <div class="pipeline-arrow"><i class="fas fa-chevron-right"></i></div>
+            <div class="pipeline-step"><i class="fas fa-file-lines"></i><strong>Summarise</strong><span>Generate concise abstractive summaries</span></div>
+          </div>
+
+          <div class="evaluation-grid">
+            <article class="evaluation-card"><h3>Segmentation benchmark</h3><p>Tests the reliability of the bilingual preprocessing pipeline, including Vietnamese word segmentation and tokenisation choices.</p></article>
+            <article class="evaluation-card"><h3>Sentiment benchmark</h3><p>Measures classification quality against established baselines to assess whether the toolkit provides robust bilingual sentiment analysis.</p></article>
+            <article class="evaluation-card"><h3>Summarisation benchmark</h3><p>Evaluates the LLM-based summarisation component in Vietnamese and English rather than relying solely on qualitative demonstration.</p></article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt" id="outputs">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-head-copy">
+            <div class="eyebrow">Project outputs</div>
+            <h2 class="section-title">Research, software and reusable methodology</h2>
+            <p class="section-lead">FreeTxt-Vi produces both an applied bilingual analysis environment and research evidence on the language-processing components that underpin it.</p>
+          </div>
+        </div>
+
+        <article class="publication-card">
+          <div class="publication-badge"><i class="fas fa-book-open"></i><strong>LREC 2026</strong><span>Project publication</span></div>
+          <div class="publication-copy">
+            <h3>FreeTxt-Vi: A Benchmarked Vietnamese-English Toolkit for Segmentation, Sentiment, and Summarisation</h3>
+            <p class="publication-authors"><strong>Nguyen Huy, H., El-Haj, M., Knight, D., and Rayson, P.</strong></p>
+            <p class="publication-note">Language Resources and Evaluation Conference (LREC), 2026. The paper presents the FreeTxt-Vi architecture and a three-part evaluation of segmentation, sentiment analysis and summarisation across Vietnamese and English.</p>
+            <div class="publication-links">
+              <a href="https://doi.org/10.48550/arXiv.2603.05690" target="_blank" rel="noopener"><i class="fas fa-link"></i> DOI / paper</a>
+              <a href="https://arxiv.org/abs/2603.05690" target="_blank" rel="noopener"><i class="ai ai-arxiv"></i> arXiv</a>
             </div>
-            <!-- Copyright -->
+          </div>
+        </article>
+
+        <div class="output-grid">
+          <article class="output-card"><i class="fas fa-laptop-code"></i><h3>Open-source toolkit</h3><p>A web-based environment for creating and analysing Vietnamese-English text collections through corpus and NLP methods.</p></article>
+          <article class="output-card"><i class="fas fa-vial-circle-check"></i><h3>Benchmark methodology</h3><p>A reproducible evaluation setup for testing segmentation, sentiment and summarisation as distinct components of a bilingual NLP toolkit.</p></article>
+          <article class="output-card"><i class="fas fa-book"></i><h3>Vietnamese language resources</h3><p>The project contributes practical methods, evaluation evidence and reusable workflows for a language that remains underrepresented in mainstream NLP.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="team">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-head-copy">
+            <div class="eyebrow">Research team</div>
+            <h2 class="section-title">FreeTxt-Vi team</h2>
+            <p class="section-lead">The project connects multilingual NLP, corpus linguistics and language-resource expertise across VinUniversity, Lancaster University and Cardiff University.</p>
+          </div>
+        </div>
+
+        <div class="team-grid">
+          <article class="team-card">
+            <img src="./img/mohaj.jpg" alt="Mo El-Haj" />
+            <h3>Mo El-Haj</h3>
+            <div class="team-role">Principal Investigator</div>
+            <p>VinUniversity, Vietnam</p>
+            <p>Multilingual NLP, low-resource language technology and LLM-based text analysis.</p>
+            <a class="profile-link" href="https://elhaj.uk" target="_blank" rel="noopener"><i class="fas fa-arrow-up-right-from-square"></i> Profile</a>
+          </article>
+          <article class="team-card">
+            <img src="./img/prayson.jpg" alt="Paul Rayson" />
+            <h3>Paul Rayson</h3>
+            <div class="team-role">Co-Investigator</div>
+            <p>Lancaster University, UK</p>
+            <p>Corpus linguistics, NLP evaluation and language-resource development.</p>
+            <a class="profile-link" href="https://www.lancaster.ac.uk/lira/people/paul-rayson" target="_blank" rel="noopener"><i class="fas fa-arrow-up-right-from-square"></i> Profile</a>
+          </article>
+          <article class="team-card">
+            <img src="./img/knight.jpg" alt="Dawn Knight" />
+            <h3>Dawn Knight</h3>
+            <div class="team-role">Co-Investigator</div>
+            <p>Cardiff University, UK</p>
+            <p>Corpus linguistics, digital language resources and the original FreeTxt research programme.</p>
+            <a class="profile-link" href="https://profiles.cardiff.ac.uk/staff/knightd5" target="_blank" rel="noopener"><i class="fas fa-arrow-up-right-from-square"></i> Profile</a>
+          </article>
+          <article class="team-card">
+            <img src="./img/hung.jpg" alt="Nguyen Huy Hung" />
+            <h3>Nguyen Huy Hung</h3>
+            <div class="team-role">Research Assistant</div>
+            <p>VinUniversity, Vietnam</p>
+            <p>Vietnamese-English NLP pipeline development, experimentation and benchmarking.</p>
+            <a class="profile-link" href="https://www.linkedin.com/in/huyt02/" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i> LinkedIn</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt" id="partners">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-head-copy">
+            <div class="eyebrow">Collaboration</div>
+            <h2 class="section-title">Institutions and research groups</h2>
+            <p class="section-lead">FreeTxt-Vi develops Vietnamese-English language technology through collaboration across VinUniversity, UCREL at Lancaster University and Cardiff University.</p>
+          </div>
+        </div>
+
+        <div class="partner-panel">
+          <div class="partner-grid">
+            <a class="partner" href="https://vinuni.edu.vn" target="_blank" rel="noopener"><img src="./img/vinuni.png" alt="VinUniversity" /><span>VinUniversity</span></a>
+            <a class="partner" href="https://vinnlp.com" target="_blank" rel="noopener"><img src="./img/vinnlp.png" alt="NLP at VinUniversity" /><span>NLP @ VinUniversity</span></a>
+            <a class="partner" href="https://ucrel.lancs.ac.uk/" target="_blank" rel="noopener"><img src="./assets/ucrel.png" alt="UCREL NLP Group" /><span>UCREL NLP Group</span></a>
+            <a class="partner" href="https://www.lancaster.ac.uk/" target="_blank" rel="noopener"><img src="./assets/lancaster.png" alt="Lancaster University" /><span>Lancaster University</span></a>
+            <a class="partner" href="https://www.cardiff.ac.uk/" target="_blank" rel="noopener"><img src="./assets/cardiff.png" alt="Cardiff University" /><span>Cardiff University</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="impact-panel">
+          <div class="eyebrow">Why it matters</div>
+          <h2 class="section-title">Supporting research with multilingual qualitative data</h2>
+          <p class="section-lead">FreeTxt-Vi is designed for settings where rich qualitative text is common but difficult to process at scale. By reducing technical barriers, it supports reproducible bilingual analysis and the development of Vietnamese NLP resources.</p>
+          <div class="impact-points">
+            <div class="impact-point"><i class="fas fa-graduation-cap"></i><strong>Education &amp; social research</strong><span>Analyse open-ended survey responses, feedback and qualitative research data across Vietnamese and English.</span></div>
+            <div class="impact-point"><i class="fas fa-landmark"></i><strong>Digital humanities &amp; cultural heritage</strong><span>Explore bilingual collections using corpus methods, visualisation and language-aware NLP components.</span></div>
+            <div class="impact-point"><i class="fas fa-globe"></i><strong>Inclusive language technology</strong><span>Strengthen tools and evaluation practices for Vietnamese within multilingual NLP research.</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt" id="contact">
+      <div class="container">
+        <div class="contact-grid">
+          <div class="contact-panel">
+            <h2>Get in touch</h2>
+            <p><strong>Project lead:</strong> Dr Mo El-Haj</p>
+            <p><strong>Address:</strong> CECS, VinUniversity, Hanoi, Vietnam</p>
+            <p><strong>Email:</strong> <a href="mailto:elhaj.m@vinuni.edu.vn">elhaj.m@vinuni.edu.vn</a></p>
+            <p><strong>Research group:</strong> <a href="https://vinnlp.com" target="_blank" rel="noopener">NLP @ VinUniversity</a></p>
+            <div class="social-row">
+              <a href="https://www.linkedin.com/company/vinnlp" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+              <a href="https://x.com/vinnlp" target="_blank" rel="noopener" aria-label="X"><i class="fab fa-x-twitter"></i></a>
+              <a href="https://arxiv.org/abs/2603.05690" target="_blank" rel="noopener" aria-label="FreeTxt-Vi paper"><i class="ai ai-arxiv"></i></a>
+            </div>
+          </div>
+          <form class="contact-form" action="https://usebasin.com/f/24f2d90b8cdf" method="POST" accept-charset="UTF-8">
+            <h3>Send a message</h3>
+            <input type="text" name="name" placeholder="Your name" required />
+            <input type="email" name="email" placeholder="Your email" required />
+            <textarea name="message" rows="5" placeholder="Your message" required></textarea>
+            <button type="submit"><i class="far fa-paper-plane"></i> Send message</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
       <div>&copy; 2025-2026 NLP @ VinUniversity. All rights reserved.</div>
+      <div><a href="index.html#home">Home</a><a href="index.html#research">Research</a><a href="#team">Team</a><a href="#outputs">Outputs</a><a href="#contact">Contact</a></div>
+    </div>
+  </footer>
 
-        </div>
-    </footer>
-
-    <!-- JavaScript -->
-    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
-    <!-- JavaScript -->
-    <script src="./main.js"></script>
-
+  <script>
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileNav = document.getElementById('mobileNav');
+    if (menuBtn && mobileNav) {
+      menuBtn.addEventListener('click', () => {
+        const open = mobileNav.classList.toggle('open');
+        menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        menuBtn.innerHTML = open ? '<i class="fas fa-xmark"></i>' : '<i class="fas fa-bars"></i>';
+      });
+      mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+        mobileNav.classList.remove('open');
+        menuBtn.setAttribute('aria-expanded','false');
+        menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+      }));
+    }
+  </script>
 </body>
-
 </html>
