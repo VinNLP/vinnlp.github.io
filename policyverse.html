@@ -1,522 +1,546 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-	<link rel="icon" href="img/favicon.ico" type="image/x-icon">
-    <title>NLP @ VinUniversity</title>
-    <!-- Link to your compiled Tailwind CSS -->
-    <link rel="stylesheet" href="./output.css" />
-    <!-- Optionally include Font Awesome for social icons -->
-    <!-- <script src="https://kit.fontawesome.com/yourkitid.js" crossorigin="anonymous"></script> -->
-    <link href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-MdFKNzCgP2CgcnI2Hg+grrGZ2E1uJtEmG9OAzgBClT49yNdozD1X0xAP0drfQ6d3VWaTb0Dj+0LyEKaRuUEC3w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="PolicyVerse: Multilingual Multi-Agent LLMs for Policy Reasoning, a VinUniversity AREP research project developing multilingual retrieval, Policy World Models and evidence-grounded multi-agent reasoning across English, Portuguese, Vietnamese and Welsh." />
+  <title>PolicyVerse | Multilingual Multi-Agent LLMs for Policy Reasoning</title>
+  <link rel="icon" href="img/favicon.ico" type="image/x-icon" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" rel="stylesheet" />
+  <style>
+    :root{
+      --navy:#35426E;
+      --navy-2:#2E548A;
+      --ink:#20242c;
+      --muted:#667085;
+      --line:#DDE3EA;
+      --canvas:#f5f7f9;
+      --gold:#D2AE6D;
+      --gold-soft:#f7f1e5;
+      --teal:#5CC6D0;
+      --blue:#4890BD;
+      --red:#C83538;
+      --green:#5e9f88;
+      --purple:#7b6fa7;
+      --shadow:0 12px 34px rgba(53,66,110,.09);
+      --shadow-sm:0 6px 20px rgba(53,66,110,.07);
+      --radius:18px;
+    }
 
-	<style>
-        /* Fallback if Tailwind is not configured with this font */
-        body {
-            font-family: 'Bai Jamjuree', sans-serif;
-        }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth;scroll-padding-top:88px}
+    body{margin:0;font-family:'Montserrat',Arial,sans-serif;background:var(--canvas);color:var(--ink);line-height:1.62;-webkit-font-smoothing:antialiased}
+    img{max-width:100%;display:block}
+    a{color:inherit}
+    ::selection{background:#f3d477;color:#172033}
 
-        /* Ensure the hero heading is inline-level and doesn’t break to a new line */
-        #hero-h1 {
-            display: inline-block;
-            /* Inline container for the text */
-            white-space: nowrap;
-            /* Prevent wrapping onto a new line */
-        }
+    .container{max-width:1240px;margin:0 auto;padding:0 24px}
+    .section{padding:74px 0}
+    .section.alt{background:#fff}
+    .section-eyebrow{font-size:.74rem;text-transform:uppercase;letter-spacing:.13em;color:#9a6e00;font-weight:700;margin-bottom:8px}
+    .section-title{font-size:clamp(1.8rem,3.5vw,2.55rem);line-height:1.14;letter-spacing:-.04em;color:var(--navy);margin:0 0 14px;font-weight:700}
+    .section-lead{color:#5c6b7d;font-size:1.02rem;max-width:930px;margin:0}
+    .section-head{margin-bottom:30px}
 
-        /* Style the Typed.js cursor */
-        .typed-cursor {
-            display: inline;
-            /* Keep cursor in the inline flow */
-            vertical-align: middle;
-            /* Align cursor vertically with text (use middle or baseline as needed) */
-            font-size: inherit;
-            font-weight: normal;
-            margin-left: 0.1em;
-            /* small gap between text and cursor */
-            animation: blink 0.7s infinite;
-        }
+    /* Header */
+    .site-header{position:sticky;top:0;z-index:70;background:rgba(255,255,255,.95);backdrop-filter:blur(16px);border-bottom:1px solid rgba(223,229,236,.95);box-shadow:0 3px 18px rgba(20,36,61,.05)}
+    .site-nav{max-width:1240px;margin:auto;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;gap:22px}
+    .site-brand{display:flex;align-items:center;gap:13px;text-decoration:none;min-width:max-content}
+    .site-brand img{height:52px;width:auto}
+    .brand-copy{display:flex;flex-direction:column;line-height:1.08}
+    .brand-copy strong{font-size:.98rem;color:var(--navy);letter-spacing:-.02em}
+    .brand-copy span{font-size:.63rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:#9a6e00;margin-top:5px}
+    .nav-links{display:flex;align-items:center;gap:3px;list-style:none;margin:0;padding:0}
+    .nav-links a{text-decoration:none;color:#48586c;font-weight:700;font-size:.81rem;padding:9px 10px;border-radius:9px;transition:.16s ease}
+    .nav-links a:hover{background:#f2f5f9;color:var(--navy)}
+    .nav-links .cta-link{background:var(--navy);color:#fff;padding-inline:15px}
+    .nav-links .cta-link:hover{background:var(--navy-2);color:#fff}
+    .menu-toggle{display:none;border:1px solid var(--line);background:#fff;color:var(--navy);border-radius:10px;width:42px;height:42px;align-items:center;justify-content:center;cursor:pointer}
+    .mobile-nav{display:none;background:#fff;border-top:1px solid var(--line);padding:10px 24px 16px}
+    .mobile-nav.open{display:block}
+    .mobile-nav a{display:block;text-decoration:none;padding:10px 4px;font-weight:700;color:#42546b;border-bottom:1px solid #eef1f5}
 
-        /* Add a blinking cursor after the heading text using a pseudo-element */
-        #hero-h1::after {
-            content: "|";
-            display: inline;
-            vertical-align: middle;
-            font-size: inherit;
-            margin-left: 0.1em;
-            animation: blink 0.7s infinite;
-        }
+    /* Hero */
+    .hero{position:relative;overflow:hidden;background:linear-gradient(135deg,#35426E 0%,#2E548A 100%);color:#fff}
+    .hero::before,.hero::after{content:'';position:absolute;border-radius:50%;pointer-events:none}
+    .hero::after{width:520px;height:520px;border:1px solid rgba(255,255,255,.08);right:-175px;top:-270px;box-shadow:0 0 0 70px rgba(255,255,255,.025),0 0 0 145px rgba(255,255,255,.018)}
+    .hero::before{width:320px;height:320px;background:radial-gradient(circle,rgba(223,163,11,.13),transparent 68%);left:-90px;bottom:-145px}
+    .hero-inner{max-width:1240px;margin:auto;padding:78px 24px 70px;position:relative;z-index:2;display:grid;grid-template-columns:minmax(0,1fr) 350px;gap:54px;align-items:end}
+    .hero-kicker{display:inline-flex;align-items:center;gap:8px;font-size:.76rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:#f2c44f;margin-bottom:13px}
+    .hero-kicker::before{content:'';width:22px;height:2px;background:#f2c44f;border-radius:2px}
+    .hero h1{font-size:clamp(3.55rem,8vw,6.8rem);line-height:.88;margin:0;font-weight:700;letter-spacing:-.065em;color:#fff}
+    .hero-subtitle{margin:18px 0 0;font-size:clamp(1.08rem,2.2vw,1.46rem);font-weight:600;color:#e3eaf4;letter-spacing:-.01em;max-width:850px;line-height:1.35}
+    .hero-summary{margin:20px 0 0;color:#cfd9e7;max-width:830px;font-size:.94rem}
+    .hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:30px}
+    .hero-btn{display:inline-flex;align-items:center;gap:8px;text-decoration:none;border-radius:10px;padding:11px 16px;font-size:.84rem;font-weight:700;transition:.16s ease}
+    .hero-btn.primary{background:var(--gold);color:#172033;box-shadow:0 5px 15px rgba(223,163,11,.23)}
+    .hero-btn.primary:hover{background:#efb51d;transform:translateY(-1px)}
+    .hero-btn.secondary{border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.08);color:#fff}
+    .hero-btn.secondary:hover{background:rgba(255,255,255,.14)}
+    .hero-meta{border-left:1px solid rgba(255,255,255,.18);padding-left:30px;color:#dce4ef}
+    .hero-meta-logo{width:150px;height:auto;margin:0 0 22px}
+    .meta-line{display:flex;gap:12px;align-items:flex-start;margin:16px 0;font-size:.86rem}
+    .meta-line i{color:#f2c44f;width:18px;margin-top:4px;text-align:center}
+    .meta-line strong{color:#fff;display:block;font-weight:700;margin-bottom:2px}
 
-        @keyframes blink {
-            0% {
-                opacity: 1;
-            }
+    /* About */
+    .intro-card{background:#fff;border:1px solid #e3e8ee;border-radius:var(--radius);padding:32px 35px;box-shadow:var(--shadow-sm);position:relative;overflow:hidden}
+    .intro-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:5px;background:var(--gold)}
+    .intro-card p{color:#4e5c6d;margin:0 0 13px}
+    .intro-card p:last-child{margin-bottom:0}
+    .definition{margin-top:22px;padding:21px 23px;background:linear-gradient(135deg,#f8fafc,#f4f7fa);border:1px solid #e4e9ef;border-radius:14px;display:grid;grid-template-columns:45px minmax(0,1fr);gap:15px;align-items:start}
+    .definition-icon{width:45px;height:45px;border-radius:12px;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center}
+    .definition h3{margin:0 0 6px;color:var(--navy);font-size:1rem}
+    .definition p{margin:0;color:#5d6b7d;font-size:.9rem}
 
-            50% {
-                opacity: 0;
-            }
+    .feature-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:25px}
+    .feature-card{background:#fff;border:1px solid #e1e7ee;border-radius:16px;padding:24px;box-shadow:var(--shadow-sm);position:relative;overflow:hidden}
+    .feature-card::before{content:'';position:absolute;left:0;top:0;right:0;height:4px;background:var(--gold)}
+    .feature-card:nth-child(2)::before{background:var(--teal)}
+    .feature-card:nth-child(3)::before{background:var(--blue)}
+    .feature-icon{width:40px;height:40px;border-radius:11px;background:#f2f5f9;color:var(--navy);display:flex;align-items:center;justify-content:center;margin-bottom:15px}
+    .feature-card h3{font-size:1.06rem;color:var(--navy);margin:0 0 9px}
+    .feature-card p{font-size:.86rem;color:#586779;margin:0}
 
-            100% {
-                opacity: 1;
-            }
-        }
-    </style>
+    /* Research pillars */
+    .objective-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+    .objective-card{background:#fff;border:1px solid #e1e7ee;border-radius:16px;padding:25px;box-shadow:var(--shadow-sm);display:grid;grid-template-columns:58px minmax(0,1fr);gap:18px;align-items:start}
+    .objective-no{width:58px;height:58px;border-radius:15px;background:linear-gradient(135deg,var(--navy),var(--navy-2));color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.98rem;box-shadow:0 7px 18px rgba(46,84,138,.18)}
+    .objective-card h3{margin:1px 0 8px;color:var(--navy);font-size:1.08rem;line-height:1.35}
+    .objective-card p{margin:0;color:#586779;font-size:.87rem}
+
+    /* Architecture */
+    .workflow-shell{background:linear-gradient(135deg,#fff,#fbfcfe);border:1px solid #e1e7ee;border-radius:20px;padding:30px;box-shadow:var(--shadow);overflow:hidden}
+    .workflow{display:grid;grid-template-columns:repeat(9,minmax(0,1fr));align-items:center;gap:10px}
+    .workflow-step{grid-column:span 1;min-width:0;background:#fff;border:1px solid #dfe5ec;border-radius:14px;padding:19px 14px;text-align:center;box-shadow:var(--shadow-sm);height:100%}
+    .workflow-step i{display:flex;align-items:center;justify-content:center;width:42px;height:42px;margin:0 auto 11px;border-radius:12px;background:#f0f4f8;color:var(--navy)}
+    .workflow-step strong{display:block;color:var(--navy);font-size:.86rem;margin-bottom:4px}
+    .workflow-step span{display:block;color:#708092;font-size:.7rem;line-height:1.4}
+    .workflow-arrow{text-align:center;color:#9cacbd;font-size:1.15rem}
+
+    .capability-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:15px;margin-top:25px}
+    .capability-card{background:#fff;border:1px solid #e1e7ee;border-radius:15px;padding:21px;position:relative;overflow:hidden}
+    .capability-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:4px;background:var(--gold)}
+    .capability-card:nth-child(2)::before{background:var(--teal)}
+    .capability-card:nth-child(3)::before{background:var(--blue)}
+    .capability-card:nth-child(4)::before{background:var(--red)}
+    .capability-code{display:inline-flex;align-items:center;justify-content:center;min-width:34px;height:28px;padding:0 8px;border-radius:8px;background:#f2f5f9;color:var(--navy);font-size:.75rem;font-weight:700;margin-bottom:10px}
+    .capability-card h3{margin:0 0 7px;color:var(--navy);font-size:.99rem}
+    .capability-card p{margin:0;color:#617083;font-size:.8rem}
+
+    /* Phases and languages */
+    .phase-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+    .phase-card{background:#fff;border:1px solid #e1e7ee;border-radius:18px;padding:28px;box-shadow:var(--shadow-sm);position:relative;overflow:hidden}
+    .phase-card::before{content:'';position:absolute;left:0;top:0;right:0;height:5px;background:var(--blue)}
+    .phase-card:nth-child(2)::before{background:var(--green)}
+    .phase-badge{display:inline-flex;align-items:center;gap:8px;background:#f1f5f8;color:var(--navy);border-radius:9px;padding:7px 10px;font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-bottom:14px}
+    .phase-card h3{margin:0 0 10px;color:var(--navy);font-size:1.23rem;line-height:1.3}
+    .phase-card p{margin:0 0 16px;color:#5d6b7d;font-size:.87rem}
+    .phase-list{list-style:none;margin:0;padding:0;display:grid;gap:11px}
+    .phase-list li{display:grid;grid-template-columns:25px minmax(0,1fr);gap:10px;color:#586779;font-size:.83rem}
+    .phase-list i{width:25px;height:25px;border-radius:7px;background:#f2f5f9;color:var(--navy);display:flex;align-items:center;justify-content:center;font-size:.7rem}
+    .language-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px;padding-top:17px;border-top:1px solid #e7ebf0}
+    .language-pill{display:inline-flex;align-items:center;gap:7px;border:1px solid #dbe3eb;background:#fbfcfd;border-radius:999px;padding:7px 10px;color:#506176;font-size:.75rem;font-weight:700}
+
+    /* Deliverables */
+    .deliverable-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+    .deliverable-card{background:#fff;border:1px solid #e1e7ee;border-radius:16px;padding:24px;box-shadow:var(--shadow-sm);position:relative;overflow:hidden;min-height:190px}
+    .deliverable-card::before{content:'';position:absolute;left:0;top:0;right:0;height:4px;background:linear-gradient(90deg,var(--navy-2),var(--gold))}
+    .deliverable-icon{width:42px;height:42px;border-radius:11px;background:#f2f5f9;color:var(--navy);display:flex;align-items:center;justify-content:center;margin-bottom:15px}
+    .deliverable-card h3{margin:0 0 9px;color:var(--navy);font-size:1.02rem;line-height:1.35}
+    .deliverable-card p{margin:0;color:#5d6b7d;font-size:.82rem}
+
+    /* Team */
+    .team-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+    .team-card{background:#fff;border:1px solid #e1e7ee;border-radius:17px;box-shadow:var(--shadow-sm);padding:24px;position:relative;overflow:hidden;display:flex;flex-direction:column;min-height:220px}
+    .team-card::before{content:'';position:absolute;left:0;top:0;right:0;height:4px;background:linear-gradient(90deg,var(--navy-2),var(--gold))}
+    .team-top{display:flex;gap:16px;align-items:center;margin-bottom:18px}
+    .team-card img{width:90px;height:90px;border-radius:50%;object-fit:cover;border:3px solid #fff;box-shadow:0 0 0 1px #dfe5ec,0 7px 18px rgba(20,36,61,.12)}
+    .team-card h3{margin:0 0 4px;color:var(--navy);font-size:1.05rem;line-height:1.3}
+    .team-role{font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#9a6e00}
+    .team-focus{color:#5c6b7d;font-size:.79rem;margin:0 0 14px;line-height:1.5}
+    .institution-list{display:grid;gap:8px;padding-top:14px;border-top:1px solid #e7ebf0;margin-top:auto}
+    .institution{display:grid;grid-template-columns:24px minmax(0,1fr);gap:9px;align-items:start;color:#5b6a7c;font-size:.79rem}
+    .institution i{color:#657f9e;margin-top:3px;text-align:center}
+    .collaboration-strip{margin-top:24px;background:var(--navy);color:#fff;border-radius:16px;padding:22px 26px;display:flex;align-items:center;justify-content:space-between;gap:18px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+    .collaboration-strip::after{content:'';position:absolute;width:220px;height:220px;border-radius:50%;border:1px solid rgba(255,255,255,.08);right:-80px;top:-120px;box-shadow:0 0 0 38px rgba(255,255,255,.025)}
+    .collaboration-strip strong{position:relative;z-index:2;font-size:1.05rem}
+    .collaboration-names{position:relative;z-index:2;display:flex;flex-wrap:wrap;gap:10px}
+    .collaboration-names span{border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.07);border-radius:9px;padding:7px 10px;font-size:.77rem;font-weight:600}
+
+    /* Impact */
+    .impact-panel{background:linear-gradient(135deg,var(--navy),var(--navy-2));border-radius:20px;color:#fff;padding:34px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+    .impact-panel::after{content:'';position:absolute;width:300px;height:300px;border-radius:50%;border:1px solid rgba(255,255,255,.08);right:-110px;bottom:-160px;box-shadow:0 0 0 48px rgba(255,255,255,.025)}
+    .impact-panel .section-eyebrow{color:#f2c44f}
+    .impact-panel .section-title{color:#fff;max-width:900px}
+    .impact-panel .section-lead{color:#dce5f0;position:relative;z-index:2}
+    .impact-points{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px;margin-top:24px;position:relative;z-index:2}
+    .impact-point{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);border-radius:13px;padding:18px}
+    .impact-point strong{display:block;color:#fff;margin-bottom:5px;font-size:.92rem}
+    .impact-point span{display:block;color:#dce5f0;font-size:.78rem}
+
+    /* Contact/footer */
+    .contact-section{background:#eef2f7;border-top:1px solid #dfe5ec;padding:58px 0}
+    .contact-card{background:#fff;border:1px solid #e1e7ee;border-radius:18px;box-shadow:var(--shadow-sm);padding:30px 32px;display:grid;grid-template-columns:1.2fr .8fr;gap:30px;align-items:center}
+    .contact-card h2{margin:0 0 9px;color:var(--navy);font-size:1.7rem;letter-spacing:-.03em}
+    .contact-card p{margin:0;color:#5c6b7d;font-size:.9rem}
+    .contact-actions{display:flex;justify-content:flex-end;gap:10px;flex-wrap:wrap}
+    .contact-btn{display:inline-flex;align-items:center;gap:8px;text-decoration:none;border-radius:10px;padding:11px 15px;font-size:.82rem;font-weight:700}
+    .contact-btn.primary{background:var(--navy);color:#fff}
+    .contact-btn.secondary{background:var(--gold-soft);color:#795c1e;border:1px solid #ead9b7}
+    footer{background:var(--navy);color:#bfcadd;border-top:1px solid rgba(255,255,255,.08);padding:22px 0;font-size:.76rem}
+    footer .container{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+    footer a{color:#e6edf6;text-decoration:none}
+    footer a:hover{text-decoration:underline}
+
+    @media(max-width:1050px){
+      .nav-links{display:none}.menu-toggle{display:flex}
+      .hero-inner{grid-template-columns:1fr;gap:30px;padding-top:58px}
+      .hero-meta{border-left:0;border-top:1px solid rgba(255,255,255,.16);padding-left:0;padding-top:21px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}
+      .hero-meta-logo{grid-column:1/-1;margin-bottom:0}
+      .meta-line{margin:0}
+      .capability-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .deliverable-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .team-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+    }
+
+    @media(max-width:760px){
+      html{scroll-padding-top:78px}
+      .container{padding:0 17px}.site-nav{padding:10px 16px}.site-brand img{height:46px}.brand-copy strong{font-size:.9rem}.brand-copy span{font-size:.58rem}
+      .section{padding:58px 0}.hero-inner{padding:50px 18px 48px}.hero h1{font-size:clamp(3.1rem,17vw,5.1rem)}.hero-meta{grid-template-columns:1fr}.hero-actions{margin-top:24px}
+      .intro-card{padding:26px 23px}.definition{grid-template-columns:1fr}.definition-icon{margin-bottom:1px}
+      .feature-grid,.objective-grid,.phase-grid,.capability-grid,.deliverable-grid,.team-grid,.impact-points{grid-template-columns:1fr}
+      .workflow-shell{padding:22px}.workflow{display:flex;flex-direction:column;align-items:stretch}.workflow-step{width:100%}.workflow-arrow{transform:rotate(90deg);padding:1px 0}
+      .team-top{align-items:flex-start}.team-card img{width:82px;height:82px}
+      .collaboration-strip{align-items:flex-start;flex-direction:column}
+      .impact-panel{padding:28px 23px}
+      .contact-card{grid-template-columns:1fr;padding:27px 23px}.contact-actions{justify-content:flex-start}
+      footer .container{align-items:flex-start;flex-direction:column}
+    }
+
+    @media print{
+      .site-header,.hero-actions,.contact-section,footer{display:none}
+      body{background:#fff}.hero{print-color-adjust:exact;-webkit-print-color-adjust:exact}
+      .feature-card,.objective-card,.workflow-shell,.capability-card,.phase-card,.deliverable-card,.team-card,.impact-panel{box-shadow:none;break-inside:avoid}
+    }
+  </style>
 </head>
-<body class="font-sans antialiased">
-    <!-- Header & Navigation -->
-    <header class="fixed top-0 w-full bg-white shadow z-50">
-        <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
-            <!-- Logo -->
-            <a href="index.html#home" class="text-2xl md:text-3xl font-bold text-gray-800">
-                <img src="./assets/vinnlp.png" alt="" class="h-10">
-            </a>
-            <!-- Mobile menu button -->
-            <button id="menuBtn" class="md:hidden px-3 py-2 border rounded text-gray-600 border-gray-400"
-                aria-label="Toggle Navigation">
-                <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
-                    <path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="2" />
-                </svg>
-            </button>
-            <!-- Desktop Navigation -->
-            <ul class="hidden md:flex space-x-6 text-gray-700">
-                <li><a href="index.html#home" class="hover:text-blue-600">Home</a></li>
-                <li><a href="index.html#about" class="hover:text-blue-600">About</a></li>
-                <li><a href="index.html#people" class="hover:text-blue-600">People</a></li>
-                <li><a href="index.html#research" class="hover:text-blue-600">Research</a></li>
-                <li><a href="index.html#research" class="hover:text-blue-600">Projects</a></li>
-                <li><a href="index.html#partners" class="hover:text-blue-600">Collaborations</a></li>
-				<li><a href="jobs.html" class="hover:text-blue-600">Jobs</a></li>
-				<li><a href="nlp_bridges.html" class="hover:text-blue-600">NLP Bridges</a></li>
-                <li><a href="index.html#contact" class="hover:text-blue-600">Contact</a></li>
-            </ul>
-        </nav>
-        <!-- Mobile Navigation Menu -->
-        <div id="mobileMenu" class="md:hidden hidden bg-white shadow">
-            <ul class="flex flex-col space-y-2 px-6 py-4 text-gray-700">
-                <li><a href="index.html#home" class="block hover:text-blue-600">Home</a></li>
-                <li><a href="index.html#about" class="block hover:text-blue-600">About</a></li>
-                <li><a href="index.html#people" class="block hover:text-blue-600">People</a></li>
-                <li><a href="index.html#research" class="block hover:text-blue-600">Research</a></li>
-                <li><a href="index.html#research" class="block hover:text-blue-600">Projects</a></li>
-                <li><a href="index.html#partners" class="block hover:text-blue-600">Collaborations</a></li>				
-				<li><a href="nlp_bridges.html" class="hover:text-blue-600">NLP Bridges</a></li>
-				<li><a href="jobs.html" class="hover:text-blue-600">Jobs</a></li>
-                <li><a href="index.html#contact" class="block hover:text-blue-600">Contact</a></li>
-            </ul>
-        </div>
-    </header>
-
-    <!-- Hero Section -->
-    <section id="home" class="relative hero bg-cover bg-center text-white pt-20"
-        style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('./assets/bg1.jpeg');">
-<div class="container mx-auto px-6 flex flex-col items-center justify-center text-center" style="min-height: 20vh;">
-
-            <a href="#about"
-                class="bg-blue-600 hover:bg-blue-700 px-6 py-3 rounded text-white font-medium shadow-lg transition duration-300">
-               PolicyVerse Project
-            </a>
-        </div>
-    </section>
-    <!-- About Section -->
-    
-	
-	<!-- About Section -->
-<section id="about" class="py-12 bg-gray-100">
-    <div class="container mx-auto px-6">
-        <h2 class="text-3xl font-bold text-center mb-8">PolicyVerse: Multilingual Multi-Agent LLMs for Policy Reasoning</h2>
-        <div class="md:flex md:items-start md:space-x-8">
-            
-			
-            <!-- Left: Extended Text Content -->
-           <div class="md:flex md:space-x-8">
-
-    <!-- Image -->
-    <div class="md:w-1/3 mb-6 md:mb-0">
-        <img src="./img/policyverse.jpg" 
-             alt="PolicyVerse Project Overview" 
-             class="rounded-lg shadow-lg">
+<body>
+  <header class="site-header">
+    <nav class="site-nav" aria-label="Main navigation">
+      <a class="site-brand" href="#home">
+        <img src="./assets/vinunilogo.png" alt="VinUniversity" />
+        <span class="brand-copy">
+          <strong>PolicyVerse</strong>
+          <span>Multilingual Policy AI</span>
+        </span>
+      </a>
+      <button class="menu-toggle" id="menuBtn" aria-label="Toggle navigation" aria-expanded="false"><i class="fas fa-bars"></i></button>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#research">Research</a></li>
+        <li><a href="#architecture">Architecture</a></li>
+        <li><a href="#phases">Languages</a></li>
+        <li><a href="#deliverables">Deliverables</a></li>
+        <li><a href="#team">Team</a></li>
+        <li><a class="cta-link" href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="mobile-nav" id="mobileNav">
+      <a href="#about">About</a>
+      <a href="#research">Research</a>
+      <a href="#architecture">Architecture</a>
+      <a href="#phases">Languages</a>
+      <a href="#deliverables">Deliverables</a>
+      <a href="#team">Team</a>
+      <a href="#contact">Contact</a>
     </div>
+  </header>
 
-    <!-- Text -->
-    <div class="md:w-2/3">
-                <h3 class="text-xl font-semibold mb-2">PolicyVerse Research Project</h3>
-<p class="text-lg mb-6">
-    <strong>Partners:</strong> 
-    <a href="https://cecs.vinuni.edu.vn/" target="_blank" class="text-blue-600 underline">College of Engineering and Computer Science (CECS)</a>, 
-    <a href="https://cbm.vinuni.edu.vn/" target="_blank" class="text-blue-600 underline">College of Business and Management (CBM)</a>, 
-    <a href="https://vinuni.edu.vn" target="_blank" class="text-blue-600 underline">VinUniversity</a>, Vietnam, 
-    <a href="https://ucrel.lancs.ac.uk/" target="_blank" class="text-blue-600 underline">UCREL</a>, 
-    <a href="https://lancaster.ac.uk" target="_blank" class="text-blue-600 underline">Lancaster University</a>, UK, and 
-    <a href="https://www.cardiff.ac.uk/" target="_blank" class="text-blue-600 underline">Cardiff University</a>, UK
-</p>
-
-                <p class="mb-4">
-                    Government policies are often difficult to interpret because they span multiple ministries, evolve over time, and are published across languages and formats. This project proposes a two-phase programme to develop a multi-agent LLM framework for Collaborative Multilingual Reasoning (CMR), an automated system that detects overlaps, highlights potential inconsistencies, and maps dependencies across policy documents. The system supports analysts and institutions without heavy reliance on legal experts, limiting human involvement to light validation.
-                </p>
-
-                <p class="mb-2"><strong>Funding:</strong> $100,000</p>
-                <p class="mb-2"><strong>Duration:</strong> 24 months</p>
-				
-                <h4 class="text-lg font-semibold mt-6 mb-2">Two-Phase Research Structure</h4>
-
-                <p class="mb-4">
-                    The project follows a structured progression from high-resource grounding to low-resource transfer.
-                </p>
-
-                <h5 class="font-semibold mb-1">Phase 1, High-Resource Development (English and Portuguese)</h5>
-                <ul class="list-disc list-inside mb-4 space-y-1">
-                    <li>Build the multi-agent reasoning engine</li>
-                    <li>Develop multilingual retrieval and grounding</li>
-                    <li>Construct Policy World Models (PWMs)</li>
-                    <li>Evaluate contradiction detection and dependency mapping</li>
-                </ul>
-
-                <h5 class="font-semibold mb-1">Phase 2, Low-Resource Adaptation (Vietnamese and Welsh)</h5>
-                <ul class="list-disc list-inside mb-6 space-y-1">
-                    <li>Integrate authentic Vietnamese and Welsh policy documents</li>
-                    <li>Extract policy logic, rules, and dependencies using PWMs</li>
-                    <li>Demonstrate robustness across typologically diverse languages</li>
-                    <li>Validate cross-lingual generalisation beyond high-resource settings</li>
-                </ul>
-
-                <h4 class="text-lg font-semibold mt-6 mb-2">Innovation: Collaborative Multilingual Reasoning (CMR)</h4>
-                <p class="mb-4">
-                    Policy analysis is framed as a structured interaction between domain-specialised LLM agents. Rather than producing a single interpretation, the system surfaces contradictions and hidden dependencies through agent dialogue, generating structured reports for expert review.
-                </p>
-
-                <ul class="list-disc list-inside mb-6 space-y-1">
-                    <li>Specialised agent dialogue across policy domains</li>
-                    <li>Multilingual RAG grounded in real policy documents</li>
-                    <li>Transparent contradiction detection and audit trails</li>
-                </ul>
-
-                <h4 class="text-lg font-semibold mt-6 mb-2">Policy World Models (PWMs)</h4>
-                <p class="mb-4">
-                    PWMs provide structured, language-agnostic representations of policy rules, dependencies, and exceptions. Built through multilingual semantic parsing and rule induction, they enable interpretable policy logic graphs.
-                </p>
-
-                <ul class="list-disc list-inside mb-6 space-y-1">
-                    <li>Simulate policy outcomes using encoded rules</li>
-                    <li>Support context-aware inference beyond retrieval</li>
-                    <li>Generalise policy logic across languages</li>
-                </ul>
-
-                <h4 class="text-lg font-semibold mt-6 mb-2">Collaborative Expertise</h4>
-                <ul class="list-disc list-inside mb-6 space-y-1">
-                    <li><strong>Mo El-Haj (PI, VinUniversity):</strong> Multilingual NLP and low-resource modelling</li>
-                    <li><strong>Leandro Marcolino (Co-PI, VinUniversity):</strong> Portuguese policy data and evaluation</li>
-                    <li><strong>Paul Rayson (Lancaster):</strong> Corpus design and evaluation frameworks</li>
-                    <li><strong>Dawn Knight (Cardiff):</strong> Welsh language modelling and validation</li>
-                    <li><strong>Nguyen Thi Mai Lan (VinUniversity):</strong> Vietnamese policy and regulatory expertise</li>
-                </ul>
-
-                <h4 class="text-lg font-semibold mt-6 mb-2">Expected Deliverables</h4>
-                <ul class="list-disc list-inside mb-6 space-y-1">
-                    <li>Multilingual policy dataset (English, Portuguese, Vietnamese, Welsh)</li>
-                    <li>Multi-agent LLM framework for policy reasoning</li>
-                    <li>Structured policy knowledge extraction using PWMs</li>
-                    <li>GlobalPolicyQA benchmark for multilingual evaluation</li>
-                </ul>
-
-
-
-            </div>
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-inner">
+        <div>
+          <div class="hero-kicker">VinUniversity AREP Research Project</div>
+          <h1>PolicyVerse</h1>
+          <p class="hero-subtitle">Multilingual Multi-Agent LLMs for Policy Reasoning</p>
+          <p class="hero-summary">PolicyVerse develops an evidence-grounded framework in which specialised AI agents retrieve, interpret and reason across complex policy documents, exposing contradictions, dependencies and cross-domain effects across multiple languages.</p>
+          <div class="hero-actions">
+            <a class="hero-btn primary" href="#architecture"><i class="fas fa-diagram-project"></i> Explore the architecture</a>
+            <a class="hero-btn secondary" href="#team"><i class="fas fa-users"></i> Meet the research team</a>
+          </div>
         </div>
-    </div>
-</section>
-
-  <!-- Team Section -->
-<section id="team" class="py-12 bg-white">
-  <div class="container mx-auto px-6 text-center">
-    <h2 class="text-3xl font-bold mb-8">PolicyVerse Team</h2>
-    <p class="mb-10 text-lg">Meet the core team behind the PolicyVerse project</p>
-    </br>
-
-    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-10 items-center">
-
-      <!-- Mo -->
-      <div class="flex flex-col items-center">
-        <a href="https://elhaj.uk" target="_blank" class="block text-center">
-          <img src="./img/mohaj.jpg" alt="Mo El-Haj" class="w-32 h-32 rounded-full object-cover shadow-md" />
-          <p class="text-base font-medium mt-4">Mo El-Haj</p>
-          <p class="text-sm text-gray-600">Project PI</p>
-          <p class="text-sm text-gray-600">VinUniversity</p>
-          </br>
-        </a>
-      </div>
-
-      <!-- Leandro -->
-      <div class="flex flex-col items-center">
-        <a href="https://vinuni.edu.vn/people/leandro-soriano-marcolino/" target="_blank" class="block text-center">
-          <img src="./img/leandro.jpg" alt="Leandro S. Marcolino" class="w-32 h-32 rounded-full object-cover shadow-md" />
-          <p class="text-base font-medium mt-4">Leandro S. Marcolino</p>
-          <p class="text-sm text-gray-600">Project Co-PI</p>
-          <p class="text-sm text-gray-600">VinUniversity</p>
-          </br>
-        </a>
-      </div>
-
-      <!-- Paul -->
-      <div class="flex flex-col items-center">
-        <a href="https://www.lancaster.ac.uk/lira/people/paul-rayson" target="_blank" class="block text-center">
-          <img src="./img/prayson.jpg" alt="Paul Rayson" class="w-32 h-32 rounded-full object-cover shadow-md" />
-          <p class="text-base font-medium mt-4">Paul Rayson</p>
-          <p class="text-sm text-gray-600">Project Co-I</p>
-          <p class="text-sm text-gray-600">Lancaster University</p>
-          </br>
-        </a>
-      </div>
-
-      <!-- Dawn -->
-      <div class="flex flex-col items-center">
-        <a href="https://profiles.cardiff.ac.uk/staff/knightd5" target="_blank" class="block text-center">
-          <img src="./img/knight.jpg" alt="Dawn Knight" class="w-32 h-32 rounded-full object-cover shadow-md" />
-          <p class="text-base font-medium mt-4">Dawn Knight</p>
-          <p class="text-sm text-gray-600">Project Co-I</p>
-          <p class="text-sm text-gray-600">Cardiff University</p>
-          </br>
-        </a>
-      </div>
-
-      <!-- Alex -->
-      <div class="flex flex-col items-center">
-        <a href="https://vinuni.edu.vn/people/nguyen-thi-mai-lan-phd-2/" target="_blank" class="block text-center">
-          <img src="./img/alex.jpg" alt="Nguyen Thi Mai Lan (Alex)" class="w-32 h-32 rounded-full object-cover shadow-md" />
-          <p class="text-base font-medium mt-4">Nguyen Thi Mai Lan (Alex)</p>
-          <p class="text-sm text-gray-600">Project Collaborator</p>
-          <p class="text-sm text-gray-600">VinUniversity</p>
-          </br>
-        </a>
-      </div>
-
-      <!-- Ha Thanh -->
-      <div class="flex flex-col items-center">
-        <a href="https://vinuni.edu.vn/people/nguyen-ha-thanh/" target="_blank" class="block text-center">
-          <img src="./img/hathanh.jpg" alt="Nguyen Ha Thanh" class="w-32 h-32 rounded-full object-cover shadow-md" />
-          <p class="text-base font-medium mt-4">Nguyen Ha Thanh</p>
-          <p class="text-sm text-gray-600">Project Collaborator</p>
-          <p class="text-sm text-gray-600">VinUniversity</p>
-          </br>
-        </a>
-      </div>
-	  
-	        <!-- MinhChi -->
-      <div class="flex flex-col items-center">
-        <a href="https://www.linkedin.com/in/nguyen-minh-chi-phoenix/" target="_blank" class="block text-center">
-          <img src="./img/minhchi.jpg" alt="Nguyen Minh Chi" class="w-32 h-32 rounded-full object-cover shadow-md" />
-          <p class="text-base font-medium mt-4">Nguyen Minh Chi</p>
-          <p class="text-sm text-gray-600">Research Assistant</p>
-          <p class="text-sm text-gray-600">VinUniversity</p>
-          </br>
-        </a>
-      </div>
-	  
-    </div>
-  </div>
-</section>
-
-
-
-    </div>
-  </div>
-</section>
-
-
-
-
-    <!-- Partners Section -->
-<section id="partners" class="py-12 bg-white">
-    <div class="container mx-auto px-6 text-center">
-        <h2 class="text-3xl font-bold mb-8">PolicyVerse Collaborations &amp; Partners</h2>
-        
-        <p class="text-lg mb-6">
-            <strong>Partners:</strong> 
-            <a href="https://cecs.vinuni.edu.vn/" target="_blank" class="text-blue-600 underline">College of Engineering and Computer Science (CECS)</a>, 
-            <a href="https://cbm.vinuni.edu.vn/" target="_blank" class="text-blue-600 underline">College of Business and Management (CBM)</a>, 
-            <a href="https://vinuni.edu.vn" target="_blank" class="text-blue-600 underline">VinUniversity</a>, Vietnam, 
-            <a href="https://vinnlp.com" target="_blank" class="text-blue-600 underline">NLP @ VinUniversity Research Group</a>, 
-            <a href="https://ucrel.lancs.ac.uk/" target="_blank" class="text-blue-600 underline">UCREL</a>, 
-            <a href="https://lancaster.ac.uk" target="_blank" class="text-blue-600 underline">Lancaster University</a>, UK, and 
-            <a href="https://www.cardiff.ac.uk/" target="_blank" class="text-blue-600 underline">Cardiff University</a>, UK
-        </p>
-
-        <p class="text-lg mb-10">
-            <strong>Funding:</strong> This project is supported by 
-            <a href="https://vinuni.edu.vn" target="_blank" class="text-blue-600 underline">VinUniversity</a> through the Accelerating Research Excellence Program (AREP), Project ref: VUNI.2526.AREP.030, with funding of 2,553,753,264 VND over a 24-month period. 
-        </p>
-</br></br>
-        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8 items-center">
-
-            <div>
-                <a href="https://vinuni.edu.vn" target="_blank" class="block text-center">
-                    <img src="./img/vinuni.png" alt="VinUniversity" class="mx-auto h-12" />
-                    <p class="text-sm mt-2">VinUniversity</p>
-                </a>
-            </div>
-
-            <div>
-                <a href="https://vinnlp.com" target="_blank" class="block text-center">
-                    <img src="./img/vinnlp.png" alt="NLP @ VinUni" class="mx-auto h-12" />
-                    <p class="text-sm mt-2">NLP @ VinUniversity Research Group</p>
-                </a>
-            </div>
-
-            <div>
-                <a href="https://ucrel.lancs.ac.uk/" target="_blank" class="block text-center">
-                    <img src="./assets/ucrel.png" alt="UCREL" class="mx-auto h-12" />
-                    <p class="text-sm mt-2">UCREL NLP Group</p>
-                </a>
-            </div>
-
-            <div>
-                <a href="https://lancaster.ac.uk" target="_blank" class="block text-center">
-                    <img src="./assets/lancaster.png" alt="Lancaster University" class="mx-auto h-12" />
-                    <p class="text-sm mt-2">Lancaster University, UK</p>
-                </a>
-            </div>
-
-            <div>
-                <a href="https://www.cardiff.ac.uk/" target="_blank" class="block text-center">
-                    <img src="./assets/cardiff.png" alt="Cardiff University" class="mx-auto h-12" />
-                    <p class="text-sm mt-2">Cardiff University, UK</p>
-                </a>
-            </div>
-
+        <div class="hero-meta" aria-label="Project details">
+          <img class="hero-meta-logo" src="./assets/vinunilogo.png" alt="VinUniversity" />
+          <div class="meta-line"><i class="far fa-calendar"></i><div><strong>15 April 2026 – 14 April 2028</strong>24-month research programme</div></div>
+          <div class="meta-line"><i class="fas fa-language"></i><div><strong>English · Portuguese → Vietnamese · Welsh</strong>High-resource development followed by low-resource transfer</div></div>
+          <div class="meta-line"><i class="fas fa-building-columns"></i><div><strong>AREP-25 · VUNI.2526.AREP.030</strong>VinUniversity with international collaborators</div></div>
         </div>
-    </div>
-</section>
-
-    <!-- Contact Section -->
-   <section id="contact" class="py-12 bg-gray-100">
-  <div class="container mx-auto px-6 md:flex md:space-x-12">
-    <!-- Contact Info -->
-    <div class="md:w-1/2 mb-8 md:mb-0">
-      <h2 class="text-3xl font-bold mb-6">Get in Touch</h2>
-      <p class="mb-2"><strong>Address:</strong> CECS, VinUniversity, Hanoi, Vietnam</p>
-      <p class="mb-2">
-        <strong>Email:</strong>
-        <a href="mailto:elhaj.m@vinuni.edu.vn" class="text-blue-600 hover:underline">elhaj.m@vinuni.edu.vn</a>
-      </p>
-      <p class="mb-6">
-        <strong>Website:</strong>
-        <a href="https://vinnlp.com" class="text-blue-600 hover:underline">NLP @ VinUniversity</a>
-      </p>
-<div class="flex space-x-4 mb-6">
-  <!-- LinkedIn -->
-  <a href="https://www.linkedin.com/company/vinnlp" target="_blank" aria-label="LinkedIn" class="text-gray-500 hover:text-gray-700 text-2xl">
-    <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
-      <path d="M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.76 
-               0 5-2.24 5-5v-14c0-2.76-2.24-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.3c-.97 
-               0-1.75-.78-1.75-1.75s.78-1.75 
-               1.75-1.75 1.75.78 1.75 
-               1.75-.78 1.75-1.75 1.75zm13.5 
-               11.3h-3v-5.6c0-1.34-.03-3.06-1.87-3.06-1.87 
-               0-2.16 1.46-2.16 
-               2.96v5.7h-3v-10h2.89v1.37h.04c.4-.76 
-               1.38-1.56 2.84-1.56 3.04 0 3.6 2 3.6 
-               4.59v5.6z"/>
-    </svg>
-  </a>
-
-  <!-- X (Twitter) -->
-  <a href="https://x.com/vinnlp" target="_blank" aria-label="X" class="text-gray-500 hover:text-gray-700 text-2xl">
-    <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
-      <path d="M20.66 3H3.34C2.6 3 2 3.6 2 
-               4.34v15.32C2 20.4 2.6 21 3.34 
-               21h17.32c.74 0 1.34-.6 1.34-1.34V4.34C22 
-               3.6 21.4 3 20.66 3zM17.75 17h-2.2l-3.12-4.1-3.13 
-               4.1H7.1l4.2-5.49L7.5 7h2.2l2.84 
-               3.73L15.38 7h2.17l-4.1 5.32 4.3 
-               5.68z"/>
-    </svg>
-  </a>
-</div>
-
-      <div>
-        <a 
-          href="https://cecs.vinuni.edu.vn/phd-in-computer-science/" 
-          target="_blank" 
-          class="block mt-2 text-blue-600 transition hover:underline cursor-pointer"
-        >
-          Apply for a PhD in Computer Science/NLP
-        </a>
-        <a 
-          href="https://vinuni.edu.vn/jobs/" 
-          target="_blank" 
-          class="block mt-2 text-blue-600 transition hover:underline cursor-pointer"
-        >
-          Work with us – Explore professional opportunities
-        </a>
       </div>
-    </div>
-            <!-- Contact Form -->
-            <div class="md:w-1/2">
-    <form action="https://usebasin.com/f/24f2d90b8cdf" method="POST" accept-charset="UTF-8">
-        <!-- Name -->
-        <div class="mb-4">
-            <input type="text" name="name" placeholder="Your Name"
-                class="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-                required>
-        </div>
-
-        <!-- Email -->
-        <div class="mb-4">
-            <input type="email" name="email" placeholder="Your Email"
-                class="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-                required>
-        </div>
-
-        <!-- Message -->
-        <div class="mb-4">
-            <textarea name="message" rows="4" placeholder="Your Message"
-                class="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-                required></textarea>
-        </div>
-
-        <!-- Submit Button -->
-        <button type="submit"
-            class="bg-blue-600 cursor-pointer text-white font-semibold px-6 py-3 rounded hover:bg-blue-700 transition duration-300">
-            Send Message
-        </button>
-    </form>
-</div>
-
-        </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="bg-gray-800 text-gray-300 text-sm py-4">
-        <div class="container mx-auto px-6 md:flex md:items-center md:justify-between">
-            <!-- Secondary Nav Links -->
-            <div class="mb-4 md:mb-0">
-                <a href="#home" class="mr-4 hover:underline">Home</a>
-                <a href="#about" class="mr-4 hover:underline">About</a>
-                <a href="#people" class="mr-4 hover:underline">People</a>
-                <a href="#research" class="mr-4 hover:underline">Research</a>
-				<a href="#research" class="mr-4 hover:underline">Projects</a>
-				<a href="jobs.html" class="mr-4 hover:underline">Jobs</a>
-				<a href="nlp_bridges.html" class="mr-4 hover:underline">NLP Bridges</a>
-                <a href="#contact" class="mr-4 hover:underline">Contact</a>
+    <section class="section" id="about">
+      <div class="container">
+        <div class="intro-card">
+          <div class="section-eyebrow">About PolicyVerse</div>
+          <h2 class="section-title">Turning fragmented policy documents into grounded, interpretable reasoning</h2>
+          <p class="section-lead">Government policy is distributed across ministries, document types, languages and administrative contexts. PolicyVerse investigates how large language models can reason over that complexity while remaining grounded in source material and transparent about the relationships they infer.</p>
+          <div class="definition">
+            <div class="definition-icon"><i class="fas fa-people-arrows"></i></div>
+            <div>
+              <h3>Policy reasoning as coordinated dialogue</h3>
+              <p>Instead of relying on one model response, PolicyVerse treats interpretation as an interaction between specialised agents, for example labour, taxation or immigration agents, that can question one another's interpretations, retrieve additional evidence, surface contradictions and map dependencies between policy domains.</p>
             </div>
-            <!-- Social Icons -->
-            <div class="mb-4 md:mb-0">
-                <a href="#" aria-label="LinkedIn" class="mr-3 hover:text-white"><i class="fab fa-linkedin"></i></a>
-                <a href="#" aria-label="Twitter" class="mr-3 hover:text-white"><i class="fab fa-twitter"></i></a>
-            </div>
-            <!-- Copyright -->
-      <div>&copy; 2025-2026 NLP @ VinUniversity. All rights reserved.</div>
-
+          </div>
         </div>
-    </footer>
 
-    <!-- JavaScript -->
-    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
-    <!-- JavaScript -->
-    <script src="./main.js"></script>
+        <div class="feature-grid" aria-label="Why the project matters">
+          <article class="feature-card">
+            <div class="feature-icon"><i class="fas fa-book-open-reader"></i></div>
+            <h3>Evidence-grounded reasoning</h3>
+            <p>Use multilingual retrieval and RAG to connect every interpretation to relevant policy clauses, guidance and administrative documents.</p>
+          </article>
+          <article class="feature-card">
+            <div class="feature-icon"><i class="fas fa-route"></i></div>
+            <h3>Interpretable policy logic</h3>
+            <p>Represent rules, exceptions and dependencies through Policy World Models rather than leaving reasoning buried inside free-form generations.</p>
+          </article>
+          <article class="feature-card">
+            <div class="feature-icon"><i class="fas fa-earth-asia"></i></div>
+            <h3>Cross-lingual transfer</h3>
+            <p>Develop the framework in English and Portuguese, then test its robustness in Vietnamese and Welsh policy environments with different linguistic and institutional characteristics.</p>
+          </article>
+        </div>
+      </div>
+    </section>
 
+    <section class="section alt" id="research">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-eyebrow">Research programme</div>
+          <h2 class="section-title">Four connected research pillars</h2>
+          <p class="section-lead">PolicyVerse combines multilingual NLP, retrieval, multi-agent coordination and structured policy modelling into one reusable scientific framework.</p>
+        </div>
+        <div class="objective-grid">
+          <article class="objective-card">
+            <div class="objective-no">R1</div>
+            <div><h3>Multilingual retrieval and aligned policy data</h3><p>Build clause-level, semantically aligned policy resources and retrieval pipelines that ground reasoning in source evidence across languages and document types.</p></div>
+          </article>
+          <article class="objective-card">
+            <div class="objective-no">R2</div>
+            <div><h3>Collaborative multi-agent policy reasoning</h3><p>Coordinate specialised domain agents so that interpretations can be challenged, refined and reconciled rather than produced as isolated single-model answers.</p></div>
+          </article>
+          <article class="objective-card">
+            <div class="objective-no">R3</div>
+            <div><h3>Policy World Models</h3><p>Extract structured representations of rules, exceptions, conditions and dependencies from unstructured policy text to support interpretable reasoning and cross-document analysis.</p></div>
+          </article>
+          <article class="objective-card">
+            <div class="objective-no">R4</div>
+            <div><h3>Multilingual evaluation and low-resource transfer</h3><p>Evaluate factual grounding, consistency, interpretability, contradiction detection and complex question answering, then test whether the framework transfers reliably to Vietnamese and Welsh.</p></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="architecture">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-eyebrow">PolicyVerse architecture</div>
+          <h2 class="section-title">Policy sources → Retrieval → Specialist agents → Policy World Models → Evaluation</h2>
+          <p class="section-lead">The architecture is designed so that policy reasoning remains connected to evidence, while complex cross-domain relationships are made explicit and testable.</p>
+        </div>
+        <div class="workflow-shell">
+          <div class="workflow" aria-label="PolicyVerse architecture">
+            <div class="workflow-step"><i class="fas fa-file-lines"></i><strong>Policy Sources</strong><span>Decrees, circulars, guidance, parliamentary texts and administrative manuals</span></div>
+            <div class="workflow-arrow"><i class="fas fa-arrow-right"></i></div>
+            <div class="workflow-step"><i class="fas fa-magnifying-glass"></i><strong>Retrieve &amp; Ground</strong><span>Clause-level multilingual retrieval and evidence selection through RAG</span></div>
+            <div class="workflow-arrow"><i class="fas fa-arrow-right"></i></div>
+            <div class="workflow-step"><i class="fas fa-people-group"></i><strong>Specialist Agents</strong><span>Domain agents compare interpretations and interrogate one another's evidence</span></div>
+            <div class="workflow-arrow"><i class="fas fa-arrow-right"></i></div>
+            <div class="workflow-step"><i class="fas fa-project-diagram"></i><strong>Policy World Models</strong><span>Structured rules, dependencies, exceptions and interpretable policy logic</span></div>
+            <div class="workflow-arrow"><i class="fas fa-arrow-right"></i></div>
+            <div class="workflow-step"><i class="fas fa-vial-circle-check"></i><strong>Evaluate &amp; Explain</strong><span>Question answering, contradiction analysis, dependency mapping and auditability</span></div>
+          </div>
+
+          <div class="capability-grid" aria-label="Core capabilities">
+            <article class="capability-card"><span class="capability-code">CD</span><h3>Contradiction Detection</h3><p>Identify policy statements that conflict, overlap or impose incompatible constraints across documents or domains.</p></article>
+            <article class="capability-card"><span class="capability-code">DM</span><h3>Dependency Modelling</h3><p>Map how one policy rule depends on another, including conditions, exceptions and cross-ministry relationships.</p></article>
+            <article class="capability-card"><span class="capability-code">QA</span><h3>Complex Policy QA</h3><p>Answer questions that require evidence from multiple documents, policy areas or languages rather than simple passage retrieval.</p></article>
+            <article class="capability-card"><span class="capability-code">TR</span><h3>Transparent Reasoning</h3><p>Expose the supporting evidence and structured policy logic behind an answer so interpretations can be inspected and evaluated.</p></article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt" id="phases">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-eyebrow">Two-phase multilingual design</div>
+          <h2 class="section-title">Develop with high-resource languages, then test real cross-lingual transfer</h2>
+          <p class="section-lead">The project deliberately separates framework construction from low-resource adaptation, making it possible to test which components transfer and which need language-specific redesign.</p>
+        </div>
+        <div class="phase-grid">
+          <article class="phase-card">
+            <div class="phase-badge"><i class="fas fa-layer-group"></i> Phase 1 · Core development</div>
+            <h3>English and Portuguese</h3>
+            <p>Establish the PolicyVerse research infrastructure in higher-resource settings before moving to more heterogeneous multilingual policy environments.</p>
+            <ul class="phase-list">
+              <li><i class="fas fa-database"></i><span>Build the aligned <strong>PolicyVerse Dataset v1.0</strong> with clause segmentation and semantic annotation.</span></li>
+              <li><i class="fas fa-magnifying-glass"></i><span>Develop the multilingual retrieval pipeline and initial cross-lingual RAG prototype.</span></li>
+              <li><i class="fas fa-diagram-project"></i><span>Design the Policy World Model extraction pipeline for interpretable policy rule structures.</span></li>
+              <li><i class="fas fa-people-group"></i><span>Develop and validate the first multi-agent coordination mechanisms for policy reasoning.</span></li>
+            </ul>
+            <div class="language-row"><span class="language-pill">EN · English</span><span class="language-pill">PT · Portuguese</span></div>
+          </article>
+
+          <article class="phase-card">
+            <div class="phase-badge"><i class="fas fa-earth-europe"></i> Phase 2 · Low-resource transfer</div>
+            <h3>Vietnamese and Welsh</h3>
+            <p>Adapt and stress-test the framework in linguistically and administratively different settings using authentic local policy materials.</p>
+            <ul class="phase-list">
+              <li><i class="fas fa-file-signature"></i><span>Integrate Vietnamese and Welsh decrees, circulars, guidance, parliamentary texts and administrative manuals.</span></li>
+              <li><i class="fas fa-network-wired"></i><span>Produce Policy World Models across all four project languages and compare their structural consistency.</span></li>
+              <li><i class="fas fa-scale-balanced"></i><span>Evaluate contradiction detection, dependency modelling and multi-document policy question answering.</span></li>
+              <li><i class="fas fa-arrows-left-right-to-line"></i><span>Measure cross-lingual transfer and identify where language or governance context changes model behaviour.</span></li>
+            </ul>
+            <div class="language-row"><span class="language-pill">VI · Vietnamese</span><span class="language-pill">CY · Welsh</span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="deliverables">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-eyebrow">Project deliverables</div>
+          <h2 class="section-title">A reusable research infrastructure for multilingual policy analysis</h2>
+          <p class="section-lead">PolicyVerse is designed to produce datasets, models, evaluation resources and open tools that can support research beyond the lifetime of the project.</p>
+        </div>
+        <div class="deliverable-grid">
+          <article class="deliverable-card"><div class="deliverable-icon"><i class="fas fa-database"></i></div><h3>PolicyVerse Dataset v1.0</h3><p>An aligned, clause-segmented and semantically annotated policy corpus supporting multilingual retrieval, reasoning and evaluation.</p></article>
+          <article class="deliverable-card"><div class="deliverable-icon"><i class="fas fa-magnifying-glass-chart"></i></div><h3>Cross-lingual RAG prototype</h3><p>A multilingual retrieval and grounding pipeline that connects model reasoning to relevant policy evidence across languages.</p></article>
+          <article class="deliverable-card"><div class="deliverable-icon"><i class="fas fa-project-diagram"></i></div><h3>Policy World Models v1.0</h3><p>Structured representations of policy rules, exceptions, conditions and dependencies across English, Portuguese, Vietnamese and Welsh.</p></article>
+          <article class="deliverable-card"><div class="deliverable-icon"><i class="fas fa-people-group"></i></div><h3>Multi-agent reasoning system</h3><p>An integrated framework in which specialised agents coordinate, challenge interpretations and reason across policy domains and documents.</p></article>
+          <article class="deliverable-card"><div class="deliverable-icon"><i class="fas fa-list-check"></i></div><h3>GlobalPolicyQA benchmark</h3><p>A multilingual evaluation benchmark for factual grounding, consistency, interpretability and complex governance scenarios.</p></article>
+          <article class="deliverable-card"><div class="deliverable-icon"><i class="fab fa-github"></i></div><h3>PolicyVerse open resources</h3><p>Reusable code, evaluation components, documentation and research artefacts released through the project where licences permit.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt" id="team">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-eyebrow">Research team</div>
+          <h2 class="section-title">NLP, AI and policy expertise across Vietnam and the UK</h2>
+          <p class="section-lead">PolicyVerse brings together expertise in multilingual NLP, multi-agent systems, corpus and evaluation methods, Welsh and Vietnamese language technologies, and policy and regulatory analysis.</p>
+        </div>
+
+        <div class="team-grid">
+          <article class="team-card">
+            <div class="team-top"><img src="./img/mohaj.jpg" alt="Mo El-Haj" /><div><h3>Mo El-Haj</h3><div class="team-role">Principal Investigator</div></div></div>
+            <p class="team-focus">Multilingual NLP, low-resource language technology, large language models and project leadership.</p>
+            <div class="institution-list"><div class="institution"><i class="fas fa-building-columns"></i><span><strong>VinUniversity</strong><br />Vietnam</span></div></div>
+          </article>
+
+          <article class="team-card">
+            <div class="team-top"><img src="./img/leandro.jpg" alt="Leandro S. Marcolino" /><div><h3>Leandro S. Marcolino</h3><div class="team-role">Co-PI</div></div></div>
+            <p class="team-focus">Multi-agent AI, Portuguese policy data and evaluation.</p>
+            <div class="institution-list"><div class="institution"><i class="fas fa-building-columns"></i><span><strong>VinUniversity</strong><br />Vietnam</span></div></div>
+          </article>
+
+          <article class="team-card">
+            <div class="team-top"><img src="./img/prayson.jpg" alt="Paul Rayson" /><div><h3>Paul Rayson</h3><div class="team-role">Co-Investigator</div></div></div>
+            <p class="team-focus">Corpus design, multilingual NLP resources and evaluation frameworks.</p>
+            <div class="institution-list"><div class="institution"><i class="fas fa-building-columns"></i><span><strong>Lancaster University</strong><br />United Kingdom</span></div></div>
+          </article>
+
+          <article class="team-card">
+            <div class="team-top"><img src="./img/knight.jpg" alt="Dawn Knight" /><div><h3>Dawn Knight</h3><div class="team-role">Co-Investigator</div></div></div>
+            <p class="team-focus">Welsh language resources, corpus linguistics, discourse analysis and multilingual validation.</p>
+            <div class="institution-list"><div class="institution"><i class="fas fa-building-columns"></i><span><strong>Cardiff University</strong><br />United Kingdom</span></div></div>
+          </article>
+
+          <article class="team-card">
+            <div class="team-top"><img src="./img/alex.jpg" alt="Nguyen Thi Mai Lan" /><div><h3>Nguyen Thi Mai Lan</h3><div class="team-role">Project Collaborator</div></div></div>
+            <p class="team-focus">Vietnamese policy and regulatory expertise supporting domain grounding and evaluation.</p>
+            <div class="institution-list"><div class="institution"><i class="fas fa-building-columns"></i><span><strong>VinUniversity</strong><br />Vietnam</span></div></div>
+          </article>
+
+          <article class="team-card">
+            <div class="team-top"><img src="./img/hathanh.jpg" alt="Nguyen Ha Thanh" /><div><h3>Nguyen Ha Thanh</h3><div class="team-role">Project Collaborator</div></div></div>
+            <p class="team-focus">Research collaboration supporting the Vietnamese policy and AI components of PolicyVerse.</p>
+            <div class="institution-list"><div class="institution"><i class="fas fa-building-columns"></i><span><strong>VinUniversity</strong><br />Vietnam</span></div></div>
+          </article>
+
+          <article class="team-card">
+            <div class="team-top"><img src="./img/minhchi.jpg" alt="Nguyen Minh Chi" /><div><h3>Nguyen Minh Chi</h3><div class="team-role">Research Assistant</div></div></div>
+            <p class="team-focus">Technical research and implementation across data, retrieval, evaluation and multi-agent experimentation.</p>
+            <div class="institution-list"><div class="institution"><i class="fas fa-building-columns"></i><span><strong>VinUniversity</strong><br />Vietnam</span></div></div>
+          </article>
+        </div>
+
+        <div class="collaboration-strip">
+          <strong>Project collaboration</strong>
+          <div class="collaboration-names"><span>VinUniversity CECS</span><span>VinUniversity CBM</span><span>NLP @ VinUni</span><span>UCREL</span><span>Lancaster University</span><span>Cardiff University</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="impact">
+      <div class="container">
+        <div class="impact-panel">
+          <div class="section-eyebrow">Expected impact</div>
+          <h2 class="section-title">More transparent, accessible and evidence-grounded policy intelligence</h2>
+          <p class="section-lead">By combining multilingual NLP, computational social science and public policy, PolicyVerse aims to advance foundational research in cross-lingual retrieval, LLM interpretability and multi-agent coordination while creating practical infrastructure for understanding complex policy environments.</p>
+          <div class="impact-points">
+            <div class="impact-point"><strong>Scientific</strong><span>New methods for multilingual policy retrieval, structured policy modelling, multi-agent reasoning and interpretable evaluation.</span></div>
+            <div class="impact-point"><strong>Vietnam and low-resource policy AI</strong><span>A dedicated pathway from high-resource development to Vietnamese policy analysis, with direct attention to local documents and administrative contexts.</span></div>
+            <div class="impact-point"><strong>Public and organisational value</strong><span>Research infrastructure that can support clearer policy interpretation, accessibility and evidence-based decision-making for policymakers, organisations and citizens.</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-section" id="contact">
+      <div class="container">
+        <div class="contact-card">
+          <div>
+            <div class="section-eyebrow">Contact</div>
+            <h2>Interested in PolicyVerse?</h2>
+            <p>For research collaboration, technical discussion or information about the project, contact the PolicyVerse Principal Investigator at VinUniversity.</p>
+          </div>
+          <div class="contact-actions">
+            <a class="contact-btn primary" href="mailto:elhaj.m@vinuni.edu.vn"><i class="far fa-envelope"></i> elhaj.m@vinuni.edu.vn</a>
+            <a class="contact-btn secondary" href="https://vinnlp.com" target="_blank" rel="noopener noreferrer"><i class="fas fa-globe"></i> NLP @ VinUni</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <span>PolicyVerse · Multilingual Multi-Agent LLMs for Policy Reasoning</span>
+      <span>VinUniversity · Lancaster University · Cardiff University</span>
+    </div>
+  </footer>
+
+  <script>
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileNav = document.getElementById('mobileNav');
+    if (menuBtn && mobileNav) {
+      menuBtn.addEventListener('click', () => {
+        const isOpen = mobileNav.classList.toggle('open');
+        menuBtn.setAttribute('aria-expanded', String(isOpen));
+      });
+      mobileNav.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+        mobileNav.classList.remove('open');
+        menuBtn.setAttribute('aria-expanded', 'false');
+      }));
+    }
+  </script>
 </body>
-
 </html>
