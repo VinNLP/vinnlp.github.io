@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="AI of X: Intelligence Across Disciplines and Domains, VinUniversity, Hanoi, 16 September 2026." />
+<title>AI of X Workshop Poster | VinUniversity</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#07166f;
+  --navy-deep:#050b4d;
+  --blue:#0b7de3;
+  --blue-bright:#12adf1;
+  --gold:#f1cf78;
+  --gold-2:#d7a940;
+  --white:#ffffff;
+  --soft:#dfeaff;
+  --muted:#b9c9ec;
+}
+
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;font-family:'Montserrat',Arial,sans-serif;background:#06105d;color:#fff}
+body{display:flex;justify-content:center;align-items:flex-start;padding:0}
+
+.poster{
+  position:relative;
+  width:min(100vw,1600px);
+  min-height:min(100vh,1067px);
+  aspect-ratio:3/2;
+  overflow:hidden;
+  padding:42px 56px 34px;
+  background:
+    radial-gradient(circle at 88% 5%, rgba(35,187,255,.30), transparent 27%),
+    radial-gradient(circle at 5% 77%, rgba(47,136,255,.22), transparent 31%),
+    linear-gradient(180deg,#0799e8 0%,#0871d4 16%,#0b3fa9 38%,#081f83 62%,#070c63 100%);
+  isolation:isolate;
+}
+
+.poster::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  z-index:-2;
+  background:
+    linear-gradient(115deg,transparent 0 42%,rgba(255,255,255,.025) 42.2% 42.7%,transparent 42.9% 100%),
+    linear-gradient(25deg,transparent 0 63%,rgba(255,255,255,.018) 63.2% 63.6%,transparent 63.9% 100%);
+}
+
+.poster::after{
+  content:"";
+  position:absolute;
+  width:430px;
+  height:430px;
+  left:-180px;
+  bottom:-185px;
+  border-radius:50%;
+  border:1px solid rgba(113,182,255,.22);
+  box-shadow:
+    0 0 0 52px rgba(83,160,255,.055),
+    0 0 0 104px rgba(83,160,255,.04),
+    0 0 0 156px rgba(83,160,255,.025);
+  z-index:-1;
+}
+
+.top-logos{
+  min-height:72px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:44px;
+  margin-bottom:16px;
+}
+
+.vinuni-logo{
+  width:160px;
+  max-height:68px;
+  object-fit:contain;
+  filter:brightness(0) invert(1);
+  opacity:.98;
+}
+
+.logo-divider{
+  width:1px;
+  height:48px;
+  background:linear-gradient(transparent,rgba(255,255,255,.55),transparent);
+}
+
+.nlp-logo{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  line-height:1;
+  color:#fff;
+  text-decoration:none;
+}
+.nlp-logo-main{display:flex;align-items:baseline;gap:8px;letter-spacing:-.05em}
+.nlp-logo-main .nlp{font-size:2.1rem;font-weight:900;color:var(--gold)}
+.nlp-logo-main .at{font-size:1.25rem;font-weight:600;color:#d9e9ff}
+.nlp-logo-main .vin{font-size:1.65rem;font-weight:800;color:#fff}
+.nlp-logo small{font-size:.60rem;letter-spacing:.19em;text-transform:uppercase;color:#c8ddff;margin-top:6px;font-weight:700}
+
+.heading{text-align:center;max-width:1480px;margin:0 auto}
+.kicker{font-size:.76rem;font-weight:700;letter-spacing:.27em;text-transform:uppercase;color:#e7f3ff;margin-bottom:7px}
+.title{
+  margin:0;
+  font-size:clamp(2.7rem,4.45vw,5rem);
+  line-height:.98;
+  font-weight:900;
+  letter-spacing:-.045em;
+  text-transform:uppercase;
+  color:var(--gold);
+  text-shadow:0 2px 0 #fff6c8,0 4px 0 rgba(118,77,7,.75),0 7px 18px rgba(0,0,0,.28);
+}
+.subtitle{
+  margin:8px 0 0;
+  font-size:clamp(1.05rem,2.05vw,2rem);
+  line-height:1.12;
+  font-weight:700;
+  letter-spacing:.055em;
+  text-transform:uppercase;
+  color:#f4dc98;
+  text-shadow:0 2px 8px rgba(0,0,0,.28);
+}
+
+.event-meta{
+  margin:25px auto 18px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:58px;
+  color:#fff;
+  font-size:1rem;
+}
+.meta-item{display:flex;align-items:center;gap:12px;white-space:nowrap}
+.meta-icon{
+  width:39px;height:39px;border:3px solid rgba(255,255,255,.92);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;flex:0 0 auto;
+}
+.meta-icon svg{width:20px;height:20px;fill:none;stroke:#fff;stroke-width:2.1;stroke-linecap:round;stroke-linejoin:round}
+.meta-copy{font-weight:500;letter-spacing:.01em}
+.meta-copy strong{font-weight:700}
+
+.rule{height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.32),transparent);margin:0 3% 18px}
+
+.people-layout{
+  display:grid;
+  grid-template-columns:240px minmax(0,1fr);
+  gap:34px;
+  align-items:start;
+}
+
+.section-label{
+  font-size:.92rem;
+  font-style:italic;
+  font-weight:700;
+  color:#f2cf77;
+  margin:0 0 13px;
+  letter-spacing:.02em;
+}
+.section-label.speakers{text-align:center;margin-bottom:11px}
+
+.host-area{text-align:center;padding-top:3px}
+.host-ring{
+  width:148px;height:148px;border-radius:50%;margin:0 auto 12px;padding:4px;
+  background:linear-gradient(145deg,#82e8ff,#1a91e6 55%,#f0cd71);
+  box-shadow:0 10px 26px rgba(0,0,0,.24);
+}
+.host-ring img{width:100%;height:100%;border-radius:50%;object-fit:cover;display:block;border:3px solid rgba(255,255,255,.92);background:#d8e4ef}
+.host-name{font-size:1rem;font-weight:800;color:#fff;line-height:1.15;margin-bottom:4px}
+.host-affil{font-size:.66rem;line-height:1.35;color:#dce8ff;font-weight:500}
+.host-tag{display:inline-block;margin-top:10px;padding:5px 9px;border:1px solid rgba(240,205,113,.48);border-radius:999px;color:#f4d985;font-size:.58rem;font-weight:700;letter-spacing:.11em;text-transform:uppercase;background:rgba(4,15,87,.26)}
+
+.speaker-area{min-width:0}
+.speaker-grid{
+  display:grid;
+  grid-template-columns:repeat(6,minmax(0,1fr));
+  gap:15px 12px;
+}
+.speaker{text-align:center;min-width:0}
+.speaker-ring{
+  width:91px;height:91px;border-radius:50%;margin:0 auto 8px;padding:3px;
+  background:linear-gradient(145deg,#8be7ff,#198bdc 70%,#e8c15a);
+  box-shadow:0 7px 18px rgba(0,0,0,.20);
+}
+.speaker-ring img{width:100%;height:100%;border-radius:50%;object-fit:cover;display:block;border:2px solid rgba(255,255,255,.94);background:#d9e4ee}
+.speaker-name{
+  font-size:.66rem;
+  line-height:1.16;
+  font-weight:800;
+  color:#fff;
+  min-height:2.35em;
+  display:flex;
+  align-items:flex-start;
+  justify-content:center;
+  padding:0 2px;
+}
+.speaker-affil{
+  margin-top:3px;
+  font-size:.54rem;
+  line-height:1.3;
+  color:#c9d8f8;
+  font-weight:500;
+  min-height:2.6em;
+}
+
+.footer{
+  margin-top:18px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:12px;
+  color:#bed1f7;
+  font-size:.62rem;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+.footer b{color:#f0cf7c}
+.footer-dot{width:4px;height:4px;border-radius:50%;background:#f0cf7c;opacity:.8}
+
+@media (max-width:1220px){
+  .poster{aspect-ratio:auto;min-height:100vh;padding:34px 30px}
+  .people-layout{grid-template-columns:190px 1fr;gap:22px}
+  .speaker-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:18px 12px}
+  .event-meta{gap:28px;flex-wrap:wrap}
+}
+
+@media (max-width:760px){
+  .poster{padding:27px 18px 30px}
+  .top-logos{gap:24px;margin-bottom:15px}.vinuni-logo{width:132px}.logo-divider{height:42px}
+  .nlp-logo-main .nlp{font-size:1.65rem}.nlp-logo-main .vin{font-size:1.3rem}.nlp-logo-main .at{font-size:1rem}
+  .event-meta{display:grid;grid-template-columns:1fr;gap:10px;margin:20px auto 18px;width:max-content;max-width:100%}
+  .people-layout{grid-template-columns:1fr;gap:24px}.host-area{padding-bottom:8px}
+  .speaker-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:20px 12px}
+  .speaker-ring{width:102px;height:102px}.speaker-name{font-size:.75rem}.speaker-affil{font-size:.62rem}
+  .section-label{text-align:center}
+}
+
+@media print{
+  @page{size:A3 landscape;margin:0}
+  html,body{width:420mm;height:297mm;background:#fff}
+  body{padding:0}
+  .poster{width:420mm;height:297mm;min-height:297mm;aspect-ratio:auto;padding:11mm 14mm 8mm;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+</style>
+</head>
+<body>
+<main class="poster" role="main" aria-label="AI of X Workshop poster">
+  <div class="top-logos" aria-label="Organisers">
+    <img class="vinuni-logo" src="./assets/vinunilogo.png" alt="VinUniversity" />
+    <div class="logo-divider" aria-hidden="true"></div>
+    <a class="nlp-logo" href="https://vinnlp.com" aria-label="NLP at VinUni Research Group">
+      <span class="nlp-logo-main"><span class="nlp">NLP</span><span class="at">@</span><span class="vin">VinUni</span></span>
+      <small>Research Group</small>
+    </a>
+  </div>
+
+  <header class="heading">
+    <div class="kicker">Interdisciplinary AI Workshop</div>
+    <h1 class="title">AI of X</h1>
+    <p class="subtitle">Intelligence Across Disciplines and Domains</p>
+  </header>
+
+  <div class="event-meta" aria-label="Workshop date, time and venue">
+    <div class="meta-item">
+      <span class="meta-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3.5 2"></path></svg>
+      </span>
+      <span class="meta-copy"><strong>09:00–17:30</strong>, Wednesday, 16 September 2026</span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path d="M12 21s6-5.2 6-11a6 6 0 1 0-12 0c0 5.8 6 11 6 11z"></path><circle cx="12" cy="10" r="2"></circle></svg>
+      </span>
+      <span class="meta-copy"><strong>Peace Room I201</strong>, VinUniversity, Hanoi</span>
+    </div>
+  </div>
+
+  <div class="rule"></div>
+
+  <section class="people-layout" aria-label="Workshop host and speakers">
+    <div class="host-area">
+      <div class="section-label">Host &amp; Chair</div>
+      <div class="host-ring"><img src="speakers/mo.png" alt="Dr Mo El-Haj" /></div>
+      <div class="host-name">Dr Mo El-Haj</div>
+      <div class="host-affil">VinUniversity, Vietnam<br>Lancaster University, UK</div>
+      <div class="host-tag">Director, NLP @ VinUni</div>
+    </div>
+
+    <div class="speaker-area">
+      <div class="section-label speakers">Speakers</div>
+      <div class="speaker-grid">
+        <article class="speaker">
+          <div class="speaker-ring"><img src="speakers/knight.jpg" alt="Prof. Dawn Knight" /></div>
+          <div class="speaker-name">Prof. Dawn Knight</div>
+          <div class="speaker-affil">Cardiff University, UK</div>
+        </article>
+        <article class="speaker">
+          <div class="speaker-ring"><img src="speakers/prayson.jpg" alt="Prof. Paul Rayson" /></div>
+          <div class="speaker-name">Prof. Paul Rayson</div>
+          <div class="speaker-affil">Lancaster University, UK</div>
+        </article>
+        <article class="speaker">
+          <div class="speaker-ring"><img src="speakers/menon.jpg" alt="Dr Seetha Menon" /></div>
+          <div class="speaker-name">Dr Seetha Menon</div>
+          <div class="speaker-affil">University of Southern Denmark</div>
+        </article>
+        <article class="speaker">
+          <div class="speaker-ring"><img src="speakers/dung.jpg" alt="Dr Le Duy Dung" /></div>
+          <div class="speaker-name">Dr Le Duy Dung</div>
+          <div class="speaker-affil">VinUniversity, Vietnam</div>
+        </article>
+        <article class="speaker">
+          <div class="speaker-ring"><img src="speakers/Anant-Mishra.png" alt="Prof. Anant Mishra" /></div>
+          <div class="speaker-name">Prof. Anant Mishra</div>
+          <div class="speaker-affil">VinUniversity, Vietnam</div>
+        </article>
+        <article class="speaker">
+          <div class="speaker-ring"><img src="speakers/Pham-Huy-Hieu.png" alt="Dr Pham Huy Hieu" /></div>
+          <div class="speaker-name">Dr Pham Huy Hieu</div>
+          <div class="speaker-affil">VinUniversity, Vietnam</div>
+        </article>
+        <article class="speaker">
+          <div class="speaker-ring"><img src="speakers/abhishek.png" alt="Dr Nayak Abhishek Shashikant" /></div>
+          <div class="speaker-name">Dr Nayak Abhishek Shashikant</div>
+          <div class="speaker-affil">VinUniversity, Vietnam</div>
+        </article>
+        <article class="speaker">
+          <div class="speaker-ring"><img src="speakers/huyen.png" alt="Dr Nguyen Thi Hoa Huyen" /></div>
+          <div class="speaker-name">Dr Nguyen Thi Hoa Huyen</div>
+          <div class="speaker-affil">VinUniversity, Vietnam</div>
+        </article>
+        <article class="speaker">
+          <div class="speaker-ring"><img src="speakers/yuvraj.png" alt="Dr Yuvraj Sahni" /></div>
+          <div class="speaker-name">Dr Yuvraj Sahni</div>
+          <div class="speaker-affil">VinUniversity, Vietnam</div>
+        </article>
+        <article class="speaker">
+          <div class="speaker-ring"><img src="speakers/Tung.png" alt="Dr Nguyen-Dang Tung" /></div>
+          <div class="speaker-name">Dr Nguyen-Dang Tung</div>
+          <div class="speaker-affil">VinUniversity, Vietnam</div>
+        </article>
+        <article class="speaker">
+          <div class="speaker-ring"><img src="speakers/thanh.png" alt="Dr Nguyen Ha Thanh" /></div>
+          <div class="speaker-name">Dr Nguyen Ha Thanh</div>
+          <div class="speaker-affil">VinUniversity, Vietnam</div>
+        </article>
+        <article class="speaker">
+          <div class="speaker-ring"><img src="speakers/varun.jpeg" alt="Mr Varun Kalra" /></div>
+          <div class="speaker-name">Mr Varun Kalra</div>
+          <div class="speaker-affil">HyperVerge</div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <span>Hosted by <b>NLP @ VinUni</b></span><span class="footer-dot"></span><span>VinUniversity, Hanoi</span><span class="footer-dot"></span><span>In person</span>
+  </footer>
+</main>
+</body>
+</html>
